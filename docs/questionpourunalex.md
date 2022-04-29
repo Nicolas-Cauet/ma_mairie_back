@@ -1,0 +1,4 @@
+- Peut on utiliser les champs created_at et updated_at pour donner des informations dans le front ?
+- Peut-on laisser une table vide dans le MCD ?
+- Faut-il faire une page CGU, FAQ et Mentions légales ?
+- Administration, exemple édition des articles, outils d'adminitration ou icone modifié dans les articles ?

@@ -15,7 +15,6 @@
 
 
 
-
 ## Administrateur
 
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
@@ -37,7 +36,7 @@
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
 | Administrateur | Pouvoir ajouter | les informations concernant la déchetterie |-|
-| Administrateur | Pouvoir suppprimer | les informations concernant la déchetterie |-|
+| Administrateur | Pouvoir supprimer | les informations concernant la déchetterie |-|
 | Administrateur | Pouvoir modifier | les informations concernant la déchetterie |-|
 
 ### Page contact
@@ -55,6 +54,7 @@
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
 | visiteur | Accéder à l'Agenda |  Consulter les évènements à venir (marchés, fête Nationale...)|x|
+| visiteur | Filtrer |  Filtrer par catégories|x|
 | Administrateur | Accéder à l'Agenda | ajouter des évènements |-|
 | Administrateur | Accéder à l'Agenda | supprimer des évènements |-|
 | Administrateur | Accéder à l'Agenda | modifier des évènements |-|
@@ -75,10 +75,12 @@
 | Administrateur | Accéder à la page article | supprimer des articles |-|
 | Administrateur | Accéder à la page article | modifier des articles |-|
 | visiteur | Accéder aux Articles|  Consulter les informations publiées par la mairie |X|
+| visiteur | Filtrer Articles|  Filtrer par catégories |X|
 
 ### Outil de communication
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
+|Administrateur| Outil de communication | Voir identité et coordonée de la personne à l'origine du signalement |-|
 |Administrateur| Outil de communication | Répondre à un signalement |-|
 |Administrateur| Outil de communication | Modifier un signalement |-|
 |Administrateur| Outil de communication | Cloturer un signalement |-|
@@ -96,7 +98,7 @@
 | visiteur | Outils de communication| Être alerté de l'évolution de son signalement par mail |-|
 |Administrateur| Outil de communication |Etre averti d'un message signalement par mail|-|
 
-### Annnuaire
+### Annuaire
 
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
@@ -116,9 +118,15 @@
 | Administrateur | Accéder à la page Association | supprimer un élément de la liste des associations |-|
 
 ### Écoles
+
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
 | visiteur | Accéder aux infos des écoles |  Pour obtenir les infos concernant les écoles |-|
 
 ## V2 ++
+
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
 | visiteur | Widget météo | Consulter la météo |-|
 | visiteur | Widget GoogleMaps | Consulter la carte de la commune |-|
 | visiteur | Outils de communication| Ajouter une photo du problème |-|

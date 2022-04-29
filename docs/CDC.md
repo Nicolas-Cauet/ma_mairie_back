@@ -24,16 +24,16 @@ tout en permettant de mettre à disposition un outils efficace et peu couteux
   - Fil d'actualités,
   - Agenda,
   - Outils de communication entre les citoyens et la mairie (arbres tombés, panneaux ou routes endommagé, etc),
-  - Un annuaire,
   - Les informations principales (équipe municipale, horaire d'ouverture, déchétterie, ramassage des ordures,...)
   - Information de contact
 
 ## Autres fonctionalitées (Version ultérieures) :
+  - Un annuaire
   - Administration du site (modification des horraires, des contacts, ...)
   - Mettre en place un système édition du fil actualités
   - Ecrire un nouvel article (avec template, poste sur facebook/twitter)
   - Ajouter un événement dans l'agenda (avec template, poste sur facebook/twitter)
-  - Outil citoyen : systême de notification (nouvel ajout, réponse, ...)
+  - Outil citoyen : systême de notification (nouvel ajout, réponse, .
                   : fonctionalités avancées
                   : administration
   - Infos et services Ecole
@@ -92,15 +92,53 @@ Back end en NodeJs (2 personnes)
 # Arboresence de l'application (Wireframes)
 
 # Liste des routes
+## Front
+| Route | URl | Page| 
+| :--------------- |:---------------:| -----:|
+|GET | / | HomePage|
+|GET | /agenda | agenda|
+|GET | /agenda/:id | article |
+|GET | /agenda/updateAgenda | agenda |
+|GET | /agenda/createAgenda | agenda |
+|GET | /contacts | contacts|
+|GET | /contacts/updateContact| contacts|
+|GET | /contacts/updateContact | contacts|
+|GET | /conseil | Conseil municipale |
+|GET | /login | connexion |
+|GET | /homeAdmin | admin |
+|GET | /admin/updateArticle | article |
+|GET | /admin/createArticle | article |
+|GET | /articles | articles |
+|GET | /articles/:id | article |
+|GET | /articles/:id | article |
+|GET | /notFound/ | 404 |
+
+
+
+
+
+
+
+
+## Back
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+
 
 
 # Liste des Users Stories
+
+Consulter fichier UserStories => https://docs.google.com/document/d/1By_hGjeAyNJz0kkGEKBSH05lswVHUNAiofYZUDo0jxw/edit
 
 
 # Documents relatifs à la BDD
 
 ## MCD
+
+Consulter fichier MCD => 
+
 ## MLD
+Consulter fichier MLD => 
 
 # Les rôles de chacun
 
