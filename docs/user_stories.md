@@ -1,144 +1,120 @@
 # User stories
 
 # MVP
-## Visiteur
 
+## Page d'accueil
 | En tant que  | J'ai besoin de | Afin de |Priorité| 
 | :--------------- |:-----------:| -----:|------:|
-| visiteur | Accéder à la page principale |  Consulter le site |x|
-| visiteur | Accéder à la page principale |  Consulter le fils d'actualité |x|
-| visiteur | Accéder à la page principale |  Consulter les horraires d'ouvertures |X|
-| visiteur | Accéder à la page principale |  Consulter les informations concernant le ramassage des ordures |X|
-| visiteur | Accéder à la page principale |  Consulter les informations concernant la déchetterie |X|
-| visiteur | Conseil municipal | Connaitre les différents conseillers municipaux|x|
-| visiteur | Accéder à la page déchetterie | Consulter les horaires.|X|
+| visiteur | Accéder à la page principale |  Consulter le site |-|
+| visiteur | Accéder à la page principale |  Consulter les horraires d'ouvertures |-|
+| visiteur | Accéder à la page principale |  Avoir les liens des compte facebook et twitter de la mairie |-|
 
 
-
-## Administrateur
-
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
-| :--------------- |:---------------:| -----:|------: |
-| Administrateur | Pouvoir se connecter | Accéder aux outils de modification |-|
-| Administrateur | Pouvoir se déconnecter | Ne plus accéder aux outils de modification |-|
-
-
-### Ramassage des ordures
-
+## Fil d'actualité
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
-| Administrateur | Pouvoir ajouter | le ramassage des ordures |-|
-| Administrateur | Pouvoir supprimer | le ramassage des ordures |-|
+| visiteur | Accéder à la page principale |  Consulter le fils d'actualité |-|
+| Administrateur | Accéder au fil d'actualité | Ajouter un article |-|
+| Administrateur | Accéder au fil d'actualité | Supprimer un article |-|
+| Administrateur | Accéder au fil d'actualité | Modifier un article |-|
+
+
+## Ramassage des ordures
+| En tant que  | J'ai besoin de | Afin de |Priorité| 
+| :--------------- |:-----------:| -----:|------:|
+| visiteur | Accéder à la page principale |  Consulter les informations concernant le ramassage des ordures |X|
 | Administrateur | Pouvoir modifier | le ramassage des ordures |-|
 
-### Déchetterie
 
+## Déchetterie
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
-| Administrateur | Pouvoir ajouter | les informations concernant la déchetterie |-|
-| Administrateur | Pouvoir supprimer | les informations concernant la déchetterie |-|
+| visiteur | Accéder à la page principale |  Consulter les informations concernant la déchetterie |X|
 | Administrateur | Pouvoir modifier | les informations concernant la déchetterie |-|
 
-### Page contact
 
-| En tant que  | J'ai besoin de         | Afin de |Priorité|
-| :--------------- |:---------------:| -----:|------:|
-| visiteur | Accéder à la page contact | Consulter la page contact.|X|
-| Administrateur | Pouvoir modifier | la page contact |-|
-| Administrateur | Pouvoir modifier | la page contact |-|
-| Administrateur | Pouvoir modifier | la page contact |-|
-
-
-### Agenda
-
+## Conseil Municipal
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
-| visiteur | Accéder à l'Agenda |  Consulter les évènements à venir (marchés, fête Nationale...)|x|
-| visiteur | Filtrer |  Filtrer par catégories|x|
-| Administrateur | Accéder à l'Agenda | ajouter des évènements |-|
-| Administrateur | Accéder à l'Agenda | supprimer des évènements |-|
-| Administrateur | Accéder à l'Agenda | modifier des évènements |-|
+| visiteur | Conseil municipal | Connaitre les différents conseillers municipaux|-|
+| Administrateur | Conseil municipal | Ajouter des personnes|-|
+| Administrateur | Conseil municipal | Editer des personnes|-|
+| Administrateur | Conseil municipal | Supprimer des personnes|-|
 
-### Fil d'actualité
 
+## Page article
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
-| Administrateur | Accéder au fil d'actualité | Ajouter un élément/évènement important ou ponctuel |-|
-| Administrateur | Accéder au fil d'actualité | Supprimer un élément/évènement important ou ponctuel |-|
-| Administrateur | Accéder au fil d'actualité | Modifier un élément/évènement important ou ponctuel |-|
-
-### Page article
-
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
-| :--------------- |:---------------:| -----:|------:|
+| visiteur | Articles |  Consulter les articles |-|
+| visiteur | Filtrer Articles|  Filtrer par catégories |-|
+| visiteur | Filtrer Articles|  Filtrer par date |-|
 | Administrateur | Accéder à la page article | ajouter des articles |-|
 | Administrateur | Accéder à la page article | supprimer des articles |-|
 | Administrateur | Accéder à la page article | modifier des articles |-|
-| visiteur | Accéder aux Articles|  Consulter les informations publiées par la mairie |X|
-| visiteur | Filtrer Articles|  Filtrer par catégories |X|
 
-### Outil de communication
+
+## Page Ecole
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
-|Administrateur| Outil de communication | Voir identité et coordonée de la personne à l'origine du signalement |-|
-|Administrateur| Outil de communication | Répondre à un signalement |-|
-|Administrateur| Outil de communication | Modifier un signalement |-|
-|Administrateur| Outil de communication | Cloturer un signalement |-|
-|Administrateur| Outil de communication | Modifier un statut |-|
-| visiteur | Outils de communication| Signaler un incidents |x|
-| visiteur | Outils de communication| Consulter la liste des incidents en cours|x|
-| visiteur | Outils de communication| Consulter la liste des incidents clôturés.|x|
+| visiteur | Ecoles |  Consulter les informations concernant les ecoles |-|
+| Administrateur | Ecoles | modifier les informations concerant l'école |-| 
 
 
-## V2
-
+## Page Service
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
-| visiteur | Conseil municipal |  Avoir accès aux résumé des réunions |-|
+| visiteur | Service | Consulter les différents services de la commune |-|
+| Administrateur | Pouvoir modifier | Ajouter des services de la commune |-|
+| Administrateur | Pouvoir modifier | modifier les coordonées des services de la commune |-|
+
+
+## Outil de communication
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+| visiteur | Outil de signalement | Poster un signalement |-|
+| visiteur | Outils de signalement| Consulter la liste des signalements|-|
+| Administrateur | Outil de communication | Consulter l'ensemble des signalements |-|
+| Administrateur | Outil de communication | Répondre à un signalement |-|
+| Administrateur | Outil de communication | Modifier sa réponse à un signalement |-|
+| Administrateur | Outil de communication | Modifier un statut |-|
+| Administrateur | Outil de communication | Supprimer un signalement |-|
+
+
+## Login
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+| Administrateur | S'incrire | s'incrire au site |-|
+| Administrateur | Se connecter | se connecte au site |-|
+| Administrateur | Se déconnecter | se déconnecte au site |-|
+| Administrateur | Pouvoir se connecter | Accéder aux outils backoffice |-|
+| Administrateur | Editer des informations |  Editer les liens des compte facebook et twitter de la mairie |-|
+
+
+## Evolution possible
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
 | visiteur | Outils de communication| Être alerté de l'évolution de son signalement par mail |-|
-|Administrateur| Outil de communication |Etre averti d'un message signalement par mail|-|
-
-### Annuaire
-
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
-| :--------------- |:---------------:| -----:|------:|
+| Administrateur | Outil de communication |Etre averti d'un message signalement par mail|-|
+| Administrateur | Poster sur Facebook/Twitter | Tenir informé les citoyens|-|
+| visiteur | Agenda |  Consulter les évènements à venir (marchés, fête Nationale...)|-|
+| Administrateur | Accéder à l'Agenda | ajouter des évènements |-|
+| Administrateur | Accéder à l'Agenda | supprimer des évènements |-|
+| Administrateur | Accéder à l'Agenda | modifier des évènements |-|
+| Visiteur | Page Association | Consulter la liste des associations |-|
+| Administrateur | Page Association | Créer une liste des associations |-|
+| Administrateur | Page Association | modifier la liste des associations |-|
+| Administrateur | Page Association | supprimer un élément de la liste des associations |-|
 | visiteur | Accéder à l'Annuaire|  Pour contacter les différents services et commerce dans la commune |-|
-|Administrateur| Accéder à l'Annuaire | Ajouter des numéros utiles |-|
-|Administrateur| Accéder à l'Annuaire | Supprimer des numéros utiles |-|
-|Administrateur| Accéder à l'Annuaire | Modifier des numéros utiles |-|
-
-### Associtations 
-
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
-| :--------------- |:---------------:| -----:|------:|
-| Visiteur | Accéder à la page Association | Consulter la liste des associations |-|
-| Visiteur | Accéder à la page Association | Contacter les associations (tel, mail...) |-|
-| Administrateur | Accéder à la page Association | Créer une liste des associations |-|
-| Administrateur | Accéder à la page Association | modifier la liste des associations |-|
-| Administrateur | Accéder à la page Association | supprimer un élément de la liste des associations |-|
-
-### Écoles
-
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
-| :--------------- |:---------------:| -----:|------:|
-| visiteur | Accéder aux infos des écoles |  Pour obtenir les infos concernant les écoles |-|
-
-## V2 ++
-
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
-| :--------------- |:---------------:| -----:|------:|
+| Administrateur | Accéder à l'Annuaire | Ajouter des numéros utiles |-|
+| Administrateur | Accéder à l'Annuaire | Supprimer des numéros utiles |-|
+| Administrateur | Accéder à l'Annuaire | Modifier des numéros utiles |-|
 | visiteur | Widget météo | Consulter la météo |-|
 | visiteur | Widget GoogleMaps | Consulter la carte de la commune |-|
-| visiteur | Outils de communication| Ajouter une photo du problème |-|
 | visiteur | Newsletter | S'abonner à la newsletter |-|
 | Administrateur | Newsletter | Décider qu'un élément fait l'objet d'une newsletter |-|
-| Administrateur | Outil de communication | Ajouter une photo de la résolution |-|
-| Administrateur | Poster sur Facebook/Twitter | Tenir informé les citoyens|-|
 | visiteur | Services de la mairie | Connaitre les dates de réservations des salles communales |-|
 | Administration | Services de la mairie | Renseigner les dates de réservations des salles communales |-|
 | Visiteur | Recevoir un sms d'alerte | Etre alerter |-|
 | Administateur | Déclencher l'envoi d'un sms d'alerte | alerter les citoyens |-|
 | Visiteur | Explorer les alentours | visiter les lieux insolites de la commune |-|
 | Administrateur | Ajout de lieux insolites | Ajout de lieux |-|
-
-
