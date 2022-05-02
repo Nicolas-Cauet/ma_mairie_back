@@ -44,7 +44,9 @@ rapidement.
   - Widget météo
   - Widget Google Map
   - Envoi SMS pour alerte météo /travaux eléctrique, téléphonique coupure eaux
+  - Système d'alerte par SMS
   - Explorer les alentours (découvrir la communes et ces environs)
+  - Newsletter
 
 
 # Liste des technologies utilisées
