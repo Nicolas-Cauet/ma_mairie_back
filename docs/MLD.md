@@ -1,4 +1,4 @@
-ADMIN(admin_id, pseudo, password,email,reporting_id,created_at,updated_at)
+ADMIN(admin_id, pseudo,insee, password,email,reporting_id,created_at,updated_at)
 
 REPORTING(reporting_id, title, email, phonenumber, first_name, last_name,
 text, image, statut, statut_id, created_at, updated_at)

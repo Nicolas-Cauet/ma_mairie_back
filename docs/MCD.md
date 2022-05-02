@@ -11,7 +11,7 @@ ARTICLE: titre, description,résumer, image, auteur, date_creation, date_modific
 Possède2, 0N ARTICLE_CATEGORIE, 1N ARTICLE
 
 CONTACT: nom, adresse, tel, email
-ADMIN: pseudo, mdp, email
+ADMIN: pseudo, mdp, insee,email
 ACTUALITE: titre,image
 Associé, 1N EVENEMENT, 0N ARTICLE
-EVENEMENT: nom, date,
+EVENEMENT: nom, date

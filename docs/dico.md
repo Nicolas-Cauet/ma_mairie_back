@@ -5,7 +5,8 @@
 | :--------------- |:-----------:| -----:|------:|
 | admin_id | INT | GENERATED ALWAYS AS IDENTITY PRIMARY KEY | l'identifiant de la table |
 | pseudo | TEXT(20) | NOT NULL | Le pseudo de administrateur |
-| password | TEXT | NOT NULL | Le mot de passe de administrateur
+| insee | TEXT | NOT NULL | Le code insee de la mairie|
+| password | TEXT | NOT NULL | Le mot de passe de administrateur|
 | email | TEXT | NOT NULL | Email de administrateur |
 
 
