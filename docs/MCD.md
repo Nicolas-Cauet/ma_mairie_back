@@ -10,7 +10,7 @@ Comporte, 1N ACTUALITE, 0N ARTICLE
 ARTICLE: titre, description,résumer, image, auteur, date_creation, date_modification
 Possède2, 0N ARTICLE_CATEGORIE, 1N ARTICLE
 
-CONTACT: nom, adresse, tel, email
+SERVICE: nom, adresse, tel, email,image
 ADMIN: pseudo, mdp, insee,email
 ACTUALITE: titre,image
 Associé, 1N EVENEMENT, 0N ARTICLE

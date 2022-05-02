@@ -79,14 +79,15 @@
 |updated_at|TIMESTAMPTZ||date de modification|
 
 
-## Table Contact
+## Table Service
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|contact_id|INT|GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
+|service_id|INT|GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
 |service_name|TEXT|NOT NULL|Le nom du service|
 |phonenumber|TEXT|NOT NULL|Le numéro du service|
 |adress|TEXT|NOT NULL| l'adresse du service |
 |email | TEXT | NOT NULL | Email du service |
+|image | TEXT | NULL | image du service |
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
 |updated_at|TIMESTAMPTZ||date de modification|
 

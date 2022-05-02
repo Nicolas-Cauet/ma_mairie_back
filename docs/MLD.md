@@ -11,7 +11,7 @@ ARTICLE(article_id,title ,summarize, description, image ,author, creation_date, 
 
 EVENT(event_id, name, date, article_id, updated_at, created_at)
 
-CONTACT(contact_id, service_name, phonenumber, adress, email)
+SERVICE(service_id, service_name, phonenumber, adress, email,image,created_at,updated_at)
 
 ARTICLE_CATEGORY(article_category_id, name, color, created_at, updated_at)
 
