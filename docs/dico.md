@@ -24,6 +24,14 @@
 |created_at|TIMESTAMPTZ|DEFAULT NOW()|date de creation|
 |updated_at|TIMESTAMPTZ||date de modification|
 
+## Table Reporting_Category
+| Champ | Type | Spécificités | Description | 
+| :--------------- |:-----------:| -----:|------:|
+|reporting_category_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
+|name||TEXT|NOT NULL|Nom de la categorie|
+|reporting_id| INT | REFERENCES reporting(reporting_id) | le status du problème |
+|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
+|updated_at|TIMESTAMPTZ||date de modification|
 
 ## Table News
 | Champ | Type | Spécificités | Description | 
@@ -39,7 +47,8 @@
 | :--------------- |:-----------:| -----:|------:|
 |article_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
 |title| TEXT(30) | NOT NULL | le titre de l'article |
-|texte| TEXT | NOT NULL | la description de l'article |
+|description| TEXT | NOT NULL | la description de l'article |
+|summarize| TEXT | NOT NULL | la description de l'article |
 |image| TEXT | NULL |Image de l'article|
 |author| TEXT | NOT NULL | Auteur de l'article |
 |creation_date| DATE | NOT NULL | Date de la création de l'article |
@@ -59,10 +68,10 @@
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
 |updated_at|TIMESTAMPTZ||date de modification|
 
-## Table Category
+## Table Article_Category
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|category_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
+|article_category_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
 |name||TEXT|NOT NULL|Nom de la mairie|
 |color|CHAR(7)|NOT NULL|couleur du label|
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
@@ -86,5 +95,15 @@
 | :--------------- |:-----------:| -----:|------:|
 |statut_id|INT|GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
 |name|TEXT|NOT NULL|Le nom du  status|
+|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
+|updated_at|TIMESTAMPTZ||date de modification|
+
+### TODO Actualite
+| Champ | Type | Spécificités | Description | 
+| :--------------- |:-----------:| -----:|------:|
+|actualite_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
+|titre||TEXT|NOT NULL|Nom de l'actualité|
+|image| TEXT | NULL |Image de l'actualité|
+|article_id| INT |REFERENCES article(article_id)| l'identifiant de relations|
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
 |updated_at|TIMESTAMPTZ||date de modification|

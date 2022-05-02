@@ -1,16 +1,17 @@
-ACTUALITE:
-Comporte, 1N ACTUALITE, 0N ARTICLE
-ARTICLE: titre, texte, image, auteur, date_creation, date_modification
-Possède, 0N CATEGORIE, 1N ARTICLE
-
-Gère, 1N ADMIN, 0N SIGNALEMENT
-SIGNALEMENT: titre, email, tel, nom, prénom, texte, image, statut_id
-Associé, 1N EVENEMENT, 0N ARTICLE
-CATEGORIE: nom, couleur
 obtient, 1N SIGNALEMENT, ON STATUT
-STATUT: nom
+SIGNALEMENT: titre, email, tel, nom, prénom, texte, image, statut_id
+Possède1, 0N SIGNALEMENT, 1N SIGNALEMENT_CATEGORIE
+SIGNALEMENT_CATEGORIE: nom
+ARTICLE_CATEGORIE: nom, couleur
 
-ADMIN: pseudo, mdp, email
+STATUT: nom
+Gère, 1N ADMIN, 0N SIGNALEMENT
+Comporte, 1N ACTUALITE, 0N ARTICLE
+ARTICLE: titre, description,résumer, image, auteur, date_creation, date_modification
+Possède2, 0N ARTICLE_CATEGORIE, 1N ARTICLE
+
 CONTACT: nom, adresse, tel, email
+ADMIN: pseudo, mdp, email
+ACTUALITE: titre,image
+Associé, 1N EVENEMENT, 0N ARTICLE
 EVENEMENT: nom, date,
-:
