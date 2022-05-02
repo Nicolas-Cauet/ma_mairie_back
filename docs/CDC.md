@@ -1,50 +1,50 @@
  # Présentation du projet 
 
-Un site générique pour les mairie de village à petit budjet. 
+Un site générique pour les mairies de commune et village à petit budjet et petite population. 
 
-Le projet à pour objectif de facilité la communication entre la mairie et les villageois
+Le projet à pour objectif de facilité la communication entre la mairie et les villageois et d'informer
+les habitants sur l'actualité de leur commune.
 
 - Un fil d'actualités,
-- Un agenda,
-- Outils de communication entre les citoyens et la mairie,
-- Un annuaire,
+- Des articles
+- Outils de communication entre les citoyens et la mairie afin de signaler des problèmes,
 - Les informations concernant le ramassage des ordures ménagères, le recyclage, les déchetteries, etc
-- Les informations principales : contacts, horaires
+- Les informations principales : contacts, horaires d'ouvertures, horraires des écoles, équipe municipale
 
 ## Cible du projet
 
-O'mairie va aider à la communication dans les villages en centralisant les informations sur un site web 
-permettant de limiter les déplacement et les contraintes d'horaires d'ouverture
-tout en permettant de mettre à disposition un outils efficace et peu couteux 
+O'mairie va aider à la communication dans les villages en centralisant les informations sur un site web
+permettant de limiter les déplacement et les contraintes d'horaires d'ouvertures pour obtenir les infos
+courantes. Il permettra de mettre à disposition un outils efficace pour signaler de problèmes, des incidents
+rapidement.
 
 
 # Fonctionnalités du projet
 
+
+
 ## MVP : 
   - Fil d'actualités,
-  - Agenda,
-  - Outils de communication entre les citoyens et la mairie (arbres tombés, panneaux ou routes endommagé, etc),
-  - Les informations principales (équipe municipale, horaire d'ouverture, déchétterie, ramassage des ordures,...)
-  - Information de contact
+  - Articles d'actualités
+  - Outils de communication entre les citoyens et la mairie (arbres tombés, panneaux ou routes endommagé, etc).
+  - Les informations principales (équipe municipale, horaire d'ouverture, déchétterie, ramassage des ordures,...).
+  - Composition de l'équipe municipale.
+  - Information sur l'école (horraire école, garderie, contact, ...).
+  - Information des différents contacts de la commune.
+  - Administration du site (création des articles, gestion des signalements, modification des infos courantes, édition du fils d'actualité).
+  - Outil d'inscription et de connexion.
 
-## Autres fonctionalitées (Version ultérieures) :
-  - Un annuaire
-  - Administration du site (modification des horraires, des contacts, ...)
-  - Mettre en place un système édition du fil actualités
-  - Ecrire un nouvel article (avec template, poste sur facebook/twitter)
-  - Ajouter un événement dans l'agenda (avec template, poste sur facebook/twitter)
-  - Outil citoyen : systême de notification (nouvel ajout, réponse, .
-                  : fonctionalités avancées
-                  : administration
-  - Infos et services Ecole
-
-## Outils divers, idées et évolutions possibles :
-  - Ajout des associations
+## Evolutions possibles par la suite
+  - Agenda des différents événement de la commune.
+  - Un annuaire des commerces et services de la commune.
+  - Mettre en place un système édition du fil actualités.
+  - Poste sur facebook/twitter quand un article ou événement d'agenda est crée.
+  - Ajout des associations de la communes
   - Informations sur salle des fêtes (ou autres locaux municipaux) avec calendrier de réservations (à titre indicatif)
-  - Outil météo
-  - Plan de la ville
+  - Widget météo
+  - Widget Google Map
   - Envoi SMS pour alerte météo /travaux eléctrique, téléphonique coupure eaux
-  - Explorer les alentours
+  - Explorer les alentours (découvrir la communes et ces environs)
 
 
 # Liste des technologies utilisées
@@ -92,6 +92,7 @@ Back end en NodeJs (2 personnes)
 # Arboresence de l'application (Wireframes)
 
 # Liste des routes
+
 ## Front
 | Route | URl | Page| 
 | :--------------- |:---------------:| -----:|
