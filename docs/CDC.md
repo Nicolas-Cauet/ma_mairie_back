@@ -97,46 +97,45 @@ Back end en NodeJs (2 personnes)
 
 
 ## Front
+
+## VISITEUR
 | Route | URl | Page| 
 | :--------------- |:---------------:| -----:|
 |GET | / | HomePage|
 |GET | /articles | articles |
 |GET | /articles/:id | article |
-|GET | /signalements/| Signalements |
-|GET | /signalements/:id| Signalement |
-|GET | /signaler| Signaler
-*|POST | /signaler| Signaler ***
-|GET | /conseil| Conseil |
-|GET | /ecole| Ecole |
-|GET | /services| Services |
+|GET | /reporting/| Signalements |
+|GET | /reporting/:id| Signalement |
+|GET | /reports| Signaler
+*|POST | /reporting| Signaler ***
+|GET | /council| Conseil |
+|GET | /school| Ecole |
+|GET | /servicies| Services |
 |GET | /login| Connexion |
 *|POST | /login| Connexion | ***
 |GET | /sign-up| S'incrire |
 *|POST | /sign-up| S'incrire | ***
-
 |GET | /admin| Espace administration|
 |GET | /admin/new-articles | Créer un article|
-*|POST | /admin/new-articles | Créer un article|
+*|POST | /admin/new-articles | Créer un article| ***
 |GET | /admin/articles | Liste des articles|
 *|DELETE | /admin/articles/:id | Effacer un articles| ***
 |GET | /admin/articles/:id | Editer un article|
 *|PATCH | /admin/articles/:id | Editer un article| ***
-|GET | /admin/signalements | Liste des signalements|
-|GET | /admin/signalements/:id | Répondre à un signalement|
-*|PATCH | /admin/signalements/:id | Répondre à un signalement|  *** Champs réponse et photos réponse en DB ? ***
-*|DELETE | /admin/signalements/:id | Effacer un signalement| ***
+|GET | /admin/reporting | Liste des signalements|
+|GET | /admin/reporting/:id | Répondre à un signalement|
+*|PATCH | /admin/reporting/:id | Répondre à un signalement|  *** Champs réponse et photos réponse en DB ? ***
+*|DELETE | /admin/reporting/:id | Effacer un signalement| ***
 |GET | /admin/new-services | Ajouter un service |   
 *|POST | /admin/new-services | Ajouter un service |  *** Champs texte pour horraire des services ? ***
 |GET | /admin/services | Afficher la liste des services |
 *|DELETE | /admin/services/:id | Effacer un service | ***
 |GET | /admin/services/:id | Editer un service |
 *|PATCH | /admin/services/:id | Editer un service | ***
-|GET | /admin/conseil | Modifier le conseil |
-*|POST | /admin/conseil | Créer un conseiller | ***
-*|PATCH | /admin/conseil | Modifier un conseiller | ***
-*|DELETE | /admin/conseil | Supprimer un conseiller | ***
-
-
+|GET | /admin/council | Modifier le conseil |
+*|POST | /admin/council | Créer un conseiller | ***
+*|PATCH | /admin/council | Modifier un conseiller | ***
+*|DELETE | /admin/council | Supprimer un conseiller | ***
 |GET | /notFound/ | 404 |
 
 
@@ -161,7 +160,7 @@ Back end en NodeJs (2 personnes)
 
 ### ARTICLES
 |GET|/articles| all articles|
-|GET|/article/:id| one articles|
+|GET|/articles/:id| one articles|
 
 ### ECOLE
 |GET | /school | Ecole |image de mairie ,image de ecole , toutes les infos de l'école , url reseau facebook twitter |
