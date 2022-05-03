@@ -25,12 +25,12 @@ rapidement.
 
 ## MVP : 
   - Fil d'actualités,
-  - Articles d'actualités
+  - Articles d'actualités (v1.1)
   - Outils de communication entre les citoyens et la mairie (arbres tombés, panneaux ou routes endommagé, etc).
   - Les informations principales (équipe municipale, horaire d'ouverture, déchétterie, ramassage des ordures,...).
   - Composition de l'équipe municipale.
   - Information sur l'école (horraire école, garderie, contact, ...).
-  - Information des différents contacts de la commune.
+  - Information des différents contacts de la commune (v1.1)
   - Administration du site (création des articles, gestion des signalements, modification des infos courantes, édition du fils d'actualité).
   - Outil d'inscription et de connexion.
 
@@ -99,43 +99,44 @@ Back end en NodeJs (2 personnes)
 ## Front
 
 ## VISITEUR
-| Route | URl | Page| 
+| Route | URL | Page |
 | :--------------- |:---------------:| -----:|
 |GET | / | HomePage|
-|GET | /articles | articles |
-|GET | /articles/:id | article |
-|GET | /reporting/| Signalements |
-|GET | /reporting/:id| Signalement |
-|GET | /reports| Signaler
-*|POST | /reporting| Signaler ***
-|GET | /council| Conseil |
-|GET | /school| Ecole |
-|GET | /servicies| Services |
-|GET | /login| Connexion |
-*|POST | /login| Connexion | ***
-|GET | /sign-up| S'incrire |
-*|POST | /sign-up| S'incrire | ***
-|GET | /admin| Espace administration|
-|GET | /admin/new-articles | Créer un article|
-*|POST | /admin/new-articles | Créer un article| ***
-|GET | /admin/articles | Liste des articles|
-*|DELETE | /admin/articles/:id | Effacer un articles| ***
-|GET | /admin/articles/:id | Editer un article|
+|GET | /articles/:mairie_id | articles v1.1 |
+|GET | /articles/:mairie_id/:id | article v1.1 |
+|GET | /reporting/:mairie_id | Signalements |
+<!-- |GET | /reporting/:id| Signalement | -->  <--- modal
+|GET | /reports/:mairie_id | Signaler | (photos v2)
+|GET | /council/:mairie_id | Conseil |
+|GET | /school/:mairie_id | Ecole |
+|GET | /services/:mairie_id | Services v1.1 |
+|GET | /login | Connexion | <--- modal
+*|POST | /login | Connexion | ***
+|GET | /sign-up | S'incrire | <--- modal
+*|POST | /sign-up | S'incrire | ***
+
+## ADMIN
+| Route | URl | Page| 
+| :--------------- |:---------------:| -----:|
+|GET | /admin/:mairie_id | Espace administration|
+|GET | /admin/new-articles/:mairie_id | Créer un article|
+|GET | /admin/articles/:mairie_id | Liste des articles|
+|GET | /admin/articles/:mairie_id/:id | Editer un article|
 *|PATCH | /admin/articles/:id | Editer un article| ***
-|GET | /admin/reporting | Liste des signalements|
-|GET | /admin/reporting/:id | Répondre à un signalement|
-*|PATCH | /admin/reporting/:id | Répondre à un signalement|  *** Champs réponse et photos réponse en DB ? ***
+|GET | /admin/reporting/:mairie_id | Liste des signalements|
+|GET | /admin/reporting/:mairie_id/:id | Répondre à un signalement|
+*|PATCH | /admin/reporting/:id | Répondre à un signalement|  *** (photos v2)
 *|DELETE | /admin/reporting/:id | Effacer un signalement| ***
-|GET | /admin/new-services | Ajouter un service |   
-*|POST | /admin/new-services | Ajouter un service |  *** Champs texte pour horraire des services ? ***
-|GET | /admin/services | Afficher la liste des services |
-*|DELETE | /admin/services/:id | Effacer un service | ***
-|GET | /admin/services/:id | Editer un service |
-*|PATCH | /admin/services/:id | Editer un service | ***
-|GET | /admin/council | Modifier le conseil |
-*|POST | /admin/council | Créer un conseiller | ***
-*|PATCH | /admin/council | Modifier un conseiller | ***
-*|DELETE | /admin/council | Supprimer un conseiller | ***
+|GET | /admin/new-services/:mairie_id | Ajouter un service v1.1|   
+*|POST | /admin/new-services | Ajouter un service v1.1 | ***
+|GET | /admin/services/:mairie_id | Afficher la liste des services v1.1 |
+*|DELETE | /admin/services/:id | Effacer un service v1.1 | ***
+|GET | /admin/services/:mairie_id/:id | Editer un service v1.1|
+*|PATCH | /admin/services/:id | Editer un service v1.1 | ***
+|GET | /admin/council/:mairie_id | Modifier le conseil |
+*|POST | /admin/council/:id | Créer un conseiller | ***
+*|PATCH | /admin/council/:id | Modifier un conseiller | ***
+*|DELETE | /admin/council/id | Supprimer un conseiller | ***
 |GET | /notFound/ | 404 |
 
 
@@ -146,70 +147,49 @@ Back end en NodeJs (2 personnes)
 ### HOME PAGE
 | Route  | URL | Page | data |
 | :--------------- |:---------------:| -----:|------:|
-|GET | / | HomePage|
-|GET | /login | login |
 |POST | /sign-up | signup |
-
-### SERVICES
-| Route  | URL | Page |
-| :--------------- |:---------------:| -----:|------:|
-|GET | /services | services |
-
-### DECHETTERIE
-| Route  | URL | Page |
-| :--------------- |:---------------:| -----:|------:|
-|GET | /wasteDisposal | wasteDisposal |
-
-### RAMASSAGE DES DECHETS
-| Route  | URL | Page | data |
-| :--------------- |:---------------:| -----:|------:|
-|GET | /wasteCollection | wasteCollection |
-
-### ARTICLES
-| Route  | URL | Page | data |
-| :--------------- |:---------------:| -----:|------:|
-|GET|/articles| all articles|
-|GET|/articles/:id| one articles|
-
-### ECOLE
-| Route  | URL | Page | data |
-| :--------------- |:---------------:| -----:|------:|
-|GET | /school | Ecole |image de mairie ,image de ecole , toutes les infos de l'école , url reseau facebook twitter |
-
-### CONSEIL MUNICIPAL
-| Route  | URL | Page | data |
-| :--------------- |:---------------:| -----:|------:|
-|GET | /council | council |
 
 ### SIGNALEMENT 
 | Route  | URL | Page | data |
 | :--------------- |:---------------:| -----:|------:|
-|GET | /reporting | reporting |
-|GET | /reporting/:id | reporting/:id |
-|POST | /reporting | reporting |
+|POST | /reporting/mairie/:id | reporting |
 
 ## ADMIN
 
 ### ARTICLES
+
 | Route  | URL | Page | data |
 | :--------------- |:---------------:| -----:|------:|
-|POST | /admin/articles | admin/articles | |
-|PUT | /admin/articles/:id| admin/articles/:id |
+|POST | /admin/articles/mairie_id/:id | admin/articles | |
+|PUT | /admin/articles/:id/mairie_id/:id| admin/articles/:id |
+|DELETE | /admin/articles/mairie_id/:id | Effacer un articles|
+
 ### SIGNALEMENT
 | Route  | URL | Page | data |
 | :--------------- |:---------------:| -----:|------:|
-|PUT | /admin/reporting/:id | admin/reporting  | |
-|DELETE | /admin/reporting/:id | admin/reporting/:id  | |
+|PUT | /admin/reporting/:id/mairie_id/:id | admin/reporting  | |
+|DELETE | /admin/reporting/:id/mairie_id/:id  | admin/reporting/:id  | |
 
 ### SERVICES
 | Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:admin/services/:mairie_id | admin/services/mairie_id/:id | |
+|PUT | /admin/reporting/:id/mairie_id/:id | admin/reporting/:id  | |
+|DELETE | /admin/reporting/:id/mairie_id/:id | admin/reporting/:id  | |
+
+### RAMASSAGE DES ORDURES
+| Route  | URL | Page | data |
 | :--------------- |:---------------:| -----:|------:|
-|POST | /admin/services | admin/services | |
-|PUT | /admin/reporting/:id | admin/reporting  | |
+|POST | /admin/wasteCollection/mairie_id/:id | admin | |
+|POST | /admin/guide/mairie_id/:id | admin | |
 
+### DECHETTERIE
+|POST | /admin/wasteDisposal/mairie_id/:id | admin | |
+|POST | /admin/hourly/mairie_id/:id | admin | |
 
-
-
+### CONSEIL MUNICIPAL
+|POST | /admin/council/mairie_id/:id | admin/council | |
+|PUT | /admin/council/:id/mairie_id/:id | admin/council/:id  | |
+|DELETE | /admin/council/:id/mairie_id/:id | admin/council/:id  | |
 
 
 

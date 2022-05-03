@@ -1,136 +1,132 @@
 # Dictionnaire des données
 
 ## Table Admin
+
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-| admin_id | INT | GENERATED ALWAYS AS IDENTITY PRIMARY KEY | l'identifiant de la table |
-| pseudo | TEXT(20) | NOT NULL | Le pseudo de administrateur |
-| insee | TEXT | NOT NULL UNIQUE | Le code insee de la mairie|
-| password | TEXT | NOT NULL | Le mot de passe de administrateur|
-| email | TEXT | NOT NULL | Email de administrateur |
-
+| admin_id | INT | GENERATED ALWAYS AS IDENTITY PRIMARY KEY | 
+the table identifier |
+| pseudo | TEXT(20) | NOT NULL | admin username |
+| insee | TEXT | NOT NULL UNIQUE |the insee code of the town hall |
+| password | TEXT | NOT NULL | the administrator password
+|
+| email | TEXT | NOT NULL | Administrator email |
+| town_hall_id | INT | | REFERENCES town_hall(town_hall_id)| 
+the relationship identifier |
+| created_at |TIMESTAMPTZ|DEFAULT NOW()|creation date|
+| updated_at |TIMESTAMPTZ||modification date|
 
 ## Table Reporting
-| Champ | Type | Spécificités | Description | 
-| :--------------- |:-----------:| -----:|------:|
-|reporting_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY| l'identifiant de la table |
-|title| TEXT(30) | NOT NULL | le titre du reporting |
-| email | TEXT | NOT NULL | Email du visiteur |
-|phonenumber| INT(10) | NOT NULL | Le numéro de téléphone du visiteur |
-|first_name| TEXT | NOT NULL | Le prénom du visiteur |
-|last_name| TEXT | NOT NULL | Le nom du visiteur |
-|texte| TEXT |NOT NULL | la description du problème |
-|image| TEXT | NULL | Image du problème |
-|statut_id| INT | REFERENCES status(status_id) | Le status du problème |
-|created_at|TIMESTAMPTZ|DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
 
-## Table Reporting_Category
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|reporting_category_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
-|name||TEXT|NOT NULL|Nom de la categorie|
-|reporting_id| INT | REFERENCES reporting(reporting_id) | le status du problème |
-|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
+| reporting_id | INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY| 
+the table identifier |
+| title | TEXT(30) | NOT NULL | the title of the report |
+| email | TEXT | NOT NULL | Visitor's email |
+| phonenumber | INT(10) | NOT NULL | The visitor's phone number |
+| first_name | TEXT | NOT NULL | Visitor's first name |
+| last_name | TEXT | NOT NULL | Visitor's last name |
+| user_text | TEXT |NOT NULL | visitor's description of the problem |
+| admin_text | TEXT |NOT NULL | the administrator's answer to the problem |
+| user_image | TEXT || Problem Visitor Image|
+| admin_image | TEXT || Problem admin image |
+| reporting_category | TEXT || Report category |
+| reporting_statut | TEXT || statut du signalement |
+| town_hall_id | INT || REFERENCES town_hall(town_hall_id)| the relationship identifier |
+|created_at|TIMESTAMPTZ|DEFAULT NOW()|creation date|
+|updated_at|TIMESTAMPTZ||modification date|
 
-## Table News
-| Champ | Type | Spécificités | Description | 
-| :--------------- |:-----------:| -----:|------:|
-|news_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
-|article_id|INT| REFERENCES article(article_id) | l'identifiant de relations|
-|created_at|TIMESTAMPTZ DEFAULT NOW()||date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
 
 
 ## Table Article
+
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|article_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
-|title| TEXT(30) | NOT NULL | le titre de l'article |
-|description| TEXT | NOT NULL | la description de l'article |
-|summarize| TEXT | NOT NULL | la description de l'article |
-|image| TEXT | NULL |Image de l'article|
-|author| TEXT | NOT NULL | Auteur de l'article |
-|creation_date| DATE | NOT NULL | Date de la création de l'article |
-|modification_date| DATE | NOT NULL | Date de modification de l'article |
-|category_id| INT |REFERENCES category(category_id)|l'identifiant de relations|
-|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
-
-
-## Table Event
-| Champ | Type | Spécificités | Description | 
-| :--------------- |:-----------:| -----:|------:|
-|event_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
-|name| TEXT | NOT NULL | Le nom de l'événement|
-|date| DATE | NOT NULL | La date de l'événement|
-|article_id| INT |REFERENCES article(article_id)| l'identifiant de relations|
-|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
-
-## Table Article_Category
-| Champ | Type | Spécificités | Description | 
-| :--------------- |:-----------:| -----:|------:|
-|article_category_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
-|name||TEXT|NOT NULL|Nom de la mairie|
-|color|CHAR(7)|NOT NULL|couleur du label|
-|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
+|article_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|
+the table identifier|
+|title| TEXT(30) | NOT NULL | the title of the article |
+|description| TEXT | NOT NULL | article description |
+|summarize| TEXT | NOT NULL | article description |
+|image| TEXT | NULL |article Picture|
+|author| TEXT | NOT NULL | article author |
+|creation_date| DATE | NOT NULL | Date the item was created |
+|modification_date| DATE | NOT NULL | Article modification date |
+|article_categorie| TEXT || article category |
+|article_color| TEXT || article color |
+| town_hall_id | INT | | REFERENCES town_hall(town_hall_id)| the relationship identifier |
+|created_at|TIMESTAMPTZ| DEFAULT NOW()|creation date|
+|updated_at|TIMESTAMPTZ||modification date|
 
 
 ## Table Service
+
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|service_id|INT|GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
-|service_name|TEXT|NOT NULL|Le nom du service|
-|phonenumber|TEXT|NOT NULL|Le numéro du service|
-|adress|TEXT|NOT NULL| l'adresse du service |
-|email | TEXT | NOT NULL | Email du service |
-|image | TEXT | NULL | image du service |
-|logo | TEXT | NULL | image du logo |
-|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
+|service_id|INT|GENERATED ALWAYS AS IDENTITY PRIMARY KEY|
+the table identifier|
+|service_name|TEXT|NOT NULL|The service name|
+|phonenumber|TEXT|NOT NULL|The service number|
+|adress|TEXT|NOT NULL| service address |
+|email | TEXT | NOT NULL | Service email |
+|image | TEXT | NULL | service picture |
+|logo | TEXT || logo image |
+| town_hall_id | INT | | REFERENCES town_hall(town_hall_id)| the relationship identifier |
+|created_at|TIMESTAMPTZ| DEFAULT NOW()|creation date|
+|updated_at|TIMESTAMPTZ||modification date|
 
 
-## Table Statut
+## Table town_hall
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|statut_id|INT|GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table|
-|name|TEXT|NOT NULL|Le nom du  status|
-|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
+|town_hall_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|
+the table identifier |
+|name|TEXT|NOT NULL|town hall name|
+|adresse|TEXT|NOT NULL|Town hall address|
+|phonenumber|INT(10)|town hall phone number|
+|horaire|TEXT|town hall hours|
+|email|TEXT|town hall email |
+|created_at|TIMESTAMPTZ| DEFAULT NOW()|creation date|
+|updated_at|TIMESTAMPTZ||modification date|
 
-## TODO Actualite
+## Table town_hall_staff
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|actualite_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
-|titre|TEXT|NOT NULL|Nom de l'actualité|
-|image| TEXT | NULL |Image de l'actualité|
-|article_id| INT |REFERENCES article(article_id)| l'identifiant de relations|
-|created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
-|updated_at|TIMESTAMPTZ||date de modification|
+|town_hall_staff_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|
+the table identifier |
+|last_name|TEXT|NOT NULL|name of the town hall staff|
+|first_name|TEXT|NOT NULL|first name of the town hall staff|
+|role|TEXT|NOT NULL|function of the town hall staff|
+|photo|TEXT||photo of town hall staff|
+| town_hall_id | INT | | REFERENCES town_hall(town_hall_id)| the relationship identifier |
+|created_at|TIMESTAMPTZ| DEFAULT NOW()|creation date|
+|updated_at|TIMESTAMPTZ||modification date|
 
 
-## Table Mairie
+## Table Service_admin
+
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|mairie_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
-|name|TEXT|NOT NULL|Nom de la mairie|
-|adresse|TEXT|NOT NULL|Adresse de la mairie|
-|phonenumber|INT(10)|numéro de la mairie|
-|horaire|TEXT|horaire de la mairie|
-|email|TEXT|email de la mairie|
+| admin_id | INT | | REFERENCES admin(admin_id)| the relationship identifier |
+| service_id | INT | | REFERENCES service(service_id)| the relationship identifier |
 
-## Table Personnel_Mairie
+## Table Reporting_admin
+
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
-|personnel_mairie_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
-|last_name|TEXT|NOT NULL|nom du personnel de la mairie|
-|first_name|TEXT|NOT NULL|prénom du personnel de la mairie|
-|role|TEXT|NULL|fonction du personnel de la mairie|
-|photo|TEXT|NULL|photo du personnel de la mairie|
+| admin_id | INT | | REFERENCES admin(admin_id)| the relationship identifier |
+| reporting_id | INT | | REFERENCES reporting(reporting_id)| the relationship identifier |
 
+## Table article_admin
 
+| Champ | Type | Spécificités | Description | 
+| :--------------- |:-----------:| -----:|------:|
+| admin_id | INT | | REFERENCES admin(admin_id)| the relationship identifier |
+| article_id | INT | | REFERENCES article(article_id)| the relationship identifier |
 
+## Table town_hall_staff
 
+| Champ | Type | Spécificités | Description | 
+| :--------------- |:-----------:| -----:|------:|
+| admin_id | INT | | REFERENCES admin(admin_id)| the relationship identifier |
+| town_hall_staff_id | INT | | REFERENCES town_hall_staff(town_hall_staff_id)| the relationship identifier |

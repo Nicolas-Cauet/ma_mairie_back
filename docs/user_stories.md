@@ -9,29 +9,20 @@
 | visiteur | Accéder à la page principale |  Consulter les horraires d'ouvertures |-|
 | visiteur | Accéder à la page principale |  Avoir les liens des compte facebook et twitter de la mairie |-|
 
-
 ## Fil d'actualité
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
 | visiteur | Accéder à la page principale |  Consulter le fils d'actualité |-|
-| Administrateur | Accéder au fil d'actualité | Ajouter un article |-|
-| Administrateur | Accéder au fil d'actualité | Supprimer un article |-|
-| Administrateur | Accéder au fil d'actualité | Modifier un article |-|
-
 
 ## Ramassage des ordures
 | En tant que  | J'ai besoin de | Afin de |Priorité| 
 | :--------------- |:-----------:| -----:|------:|
 | visiteur | Accéder à la page principale |  Consulter les informations concernant le ramassage des ordures |X|
-| Administrateur | Pouvoir modifier | le ramassage des ordures |-|
-
 
 ## Déchetterie
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
 | visiteur | Accéder à la page principale |  Consulter les informations concernant la déchetterie |X|
-| Administrateur | Pouvoir modifier | les informations concernant la déchetterie |-|
-
 
 ## Conseil Municipal
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
@@ -41,44 +32,28 @@
 | Administrateur | Conseil municipal | Editer des personnes|-|
 | Administrateur | Conseil municipal | Supprimer des personnes|-|
 
-
 ## Page article
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
 | visiteur | Articles |  Consulter les articles |-|
 | visiteur | Filtrer Articles|  Filtrer par catégories |-|
 | visiteur | Filtrer Articles|  Filtrer par date |-|
-| Administrateur | Accéder à la page article | ajouter des articles |-|
-| Administrateur | Accéder à la page article | supprimer des articles |-|
-| Administrateur | Accéder à la page article | modifier des articles |-|
-
 
 ## Page Ecole
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
 | visiteur | Ecoles |  Consulter les informations concernant les ecoles |-|
-| Administrateur | Ecoles | modifier les informations concerant l'école |-| 
-
-
-## Page Service
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
-| :--------------- |:---------------:| -----:|------:|
-| visiteur | Service | Consulter les différents services de la commune |-|
-| Administrateur | Pouvoir modifier | Ajouter des services de la commune |-|
-| Administrateur | Pouvoir modifier | modifier les coordonées des services de la commune |-|
-
 
 ## Outil de communication
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
 | :--------------- |:---------------:| -----:|------:|
-| visiteur | Outil de signalement | Poster un signalement |-|
+| visiteur | Outil de signalement | Poster un signalement |-| (photos v2)
 | visiteur | Outils de signalement| Consulter la liste des signalements|-|
 | Administrateur | Outil de communication | Consulter l'ensemble des signalements |-|
-| Administrateur | Outil de communication | Répondre à un signalement |-|
+| Administrateur | Outil de communication | Répondre à un signalement |-| (photos v2)
 | Administrateur | Outil de communication | Modifier sa réponse à un signalement |-|
 | Administrateur | Outil de communication | Modifier un statut |-|
 | Administrateur | Outil de communication | Supprimer un signalement |-|
-
 
 ## Login
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
@@ -89,6 +64,44 @@
 | Administrateur | Pouvoir se connecter | Accéder aux outils backoffice |-|
 | Administrateur | Editer des informations |  Editer les liens des compte facebook et twitter de la mairie |-|
 
+
+## V1.1
+
+## Fil d'actualité
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+| Administrateur | Accéder au fil d'actualité | Ajouter un article |-|
+| Administrateur | Accéder au fil d'actualité | Supprimer un article |-|
+| Administrateur | Accéder au fil d'actualité | Modifier un article |-|
+
+## Ramassage des ordures
+| En tant que  | J'ai besoin de | Afin de |Priorité| 
+| :--------------- |:-----------:| -----:|------:|
+| Administrateur | Pouvoir modifier | le ramassage des ordures |-|
+
+## Déchetterie
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+| Administrateur | Pouvoir modifier | les informations concernant la déchetterie |-|
+
+## Page article
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+| Administrateur | Accéder à la page article | ajouter des articles |-|
+| Administrateur | Accéder à la page article | supprimer des articles |-|
+| Administrateur | Accéder à la page article | modifier des articles |-|
+
+## Page Ecole
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+| Administrateur | Ecoles | modifier les informations concerant l'école |-|
+
+## Page Service
+| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| :--------------- |:---------------:| -----:|------:|
+| visiteur | Service | Consulter les différents services de la commune |-|
+| Administrateur | Pouvoir modifier | Ajouter des services de la commune |-|
+| Administrateur | Pouvoir modifier | modifier les coordonées des services de la commune |-|
 
 ## Evolution possible
 | En tant que  | J'ai besoin de         | Afin de |Priorité| 
