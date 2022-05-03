@@ -108,12 +108,11 @@ Back end en NodeJs (2 personnes)
 *|POST | /signaler| Signaler ***
 |GET | /conseil| Conseil |
 |GET | /ecole| Ecole |
-|GET | /services| Services |
+|GET | /servicies| Services |
 |GET | /login| Connexion |
 *|POST | /login| Connexion | ***
 |GET | /sign-up| S'incrire |
 *|POST | /sign-up| S'incrire | ***
-
 |GET | /admin| Espace administration|
 |GET | /admin/new-articles | Créer un article|
 *|POST | /admin/new-articles | Créer un article|
@@ -141,40 +140,80 @@ Back end en NodeJs (2 personnes)
 
 
 ## Back
-| Route  | URL | Page | data |
-| :--------------- |:---------------:| -----:|------:|
+
 ## VISITEUR
 
 ### HOME PAGE
-|GET | / | HomePage| actualités, image de la mairie , toutes les infos de la mairie , url reseau facebook twitter |
-|GET | /connexion | connexion| email, mot de passe, code INSEE |
-|POST | /inscription | inscription | email, mot de passe, code INSEE |
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
+|GET | / | HomePage|
+|GET | /login | login |
+|POST | /sign-up | signup |
 
 ### SERVICES
-|GET | /services | services | toutes les infos des services (logo,nom,adresse,téléphone)|
+| Route  | URL | Page |
+| :--------------- |:---------------:| -----:|------:|
+|GET | /services | services |
 
 ### DECHETTERIE
-|GET | /wasteDisposal | Dechetterie | image de la mairie , toutes les infos du service , url reseau facebook twitter|
+| Route  | URL | Page |
+| :--------------- |:---------------:| -----:|------:|
+|GET | /wasteDisposal | wasteDisposal |
 
 ### RAMASSAGE DES DECHETS
-|GET | /wasteCollection | ramassage des déchets | image de la mairie , toutes les infos du service , url reseau facebook twitter|
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
+|GET | /wasteCollection | wasteCollection |
 
 ### ARTICLES
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
 |GET|/articles| all articles|
 |GET|/articles/:id| one articles|
 
 ### ECOLE
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
 |GET | /school | Ecole |image de mairie ,image de ecole , toutes les infos de l'école , url reseau facebook twitter |
 
 ### CONSEIL MUNICIPAL
-|GET | /municipalCouncil | Conseil Municipal |image de mairie,toutes les infos du personnel de la mairie , url reseau facebook twitter |
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
+|GET | /council | council |
 
 ### SIGNALEMENT 
-|GET | /reporting | Signalements |image de mairie,toutes les informations des signalements , url reseau facebook twitter |
-|GET | /reporting/:id | Signalement |image de mairie, ,toutes les informations du signalement, url reseau facebook twitter |
-|POST | /createReporting |  Créer signalement |image de mairie, ,toutes les informations du signalement,toutes les categories, url reseau facebook twitter |
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
+|GET | /reporting | reporting |
+|GET | /reporting/:id | reporting/:id |
+|POST | /reporting | reporting |
 
 ## ADMIN
+
+### ARTICLES
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
+|POST | /admin/articles | admin/articles | |
+|PUT | /admin/articles/:id| admin/articles/:id |
+### SIGNALEMENT
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
+|PUT | /admin/reporting/:id | admin/reporting  | |
+|DELETE | /admin/reporting/:id | admin/reporting/:id  | |
+
+### SERVICES
+| Route  | URL | Page | data |
+| :--------------- |:---------------:| -----:|------:|
+|POST | /admin/services | admin/services | |
+|PUT | /admin/reporting/:id | admin/reporting  | |
+
+
+
+
+
+
+
+
 
 
 # Liste des Users Stories
