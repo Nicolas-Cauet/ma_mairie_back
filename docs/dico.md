@@ -5,7 +5,7 @@
 | :--------------- |:-----------:| -----:|------:|
 | admin_id | INT | GENERATED ALWAYS AS IDENTITY PRIMARY KEY | l'identifiant de la table |
 | pseudo | TEXT(20) | NOT NULL | Le pseudo de administrateur |
-| insee | TEXT | NOT NULL | Le code insee de la mairie|
+| insee | TEXT | NOT NULL UNIQUE | Le code insee de la mairie|
 | password | TEXT | NOT NULL | Le mot de passe de administrateur|
 | email | TEXT | NOT NULL | Email de administrateur |
 
@@ -88,6 +88,7 @@
 |adress|TEXT|NOT NULL| l'adresse du service |
 |email | TEXT | NOT NULL | Email du service |
 |image | TEXT | NULL | image du service |
+|logo | TEXT | NULL | image du logo |
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
 |updated_at|TIMESTAMPTZ||date de modification|
 
@@ -100,12 +101,36 @@
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
 |updated_at|TIMESTAMPTZ||date de modification|
 
-### TODO Actualite
+## TODO Actualite
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
 |actualite_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
-|titre||TEXT|NOT NULL|Nom de l'actualité|
+|titre|TEXT|NOT NULL|Nom de l'actualité|
 |image| TEXT | NULL |Image de l'actualité|
 |article_id| INT |REFERENCES article(article_id)| l'identifiant de relations|
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|date de creation|
 |updated_at|TIMESTAMPTZ||date de modification|
+
+
+## Table Mairie
+| Champ | Type | Spécificités | Description | 
+| :--------------- |:-----------:| -----:|------:|
+|mairie_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
+|name|TEXT|NOT NULL|Nom de la mairie|
+|adresse|TEXT|NOT NULL|Adresse de la mairie|
+|phonenumber|INT(10)|numéro de la mairie|
+|horaire|TEXT|horaire de la mairie|
+|email|TEXT|email de la mairie|
+
+## Table Personnel_Mairie
+| Champ | Type | Spécificités | Description | 
+| :--------------- |:-----------:| -----:|------:|
+|personnel_mairie_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|l'identifiant de la table |
+|last_name|TEXT|NOT NULL|nom du personnel de la mairie|
+|first_name|TEXT|NOT NULL|prénom du personnel de la mairie|
+|role|TEXT|NULL|fonction du personnel de la mairie|
+|photo|TEXT|NULL|photo du personnel de la mairie|
+
+
+
+

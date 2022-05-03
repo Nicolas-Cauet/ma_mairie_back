@@ -161,7 +161,7 @@ Back end en NodeJs (2 personnes)
 
 ### ARTICLES
 |GET|/articles| all articles|
-|GET|/article/:id| one articles|
+|GET|/articles/:id| one articles|
 
 ### ECOLE
 |GET | /school | Ecole |image de mairie ,image de ecole , toutes les infos de l'école , url reseau facebook twitter |
