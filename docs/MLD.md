@@ -21,4 +21,4 @@ ACTUALITE(actualite_id,titre,image,article_id,created_at,updated_at)
 
 MAIRIE(mairie_id,nom,adresse,téléphone,horaire,email,created_at,updated_at)
 
-PERSONNEL_MAIRIE(personnel_mairie_id,nom,prénom,role,photo,created_at,updated_at)
+PERSONNEL_MAIRIE(personnel_mairie_id,nom,prénom,role,photo,mairie_id,created_at,updated_at)
