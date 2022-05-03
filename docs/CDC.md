@@ -1,6 +1,6 @@
  # Présentation du projet 
 
-Un site générique pour les mairies de commune et village à petit budjet et petite population. 
+Un site générique pour les mairies de commune et village à petit budget et petite population. 
 
 Le projet à pour objectif de facilité la communication entre la mairie et les villageois et d'informer
 les habitants sur l'actualité de leur commune.
@@ -95,32 +95,49 @@ Back end en NodeJs (2 personnes)
 
 # Liste des routes
 
+
 ## Front
 | Route | URl | Page| 
 | :--------------- |:---------------:| -----:|
 |GET | / | HomePage|
-|GET | /agenda | agenda|
-|GET | /agenda/:id | article |
-|GET | /agenda/updateAgenda | agenda |
-|GET | /agenda/createAgenda | agenda |
-|GET | /contacts | contacts|
-|GET | /contacts/updateContact| contacts|
-|GET | /contacts/updateContact | contacts|
-|GET | /conseil | Conseil municipale |
-|GET | /login | connexion |
-|GET | /homeAdmin | admin |
-|GET | /admin/updateArticle | article |
-|GET | /admin/createArticle | article |
 |GET | /articles | articles |
 |GET | /articles/:id | article |
-|GET | /articles/:id | article |
+|GET | /signalements/| Signalements |
+|GET | /signalements/:id| Signalement |
+|GET | /signaler| Signaler
+*|POST | /signaler| Signaler ***
+|GET | /conseil| Conseil |
+|GET | /ecole| Ecole |
+|GET | /services| Services |
+|GET | /login| Connexion |
+*|POST | /login| Connexion | ***
+|GET | /sign-up| S'incrire |
+*|POST | /sign-up| S'incrire | ***
+
+|GET | /admin| Espace administration|
+|GET | /admin/new-articles | Créer un article|
+*|POST | /admin/new-articles | Créer un article|
+|GET | /admin/articles | Liste des articles|
+*|DELETE | /admin/articles/:id | Effacer un articles| ***
+|GET | /admin/articles/:id | Editer un article|
+*|PATCH | /admin/articles/:id | Editer un article| ***
+|GET | /admin/signalements | Liste des signalements|
+|GET | /admin/signalements/:id | Répondre à un signalement|
+*|PATCH | /admin/signalements/:id | Répondre à un signalement|  *** Champs réponse et photos réponse en DB ? ***
+*|DELETE | /admin/signalements/:id | Effacer un signalement| ***
+|GET | /admin/new-services | Ajouter un service |   
+*|POST | /admin/new-services | Ajouter un service |  *** Champs texte pour horraire des services ? ***
+|GET | /admin/services | Afficher la liste des services |
+*|DELETE | /admin/services/:id | Effacer un service | ***
+|GET | /admin/services/:id | Editer un service |
+*|PATCH | /admin/services/:id | Editer un service | ***
+|GET | /admin/conseil | Modifier le conseil |
+*|POST | /admin/conseil | Créer un conseiller | ***
+*|PATCH | /admin/conseil | Modifier un conseiller | ***
+*|DELETE | /admin/conseil | Supprimer un conseiller | ***
+
+
 |GET | /notFound/ | 404 |
-
-
-
-
-
-
 
 
 ## Back
