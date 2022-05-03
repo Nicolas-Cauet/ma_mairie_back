@@ -11,10 +11,14 @@ ARTICLE(article_id,title ,summarize, description, image ,author, creation_date, 
 
 EVENT(event_id, name, date, article_id, updated_at, created_at)
 
-SERVICE(service_id, service_name, phonenumber, adress, email,image,created_at,updated_at)
+SERVICE(service_id, service_name, phonenumber, adress, email,image,logo,horaire,created_at,updated_at)
 
 ARTICLE_CATEGORY(article_category_id, name, color, created_at, updated_at)
 
 STATUT(statut_id, name, created_at, updated_at)
 
 ACTUALITE(actualite_id,titre,image,article_id,created_at,updated_at)
+
+MAIRIE(mairie_id,nom,adresse,téléphone,horaire,email,created_at,updated_at)
+
+PERSONNEL_MAIRIE(personnel_mairie_id,nom,prénom,role,photo,created_at,updated_at)

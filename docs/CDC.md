@@ -124,9 +124,40 @@ Back end en NodeJs (2 personnes)
 
 
 ## Back
-| En tant que  | J'ai besoin de         | Afin de |Priorité| 
+| Route  | URL | Page | data |
 | :--------------- |:---------------:| -----:|------:|
+## VISITEUR
 
+### HOME PAGE
+|GET | / | HomePage| actualités, image de la mairie , toutes les infos de la mairie , url reseau facebook twitter |
+|GET | /connexion | connexion| email, mot de passe, code INSEE |
+|POST | /inscription | inscription | email, mot de passe, code INSEE |
+
+### SERVICES
+|GET | /services | services | toutes les infos des services (logo,nom,adresse,téléphone)|
+
+### DECHETTERIE
+|GET | /wasteDisposal | Dechetterie | image de la mairie , toutes les infos du service , url reseau facebook twitter|
+
+### RAMASSAGE DES DECHETS
+|GET | /wasteCollection | ramassage des déchets | image de la mairie , toutes les infos du service , url reseau facebook twitter|
+
+### ARTICLES
+|GET|/articles| all articles|
+|GET|/article/:id| one articles|
+
+### ECOLE
+|GET | /school | Ecole |image de mairie ,image de ecole , toutes les infos de l'école , url reseau facebook twitter |
+
+### CONSEIL MUNICIPAL
+|GET | /municipalCouncil | Conseil Municipal |image de mairie,toutes les infos du personnel de la mairie , url reseau facebook twitter |
+
+### SIGNALEMENT 
+|GET | /reporting | Signalements |image de mairie,toutes les informations des signalements , url reseau facebook twitter |
+|GET | /reporting/:id | Signalement |image de mairie, ,toutes les informations du signalement, url reseau facebook twitter |
+|POST | /createReporting |  Créer signalement |image de mairie, ,toutes les informations du signalement,toutes les categories, url reseau facebook twitter |
+
+## ADMIN
 
 
 # Liste des Users Stories
