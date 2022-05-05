@@ -101,5 +101,4 @@ CREATE TABLE IF NOT EXISTS "Table town_hall_staff_admin" (
   "town_hall_staff_id" INT REFERENCES town_hall_staff(town_hall_staff_id)
 );
 
-
 COMMIT;

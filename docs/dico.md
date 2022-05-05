@@ -47,11 +47,9 @@ the table identifier |
 the table identifier|
 |title| TEXT(30) | NOT NULL | the title of the article |
 |description| TEXT | NOT NULL | article description |
-|summarize| TEXT | NOT NULL | article description |
+|summarize| TEXT || article description |
 |image| TEXT | NULL |article Picture|
 |author| TEXT | NOT NULL | article author |
-|creation_date| DATE | NOT NULL | Date the item was created |
-|modification_date| DATE | NOT NULL | Article modification date |
 |article_categorie| TEXT || article category |
 |article_color| TEXT || article color |
 | town_hall_id | INT | | REFERENCES town_hall(town_hall_id)| the relationship identifier |
@@ -71,6 +69,7 @@ the table identifier|
 |email | TEXT | NOT NULL | Service email |
 |image | TEXT | NULL | service picture |
 |logo | TEXT || logo image |
+|hourly | TEXT || The service hourly |
 | town_hall_id | INT | | REFERENCES town_hall(town_hall_id)| the relationship identifier |
 |created_at|TIMESTAMPTZ| DEFAULT NOW()|creation date|
 |updated_at|TIMESTAMPTZ||modification date|
@@ -81,7 +80,7 @@ the table identifier|
 | :--------------- |:-----------:| -----:|------:|
 |town_hall_id| INT |GENERATED ALWAYS AS IDENTITY PRIMARY KEY|
 the table identifier |
-|name|TEXT|NOT NULL|town hall name|
+|name|TEXT|NOT NULL UNIQUE|town hall name|
 |adresse|TEXT|NOT NULL|Town hall address|
 |phonenumber|INT(10)|town hall phone number|
 |horaire|TEXT|town hall hours|
@@ -124,7 +123,7 @@ the table identifier |
 | admin_id | INT | | REFERENCES admin(admin_id)| the relationship identifier |
 | article_id | INT | | REFERENCES article(article_id)| the relationship identifier |
 
-## Table town_hall_staff
+## Table town_hall_staff_admin
 
 | Champ | Type | Spécificités | Description | 
 | :--------------- |:-----------:| -----:|------:|
