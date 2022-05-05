@@ -1,0 +1,21 @@
+POST http://localhost:3000/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "pseudo":"bobby",
+    "insee":"41328",
+    "password":111,
+    "email":"bobs@bipbip.fr",
+    "town_hall_id":1
+}
+
+###
+
+POST http://localhost:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "pseudo":"Aleks",
+    "insee":"52354",
+    "password":"123"
+}
