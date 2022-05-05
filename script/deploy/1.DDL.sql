@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS "admin" (
   "pseudo" VARCHAR(20),
   "insee" TEXT NOT NULL UNIQUE,
   "password" TEXT NOT NULL,
-  "email" TEXT NOT NULL,
-  "town_hall_id" INT REFERENCES town_hall(town_hall_id),
+  "email" TEXT,
+  "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id), 
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );
@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS "article" (
   "summarize" TEXT NOT NULL,
   "image" TEXT NULL,
   "author" TEXT NOT NULL,
-  "article_categorie" DATE ,
+  "article_categorie" TEXT,
   "article_color" TEXT,
-  "town_hall_id" INT,
+  "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id),
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS "reporting" (
   "admin_image" TEXT,
   "reporting_category" TEXT,
   "reporting_statut" TEXT,
-  "town_hall_id" INT,
+  "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id),
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS "service" (
   "email" TEXT NOT NULL ,
   "image" TEXT,
   "logo" TEXT,
-  "town_hall_id" INT REFERENCES town_hall(town_hall_id),
+  "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id),
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );
@@ -75,30 +75,30 @@ CREATE TABLE IF NOT EXISTS "town_hall_staff" (
   "last_name" TEXT,
   "first_name" TEXT,
   "role" TEXT,
-  "photo" TEXT NOT NULL,
-  "town_hall_id" INT,
+  "photo" TEXT,
+  "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id),
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS "service_admin" (
-  "admin_id" INT REFERENCES admin(admin_id),
-  "service_id" INT REFERENCES service(service_id)
+  "admin_id" INT REFERENCES admin("admin_id"),
+  "service_id" INT REFERENCES service("service_id")
 );
 
 CREATE TABLE IF NOT EXISTS "reporting_admin" (
-  "admin_id" INT REFERENCES admin(admin_id),
-  "reporting_id" INT REFERENCES reporting(reporting_id)
+  "admin_id" INT REFERENCES admin("admin_id"),
+  "reporting_id" INT REFERENCES reporting("reporting_id")
 );
 
 CREATE TABLE IF NOT EXISTS "article_admin" (
-  "admin_id" INT REFERENCES admin(admin_id),
-  "article_id" INT REFERENCES article(article_id)
+  "admin_id" INT REFERENCES admin("admin_id"),
+  "article_id" INT REFERENCES article("article_id")
 );
 
-CREATE TABLE IF NOT EXISTS "Table town_hall_staff_admin" (
-  "admin_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "town_hall_staff_id" INT REFERENCES town_hall_staff(town_hall_staff_id)
+CREATE TABLE IF NOT EXISTS "town_hall_staff_admin" (
+  "admin_id" INT REFERENCES admin("admin_id"),
+  "town_hall_staff_id" INT REFERENCES town_hall_staff("town_hall_staff_id")
 );
 
 COMMIT;

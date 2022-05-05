@@ -1,7 +1,9 @@
-require('dotenv').config();
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
 
-const router = require('./app/routers/router.js');
+const debug = require("debug")("APP");
+
+const router = require("./app/routers/router");
 
 const PORT = process.env.PORT || 3333;
 
@@ -12,5 +14,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
 app.listen(PORT, () => {
-    console.log('Listening on http://localhost:' + PORT);
+  debug(`Listening on http://localhost:${PORT}`);
 });
