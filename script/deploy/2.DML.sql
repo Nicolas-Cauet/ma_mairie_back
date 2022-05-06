@@ -2,11 +2,8 @@
 
 BEGIN;
 
-INSERT INTO "town_hall" ("name","adress","phonenumber","hourly","email")
-VALUES('Mamairie','25,rue Oclock','0945784578','9 heure à 17 heure','Mamairie@gmail.fr');
-
-INSERT INTO "admin"("pseudo","insee","password","email","town_hall_id")
-VALUES('AdminMaMairie','51454','mamairie','adminMaMairie@gmail.fr',1);
+INSERT INTO "town_hall" ("name","adress","phonenumber","hourly","insee","email")
+VALUES('Mamairie','25,rue Oclock','0945784578','9 heure à 17 heure','51454','Mamairie@gmail.fr');
 
 INSERT INTO "article"("title","description","summarize","author","article_categorie","article_color","town_hall_id")
 VALUES('Vive la sauscice','Alors là! Permettez-moi de vous dire! Le coup du mystérieux chevalier gaulois solitaire à la rescousse de l’opprimé. Ca fait vraiment bidon comme légende! Oh mais jmen fais pas. Jvais mentrainer jusquà cque ça marche! Hé mais jai failli me la prendre! Sil vous plait! Faites pas votre mijoré! Moi je me fais traiter de gonzesse jen fais pas tout un cake! Ben attendez, je vais vous rendre la vôtre. Ptite pucelle!','Pas foutu de savoir son nom! Vous savez cest quand de même pas grave de pas savoir faire des tartes! Ben attendez, je vais vous rendre la vôtre.','AdminMaMairie','Fête','Red',1);

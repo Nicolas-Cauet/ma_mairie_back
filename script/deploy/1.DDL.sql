@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS "town_hall" (
   "phonenumber" CHAR(10),
   "hourly" TEXT,
   "email" TEXT,
+  "insee" TEXT NOT NULL UNIQUE,
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );
@@ -17,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "town_hall" (
 CREATE TABLE IF NOT EXISTS "admin" (
   "admin_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "pseudo" VARCHAR(20),
-  "insee" TEXT NOT NULL UNIQUE,
+  "insee" TEXT NOT NULL,
   "password" TEXT NOT NULL,
   "email" TEXT,
   "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id), 
