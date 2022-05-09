@@ -65,7 +65,7 @@ const adminController = {
       // mettre le token sur le user
       // const accessToken = generateAccesToken(data);
       // res.json(jwt.decode(accessToken));
-      const jwtContent = { userId: data.id };
+      // const jwtContent = { toto: titi };
           const jwtOptions = { 
             algorithm: 'HS256', 
             expiresIn: '3h' 
@@ -75,7 +75,7 @@ const adminController = {
             data:data,
             logged: true, 
             pseudo: data.username,
-            token: jwt.sign(jwtContent, process.env.ACCES_TOKEN_SECRET, jwtOptions),
+            token: jwt.sign(/*jwtContent*/, process.env.ACCES_TOKEN_SECRET, jwtOptions),
           });
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
