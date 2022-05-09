@@ -2,7 +2,9 @@ require(`dotenv`).config();
 const APIError = require(`../handlers/APIError`);
 const bcrypt = require(`bcrypt`);
 const debug = require(`debug`)(`adminController`);
-const jwt = require(`jsonwebtoken`);
+const jwt = require('express-jwt');
+const jsonwebtoken = require(`jsonwebtoken`);
+const jwtSecret = 'OurSuperLongRandomSecretToSignOurJWTgre5ezg4jyt5j4ui64gn56bd4sfs5qe4erg5t5yjh46yu6knsw4q';
 
 const dataMapper = require(`../models/dataMapper/dataMapper`);
 
@@ -25,7 +27,8 @@ const adminController = {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
     // TODO mettre en place le hashage du mot de passe avec bcrypt
-    //! mettre en place salt par default 10
+    //! mettre en place salt par default 1const jwt = require('express-jwt');
+0
     const salt = await bcrypt.genSalt();
     //! on hash le password
     const hashPassword = await bcrypt.hash(req.body.password, salt);
@@ -37,7 +40,8 @@ const adminController = {
     }
     const user = await dataMapper
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, getId);
-    res.status(200).send(`Utilisateur connecter`);
+    res.status(200).send(`Utilisateur conconst jwt = require('express-jwt');
+    necter`);
     if (!user.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
@@ -70,13 +74,12 @@ const adminController = {
         algorithm: `HS256`,
         expiresIn: `3h`,
       };
-      const secret = ' hbiqdghuoiesrqhfuigqsdudgfhuoi ';
       console.log(`<< 200 HEYHEYHEY`);
       res.json({
         // data
         logged: true,
         pseudo: 'COUCOU TOKENS',
-        token: jwt.sign(secret, jwtOptions),
+        token: jsonwebtoken.sign(jwtSecret, jwtOptions),
       });
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
