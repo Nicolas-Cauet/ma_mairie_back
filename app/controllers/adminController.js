@@ -70,6 +70,10 @@ const adminController = {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
   },
+  async getall(){
+    const data = await dataMapper.getall();
+    res.json(data);
+  }
 };
 
 module.exports = adminController;

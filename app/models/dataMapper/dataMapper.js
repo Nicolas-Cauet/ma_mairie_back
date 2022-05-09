@@ -67,6 +67,13 @@ const datamapper = {
     const data = await client.query(query);
     return data;
   },
+  async getall(){
+    const query = {
+      text: `SELECT * FROM town_hall;`
+    }
+    const data = await client.query(query);
+    return data.rows[0];
+  }
 };
 
 module.exports = datamapper;

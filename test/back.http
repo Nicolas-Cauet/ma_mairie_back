@@ -10,7 +10,7 @@ Content-Type: application/json
 
 ###
 
-GET https://ma-mairie.herokuapp.com/signup HTTP/1.1
+GET https://ma-mairie.herokuapp.com/ HTTP/1.1
 
 POST http://localhost:3000/login HTTP/1.1
 Content-Type: application/json
