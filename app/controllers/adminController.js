@@ -49,7 +49,7 @@ const adminController = {
    * }
    * @return {object}
    */
-  async login(req) {
+  async login(req, res) {
     if (req.session.user) {
       throw new APIError(`Vous êtes déja connecté`);
     }
@@ -57,7 +57,6 @@ const adminController = {
       return jwt.sign(users, process.env.ACCES_TOKEN_SECRET, { expiresIn: `3600s` });
     }
     const user = req.body;
-    console.log(user);
     const accessToken = generateAccesToken(user);
     debug(user + accessToken);
     const existingUser = await dataMapper.getOneAdmin(req.body.email);
@@ -67,6 +66,7 @@ const adminController = {
       const data = await dataMapper.userLogin(req.body.pseudo, req.body.email);
       // mettre le token sur le user
       req.session.user = data;
+      res.json(req.session.user);
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
