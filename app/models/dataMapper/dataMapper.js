@@ -56,7 +56,6 @@ const datamapper = {
       values: [pseudo, email],
     };
     const data = await client.query(query);
-    debug(`DATAMAPPER ======>${data.rows}`);
     return data.rows[0];
   },
   async getOneAdmin(email) {

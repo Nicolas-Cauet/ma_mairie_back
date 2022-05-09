@@ -54,9 +54,9 @@ const adminController = {
     if (req.session.user) {
       throw new APIError(`Vous êtes déja connecté`);
     }
-    function generateAccesToken(users) {
-      return jwt.sign(users, process.env.ACCES_TOKEN_SECRET, { expiresIn: `3600s` });
-    }
+    // function generateAccesToken(users) {
+    //   return jwt.sign(users, process.env.ACCES_TOKEN_SECRET, { expiresIn: `3600s` });
+    // }
     const user = req.body;
     const existingUser = await dataMapper.getOneAdmin(req.body.email);
     const match = await bcrypt.compare(req.body.password, existingUser.rows[0].password);
@@ -65,7 +65,18 @@ const adminController = {
       // mettre le token sur le user
       // const accessToken = generateAccesToken(data);
       // res.json(jwt.decode(accessToken));
-      res.status(200).send(`COUCOU LE TOKENS`);
+      const jwtContent = { userId: data.id };
+          const jwtOptions = { 
+            algorithm: 'HS256', 
+            expiresIn: '3h' 
+          };
+          console.log('<< 200', data.username);
+          res.json({ 
+            data:data,
+            logged: true, 
+            pseudo: data.username,
+            token: jwt.sign(jwtContent, process.env.ACCES_TOKEN_SECRET, jwtOptions),
+          });
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
@@ -73,3 +84,4 @@ const adminController = {
 };
 
 module.exports = adminController;
+
