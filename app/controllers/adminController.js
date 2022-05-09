@@ -20,7 +20,7 @@ const adminController = {
    * req @type {object}
    * }
    */
-  async signup(req) {
+  async signup(req, res) {
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
@@ -37,6 +37,7 @@ const adminController = {
     }
     const user = await dataMapper
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, getId);
+      res.status(200);
     if (!user.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
