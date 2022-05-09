@@ -9,6 +9,7 @@
   "engine": {    "node": "16.x"  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "debug": "DEBUG=APP,dataMapper,adminController nodemon index.js"
   },
   "repository": {
