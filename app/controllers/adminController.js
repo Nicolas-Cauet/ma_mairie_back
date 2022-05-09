@@ -70,12 +70,13 @@ const adminController = {
         algorithm: `HS256`,
         expiresIn: `3h`,
       };
+      const secret = ' hbiqdghuoiesrqhfuigqsdudgfhuoi ';
       console.log(`<< 200 HEYHEYHEY`);
       res.json({
         // data
         logged: true,
         pseudo: 'COUCOU TOKENS',
-        token: jwt.sign(process.env.ACCES_TOKEN_SECRET, jwtOptions),
+        token: jwt.sign(secret, jwtOptions),
       });
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
