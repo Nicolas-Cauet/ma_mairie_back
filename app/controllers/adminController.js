@@ -68,14 +68,14 @@ const adminController = {
       // const jwtContent = { toto: titi };
           const jwtOptions = { 
             algorithm: 'HS256', 
-            expiresIn: '3h' 
+            expiresIn: '3h'
           };
           console.log('<< 200', data.pseudo);
           res.json({ 
             data:data,
             logged: true, 
             pseudo: data.pseudo,
-            token: jwt.sign(/*jwtContent*/, process.env.ACCES_TOKEN_SECRET, jwtOptions),
+            token: jwt.sign(process.env.ACCES_TOKEN_SECRET, jwtOptions),
           });
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
