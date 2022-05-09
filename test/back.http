@@ -14,12 +14,12 @@ GET http://https://ma-mairie.herokuapp.com/ HTTP/1.1
 
 ###
 
-POST http://localhost:3000/login HTTP/1.1
+POST https://ma-mairie.herokuapp.com/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo":"Olive",
-    "password":"365",
-    "email": "7adad8@bipbip.fr", 
-    "insee":"52000"
+    "pseudo":"lulu",
+    "password":"lulu",
+    "email": "lulu@gmail.com", 
+    "insee":"51454"
 }

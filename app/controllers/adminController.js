@@ -65,7 +65,7 @@ const adminController = {
       // mettre le token sur le user
       req.session.user = data;
       const accessToken = generateAccesToken(req.session.user);
-      res.json(accessToken);
+      res.json(jwt.decode(accessToken));
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
