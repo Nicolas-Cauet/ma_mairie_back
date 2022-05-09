@@ -3,6 +3,7 @@ const express = require(`express`);
 const debug = require(`debug`)(`APP`);
 const session = require(`express-session`);
 const router = require(`./app/routers/router`);
+const cors = require(`cors`);
 
 const PORT = process.env.PORT || 3333;
 
@@ -10,12 +11,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  next()
-});
+app.use(cors());
 app.use(session({
   secret: `keyboard cat`,
   cookie: {},
@@ -27,5 +23,5 @@ const sessions = [];
 app.use(router);
 
 app.listen(PORT, () => {
-  debug(`Listening on http://localhost:${PORT}`);
+  debug(`Listening on https://localhost:${PORT} `);
 });
