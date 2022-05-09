@@ -37,7 +37,7 @@ const adminController = {
     }
     const user = await dataMapper
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, getId);
-      res.status(200).send(`HEYYYYYYY`);
+      res.status(200).send(`Utilisateur connecter`);
     if (!user.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
@@ -50,7 +50,7 @@ const adminController = {
    * }
    * @return {object}
    */
-  async login(req, res) {
+   async login(req, res) {
     if (req.session.user) {
       throw new APIError(`Vous êtes déja connecté`);
     }
@@ -58,23 +58,16 @@ const adminController = {
       return jwt.sign(users, process.env.ACCES_TOKEN_SECRET, { expiresIn: `3600s` });
     }
     const user = req.body;
-    const accessToken = generateAccesToken(user);
-    debug(user + accessToken);
-    const existingUser = await dataMapper.getOneAdmin(req.body.email);
-    const match = await bcrypt.compare(req.body.password, existingUser.rows[0].password);
-    debug(match);
+    const existingUser = await dataMapper.getOneAdmin(user.email);
+    const match = await bcrypt.compare(user.password, existingUser.rows[0].password);
     if (match) {
-      const data = await dataMapper.userLogin(req.body.pseudo, req.body.email);
-      // mettre le token sur le user
+      const data = await dataMapper.userLogin(req.body.email, existingUser.rows[0].password);
       req.session.user = data;
-      res.json(req.session.user);
+      const accessToken = generateAccesToken(req.session.user);
+      res.json(accessToken);
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
-  },
-  async getall(req, res) {
-    const data = await dataMapper.getall();
-    res.json(data);
   },
 };
 
