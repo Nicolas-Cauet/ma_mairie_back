@@ -47,13 +47,13 @@ const datamapper = {
    * @params {object}
    * @return {object}
    */
-  async userLogin(pseudo, insee) {
+  async userLogin(pseudo, email) {
     const query = {
 
       text: `SELECT * FROM admin 
              WHERE 
-             pseudo = $1 AND insee = $2;`,
-      values: [pseudo, insee],
+             pseudo = $1 AND email = $2;`,
+      values: [pseudo, email],
     };
     const data = await client.query(query);
     debug(`DATAMAPPER ======>${data.rows}`);

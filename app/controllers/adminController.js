@@ -64,7 +64,7 @@ const adminController = {
     const match = await bcrypt.compare(req.body.password, existingUser.rows[0].password);
     debug(match);
     if (match) {
-      const data = await dataMapper.userLogin(req.body.pseudo, req.body.insee);
+      const data = await dataMapper.userLogin(req.body.pseudo, req.body.email);
       // mettre le token sur le user
       req.session.user = data;
     } else {
