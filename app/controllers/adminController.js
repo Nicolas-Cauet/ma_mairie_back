@@ -21,7 +21,7 @@ const adminController = {
    * }
    */
   async signup(req) {
-    if (!req.body.pseudo || !req.body.insee || !req.body.password || !req.body.email) {
+    if (req.body.pseudo === '' || req.body.insee === '' || req.body.password === '' || req.body.email === '') {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
     // TODO mettre en place le hashage du mot de passe avec bcrypt

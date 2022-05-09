@@ -2,15 +2,15 @@ POST https://ma-mairie.herokuapp.com/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo": "Aleks",
+    "pseudo": "Bobby",
     "insee":"51454",
     "password":"oclock123",
-    "email":"aleks.oclock@bipbip.fr"
+    "email":"Bobby.oclock@bipbip.fr"
 }
 
 ###
 
-GET http://ec2-52-18-116-67.eu-west-1.compute.amazonaws.com/ HTTP/1.1
+GET http://https://ma-mairie.herokuapp.com/ HTTP/1.1
 
 ###
 
