@@ -63,8 +63,9 @@ const adminController = {
     if (match) {
       const data = await dataMapper.userLogin(req.body.pseudo, req.body.email);
       // mettre le token sur le user
-      const accessToken = generateAccesToken(data);
-      res.json(jwt.decode(accessToken));
+      // const accessToken = generateAccesToken(data);
+      // res.json(jwt.decode(accessToken));
+      res.status(200).send(`COUCOU LE TOKENS`);
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
