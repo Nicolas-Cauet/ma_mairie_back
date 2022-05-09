@@ -21,7 +21,7 @@ const adminController = {
    * }
    */
   async signup(req) {
-    if (req.body.pseudo === '' || req.body.insee === '' || req.body.password === '' || req.body.email === '') {
+    if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
     // TODO mettre en place le hashage du mot de passe avec bcrypt
@@ -31,7 +31,7 @@ const adminController = {
     const hashPassword = await bcrypt.hash(req.body.password, salt);
     //! TODO  Verifier que l'utilisateur n'existe pas déjà en BDD
     const getId = await dataMapper.getTownHallId(req.body.insee);
-    const existingUser = await dataMapper.getOneAdmin(req.body.pseudo, req.body.email);
+    const existingUser = await dataMapper.getOneAdmin(req.body.email);
     if (existingUser.rowCount > 0) {
       throw new APIError(`L'utilisateur existe déja`);
     }
@@ -57,23 +57,24 @@ const adminController = {
       return jwt.sign(users, process.env.ACCES_TOKEN_SECRET, { expiresIn: `3600s` });
     }
     const user = req.body;
+    console.log(user);
     const accessToken = generateAccesToken(user);
-    debug(user + accessToken)
-    const existingUser = await dataMapper.getOneAdmin(req.body.pseudo, req.body.email);
+    debug(user + accessToken);
+    const existingUser = await dataMapper.getOneAdmin(req.body.email);
     const match = await bcrypt.compare(req.body.password, existingUser.rows[0].password);
     debug(match);
     if (match) {
       const data = await dataMapper.userLogin(req.body.pseudo, req.body.insee);
-      // mettre le token sur le user 
+      // mettre le token sur le user
       req.session.user = data;
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
   },
-  async getall(req, res){
+  async getall(req, res) {
     const data = await dataMapper.getall();
     res.json(data);
-  }
+  },
 };
 
 module.exports = adminController;

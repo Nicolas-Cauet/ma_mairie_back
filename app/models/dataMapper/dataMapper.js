@@ -59,21 +59,21 @@ const datamapper = {
     debug(`DATAMAPPER ======>${data.rows}`);
     return data.rows[0];
   },
-  async getOneAdmin(pseudo, email) {
+  async getOneAdmin(email) {
     const query = {
-      text: `SELECT * FROM "admin" WHERE pseudo = $1 AND email = $2;`,
-      values: [pseudo, email],
+      text: `SELECT * FROM "admin" WHERE email = $1;`,
+      values: [email],
     };
     const data = await client.query(query);
     return data;
   },
-  async getall(){
+  async getall() {
     const query = {
-      text: `SELECT * FROM town_hall;`
-    }
+      text: `SELECT * FROM town_hall;`,
+    };
     const data = await client.query(query);
     return data.rows[0];
-  }
+  },
 };
 
 module.exports = datamapper;
