@@ -37,7 +37,7 @@ const adminController = {
     }
     const user = await dataMapper
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, getId);
-      res.status(200).send(`Utilisateur connecter`);
+    res.status(200).send(`Utilisateur connecter`);
     if (!user.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
@@ -65,18 +65,18 @@ const adminController = {
       // mettre le token sur le user
       // const accessToken = generateAccesToken(data);
       // res.json(jwt.decode(accessToken));
-      // const jwtContent = { toto: titi };
-          const jwtOptions = { 
-            algorithm: 'HS256', 
-            expiresIn: '3h'
-          };
-          console.log('<< 200', data.pseudo);
-          res.json({ 
-            data:data,
-            logged: true, 
-            pseudo: data.pseudo,
-            token: jwt.sign(process.env.ACCES_TOKEN_SECRET, jwtOptions),
-          });
+      // const jwtContent = { pseudo: data.pseudo };
+      const jwtOptions = {
+        algorithm: `HS256`,
+        expiresIn: `3h`,
+      };
+      console.log(`<< 200 HEYHEYHEY`);
+      res.json({
+        // data
+        logged: true,
+        pseudo: 'COUCOU TOKENS',
+        token: jwt.sign(process.env.ACCES_TOKEN_SECRET, jwtOptions),
+      });
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
@@ -84,4 +84,3 @@ const adminController = {
 };
 
 module.exports = adminController;
-
