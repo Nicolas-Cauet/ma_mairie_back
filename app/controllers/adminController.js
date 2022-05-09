@@ -50,7 +50,7 @@ const adminController = {
    * }
    * @return {object}
    */
-   async login(req, res) {
+  async login(req, res) {
     if (req.session.user) {
       throw new APIError(`Vous êtes déja connecté`);
     }
@@ -58,10 +58,11 @@ const adminController = {
       return jwt.sign(users, process.env.ACCES_TOKEN_SECRET, { expiresIn: `3600s` });
     }
     const user = req.body;
-    const existingUser = await dataMapper.getOneAdmin(user.email);
-    const match = await bcrypt.compare(user.password, existingUser.rows[0].password);
+    const existingUser = await dataMapper.getOneAdmin(req.body.email);
+    const match = await bcrypt.compare(req.body.password, existingUser.rows[0].password);
     if (match) {
-      const data = await dataMapper.userLogin(req.body.email, existingUser.rows[0].password);
+      const data = await dataMapper.userLogin(req.body.pseudo, req.body.email);
+      // mettre le token sur le user
       req.session.user = data;
       const accessToken = generateAccesToken(req.session.user);
       res.json(accessToken);
