@@ -37,7 +37,7 @@ const adminController = {
     }
     const user = await dataMapper
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, getId);
-      res.status(200);
+      res.status(200).send(`HEYYYYYYY`);
     if (!user.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
