@@ -70,11 +70,11 @@ const adminController = {
             algorithm: 'HS256', 
             expiresIn: '3h' 
           };
-          console.log('<< 200', data.username);
+          console.log('<< 200', data.pseudo);
           res.json({ 
             data:data,
             logged: true, 
-            pseudo: data.username,
+            pseudo: data.pseudo,
             token: jwt.sign(/*jwtContent*/, process.env.ACCES_TOKEN_SECRET, jwtOptions),
           });
     } else {
