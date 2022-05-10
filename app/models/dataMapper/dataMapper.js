@@ -9,9 +9,12 @@ const client = require(`../dbClient`);
  */
 const datamapper = {
 /**
+ * Retrieve id of the town hall
+ * By comparing the insee code of adminstrator and the town hall
  * @menberof datamapper
  * @method getTownHallId
- * @params {object}
+ * @params {String} insee
+ * @return {Number} town_hall_id
  */
   async getTownHallId(insee) {
     const query = {
@@ -27,7 +30,12 @@ const datamapper = {
    * The method allows you to create an administrator
    * @menberof datamapper
    * @method userSignup
-   * @params {object}
+   * @params {String} pseudo
+   * @params {String} insee
+   * @params {String} hashPassword
+   * @params {String} email
+   * @params {Number} idTownHall
+   * @return {Object} data
    */
   async userSignup(pseudo, insee, hashPassword, email, idTownHall) {
     const query = {
@@ -43,33 +51,32 @@ const datamapper = {
   /**
    * the method allows you to log in as an admin
    * @menberof datamapper
-   * @method login
-   * @params {object}
+   * @method userLogin
+   * @params {String} email
+   * @params {String} hashPassword
    * @return {object}
    */
-  async userLogin(pseudo, email) {
+  async userLogin(email, hashPassword) {
     const query = {
 
       text: `SELECT * FROM admin 
              WHERE 
-             pseudo = $1 AND email = $2;`,
-      values: [pseudo, email],
+             email = $1 AND password = $2;`,
+      values: [email, hashPassword],
     };
     const data = await client.query(query);
-    debug(`DATAMAPPER ======>${data.rows}`);
     return data.rows[0];
   },
+  /**
+   * @menberof datamapper
+   * @method getOneAdmin
+   * @params {String} email
+   * @return {Object}
+   */
   async getOneAdmin(email) {
     const query = {
-      text: `SELECT * FROM "admin" WHERE email = $1;`,
+      text: `SELECT * FROM "admin" WHERE email = $1`,
       values: [email],
-    };
-    const data = await client.query(query);
-    return data;
-  },
-  async getall() {
-    const query = {
-      text: `SELECT * FROM town_hall;`,
     };
     const data = await client.query(query);
     return data.rows[0];
