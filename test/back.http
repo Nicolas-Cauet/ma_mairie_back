@@ -2,7 +2,7 @@ POST http://localhost:3000/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo": "aafa",
+    "pseudo": "afa",
     "insee":"51454",
     "password":"fazerf",
     "email":"azef.oclock@bipbip.fr"
@@ -14,14 +14,13 @@ POST http://localhost:3000/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo":"lulu",
-    "password":"lulu",
-    "email": "lulu@gmail.com", 
-    "insee":"51454"
+    "email": "azef.oclock@bipbip.fr",
+    "password":"fazerf"
+    
 }
 
 
 ###
 GET http://localhost:3000/admin
 Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJNaWNrYSIsImlhdCI6MTY1MjE4NTI2OH0.qScYE2y6tvkyFaUyXWNP5nz4H33vzeox26Fk3gR8His
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZmEiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjE5ODE1OX0.9Z-myKH5xO7Z59hmtpolUdxVC4XZlCTklF3Xs5NyPxQ

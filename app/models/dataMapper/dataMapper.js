@@ -58,7 +58,6 @@ const datamapper = {
    */
   async userLogin(email, hashPassword) {
     const query = {
-
       text: `SELECT * FROM admin 
              WHERE 
              email = $1 AND password = $2;`,

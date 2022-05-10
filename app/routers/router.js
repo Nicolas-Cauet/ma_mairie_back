@@ -10,6 +10,8 @@ const router = express.Router();
 
 router.post(`/signup`, routerWrapper(adminController.signup));
 router.post(`/login`, routerWrapper(adminController.login));
+
+// route de test
 router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect));
 
 module.exports = router;

@@ -54,12 +54,10 @@ const adminController = {
     const match = await bcrypt.compare(req.body.password, existingUser.password);
     if (match) {
       const data = await dataMapper.userLogin(req.body.email, existingUser.password);
-      const user = { pseudo: data.pseudo };
+      debug(data);
+      const user = { pseudo: data.pseudo, town_hall_id: data.town_hall_id };
       const accessToken = jwt.sign(user, secretKey);
       res.json({ accessToken });
-      // TODO TOKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
-      // jwt.sign(payload, secretOrPrivateKey, [options, callback])
-      // TODO ACCES_TOKEN sur heroku
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
