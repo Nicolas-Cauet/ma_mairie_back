@@ -2,9 +2,8 @@ require(`dotenv`).config();
 const APIError = require(`../handlers/APIError`);
 const bcrypt = require(`bcrypt`);
 const debug = require(`debug`)(`adminController`);
-const jwt = require('express-jwt');
 const jsonwebtoken = require(`jsonwebtoken`);
-const jwtSecret = 'OurSuperLongRandomSecretToSignOurJWTgre5ezg4jyt5j4ui64gn56bd4sfs5qe4erg5t5yjh46yu6knsw4q';
+const jwtSecret = `OurSuperLongRandomSecretToSignOurJWTgre5ezg4jyt5j4ui64gn56bd4sfs5qe4erg5t5yjh46yu6knsw4q`;
 
 const dataMapper = require(`../models/dataMapper/dataMapper`);
 
@@ -16,71 +15,47 @@ const dataMapper = require(`../models/dataMapper/dataMapper`);
 const adminController = {
 
   /**
+   * The method allows to register an administrator
    * @menberof adminController
    * @method signup
-   * @params{
-   * req @type {object}
-   * }
+   * @params {Object} req
    */
   async signup(req, res) {
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
-    // TODO mettre en place le hashage du mot de passe avec bcrypt
-    //! mettre en place salt par default 1const jwt = require('express-jwt');
-0
-    const salt = await bcrypt.genSalt();
-    //! on hash le password
-    const hashPassword = await bcrypt.hash(req.body.password, salt);
-    //! TODO  Verifier que l'utilisateur n'existe pas déjà en BDD
-    const getId = await dataMapper.getTownHallId(req.body.insee);
+    // Hash the password user
+    const hashPassword = await bcrypt.hash(req.body.password, 10);
+    // Retrieve id of the town hall
+    // By comparing the insee code of adminstrator and the town hall
+    const townHallId = await dataMapper.getTownHallId(req.body.insee);
+    // We check that the user does not already exist in the database
     const existingUser = await dataMapper.getOneAdmin(req.body.email);
-    if (existingUser.rowCount > 0) {
+    if (existingUser) {
       throw new APIError(`L'utilisateur existe déja`);
     }
-    const user = await dataMapper
-      .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, getId);
-    res.status(200).send(`Utilisateur conconst jwt = require('express-jwt');
-    necter`);
-    if (!user.rowCount) {
+    const userSignup = await dataMapper
+      .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
+      // we check if we have registered a user in the database if there is none we return an error
+    if (!userSignup.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
+    // TODO res.status ?????
   },
   /**
    * @menberof adminController
    * @method login
-   * @params {
-   * req @type {object}
-   * }
-   * @return {object}
+   * @params {Object} req
+   * @return {Object} pseudo
    */
-  async login(req, res) {
-    if (req.session.user) {
-      throw new APIError(`Vous êtes déja connecté`);
-    }
-    // function generateAccesToken(users) {
-    //   return jwt.sign(users, process.env.ACCES_TOKEN_SECRET, { expiresIn: `3600s` });
-    // }
-    const user = req.body;
+  async login(req) {
+    // We check that the user does not already exist in the database
     const existingUser = await dataMapper.getOneAdmin(req.body.email);
-    const match = await bcrypt.compare(req.body.password, existingUser.rows[0].password);
+    // We check that the password of the request corresponds to the password hash
+    const match = await bcrypt.compare(req.body.password, existingUser.password);
     if (match) {
-      const data = await dataMapper.userLogin(req.body.pseudo, req.body.email);
-      // mettre le token sur le user
-      // const accessToken = generateAccesToken(data);
-      // res.json(jwt.decode(accessToken));
-      // const jwtContent = { pseudo: data.pseudo };
-      const jwtOptions = {
-        algorithm: `HS256`,
-        expiresIn: `3h`,
-      };
-      console.log(`<< 200 HEYHEYHEY`);
-      res.json({
-        // data
-        logged: true,
-        pseudo: 'COUCOU TOKENS',
-        token: jsonwebtoken.sign(jwtSecret, jwtOptions),
-      });
+      const data = await dataMapper.userLogin(req.body.email, existingUser.password);
+      // TODO TOKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
