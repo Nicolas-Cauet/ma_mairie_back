@@ -1,26 +1,36 @@
+# TEST ENDPOINT SIGNUP
 POST http://localhost:3000/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo": "afa",
+    "pseudo": "adminMairie2",
     "insee":"51454",
-    "password":"fazerf",
-    "email":"azef.oclock@bipbip.fr"
+    "password":"Mamairie@1",
+    "email":"mairie2@gmail.fr"
 }
 
 ###
 
+# TEST ENDPOINT LOGIN 
 POST http://localhost:3000/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "azef.oclock@bipbip.fr",
-    "password":"fazerf"
+    "email": "mairie@gmail.com",
+    "password":"mairie"
     
 }
 
+###
 
+# TEST ENDPOINT REPORTING
+POST  http://localhost:3000/reporting/mairie/1 HTTP/1.1
+Authorization: Bearer
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
+
+# TEST ENDPOINT FOR TOKEN
 ###
 GET http://localhost:3000/admin
 Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZmEiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjE5ODE1OX0.9Z-myKH5xO7Z59hmtpolUdxVC4XZlCTklF3Xs5NyPxQ
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
+ 

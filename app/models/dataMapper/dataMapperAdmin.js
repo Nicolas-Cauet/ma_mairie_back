@@ -16,6 +16,7 @@ const datamapper = {
  * @params {String} insee
  * @return {Number} town_hall_id
  */
+
   async getTownHallId(insee) {
     const query = {
       text: `SELECT town_hall_id 

@@ -9,7 +9,6 @@ const client = new Pool({
   },
 });
 
-// Work localy
 // const client = new Pool({
 //   host: process.env.PGHOST,
 //   user: process.env.PGUSER,
