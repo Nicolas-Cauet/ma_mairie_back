@@ -2,10 +2,10 @@ require(`dotenv`).config();
 const APIError = require(`../handlers/APIError`);
 const bcrypt = require(`bcrypt`);
 const debug = require(`debug`)(`adminController`);
-const jsonwebtoken = require(`jsonwebtoken`);
-const jwtSecret = `OurSuperLongRandomSecretToSignOurJWTgre5ezg4jyt5j4ui64gn56bd4sfs5qe4erg5t5yjh46yu6knsw4q`;
-
+const jwt = require(`jsonwebtoken`);
+const secretKey = process.env.ACCES_TOKEN_SECRET;
 const dataMapper = require(`../models/dataMapper/dataMapper`);
+const authenticateToken = require(`../middleware/authenticateToken`);
 
 /**
  * @type {object}
@@ -40,7 +40,6 @@ const adminController = {
     if (!userSignup.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
-    // TODO res.status ?????
   },
   /**
    * @menberof adminController
@@ -48,17 +47,26 @@ const adminController = {
    * @params {Object} req
    * @return {Object} pseudo
    */
-  async login(req) {
+  async login(req, res) {
     // We check that the user does not already exist in the database
     const existingUser = await dataMapper.getOneAdmin(req.body.email);
     // We check that the password of the request corresponds to the password hash
     const match = await bcrypt.compare(req.body.password, existingUser.password);
     if (match) {
       const data = await dataMapper.userLogin(req.body.email, existingUser.password);
+      const user = { pseudo: data.pseudo };
+      const accessToken = jwt.sign(user, secretKey);
+      res.json({ accessToken });
       // TODO TOKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
+      // jwt.sign(payload, secretOrPrivateKey, [options, callback])
+      // TODO ACCES_TOKEN sur heroku
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
+  },
+  isConnect(req, res) {
+    console.log(req.user);
+    console.log(`coucou`);
   },
 };
 

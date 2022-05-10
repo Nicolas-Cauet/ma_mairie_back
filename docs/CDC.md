@@ -74,7 +74,6 @@ Back end en NodeJs (2 personnes)
   - Redis
   - Express
   - API Docs
-  - Axios
   - Joi
   - Npm
   - Eslint

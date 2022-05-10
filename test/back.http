@@ -19,3 +19,9 @@ Content-Type: application/json
     "email": "lulu@gmail.com", 
     "insee":"51454"
 }
+
+
+###
+GET http://localhost:3000/admin
+Authorization: Bearer
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJNaWNrYSIsImlhdCI6MTY1MjE4NTI2OH0.qScYE2y6tvkyFaUyXWNP5nz4H33vzeox26Fk3gR8His
