@@ -2,7 +2,6 @@ require(`dotenv`).config();
 
 const { Pool } = require(`pg`);
 
-Work production
 const client = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { // on demande d'accepter le fait qu'on ne soit pas en ssl (sécurité)
