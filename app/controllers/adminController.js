@@ -36,6 +36,9 @@ const adminController = {
     const userSignup = await dataMapper
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
       // we check if we have registered a user in the database if there is none we return an error
+    if(userSignup){
+      res.status(200).send(`Utilisateur créer en base !`);
+    }
     if (!userSignup.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
