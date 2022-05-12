@@ -2,6 +2,17 @@ require(`dotenv`).config();
 
 const { Pool } = require(`pg`);
 
+<<<<<<< HEAD
+=======
+const client = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { // on demande d'accepter le fait qu'on ne soit pas en ssl (sécurité)
+    rejectUnauthorized: false,
+  },
+});
+
+// // local
+>>>>>>> main
 // const client = new Pool({
 //   connectionString: process.env.DATABASE_URL,
 //   ssl: { // on demande d'accepter le fait qu'on ne soit pas en ssl (sécurité)

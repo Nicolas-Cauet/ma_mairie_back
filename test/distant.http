@@ -1,0 +1,39 @@
+###
+POST http://ma-mairie.surge.sh/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "pseudo": "adminMairie4",
+    "insee":"51454",
+    "password":"Mamairie@1",
+    "email":"mairie4@gmail.fr"
+}
+
+
+
+###
+POST http://ma-mairie.surge.sh/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"mairie2@gmail.fr",
+    "password":"Mamairie@1"
+}
+
+###
+GET http://ma-mairie.surge.sh/admin
+Authorization: Bearer
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
+
+###
+# TEST ENDPOINT REPORTING
+POST  http://ma-mairie.surge.sh/reporting/:town_hall_id HTTP/1.1
+Authorization: Bearer
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
+
+###
+
+# GET ALL REPORTINGS
+GET  http://ma-mairie.surge.sh/admin/reporting/1 HTTP/1.1
+Authorization: Bearer
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iO…Dg5fQ.ppt6RBD7xesmubokaDdCPlQ4hPzONbo3KBKYtOQYaNY

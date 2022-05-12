@@ -14,6 +14,7 @@ const adminReportingController = {
    * @param {*} res
    */
   async allReporting(req, res) {
+    console.log(req.body);
     // allows to check if our id pass in request is not different from id of the token
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
@@ -21,11 +22,10 @@ const adminReportingController = {
     // returns all reports from the database
     const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
     if (reportings) {
-      res.status(200).json(reportings);
-    }
-    else{
+      res.json(reportings);
+    } else {
       throw new APIError(`Impossible de récupérer les signalements`);
-    }  
+    }
   },
   async oneReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
@@ -46,11 +46,9 @@ const adminReportingController = {
       .params.reporting_id);
     if (report.rowCount) {
       res.status(200).send(`Le signalement est bien supprimer !`);
-    }
-    else{
+    } else {
       throw new APIError(`La mise à jour n'est pas possible !`);
     }
-    
   },
   async modifyReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
@@ -69,8 +67,7 @@ const adminReportingController = {
     const report = await dataMapperReporting.modifyReport(values);
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);
-    }
-    else{
+    } else {
       throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
@@ -89,8 +86,7 @@ const adminReportingController = {
     const report = await dataMapperReporting.postReport(values);
     if (report.rowCount) {
       res.status(200).send(`Votre signalement est effectué !`);
-    }
-    else{
+    } else {
       throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },

@@ -13,9 +13,30 @@ const compareString = {
       values: [id],
     };
     const allUserText = await client.query(query);
+<<<<<<< HEAD
     //console.log(allUserText.rows);
     const result = rows => rows.user_text
     console.log(result);
+=======
+
+
+
+
+
+
+    let text = allUserText.rows.map(function (x) {
+        return x.user_text
+    })
+
+    console.log(text);
+
+
+
+
+
+
+
+>>>>>>> main
     const AllUserTextString = [` `];
 
     for (const rows of allUserText.rows) {
