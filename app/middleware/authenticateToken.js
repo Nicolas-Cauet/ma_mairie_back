@@ -16,9 +16,9 @@ const authenticateToken = (req, res, next) => {
     throw new APIError(`Vous n'êtes pas autorisé à accéder à ce contenu !`);
   }
   // eslint-disable-next-line consistent-return
-  jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, user) => {
+  jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, admin) => {
     if (err) return res.sendStatus(403);
-    req.admin = user;
+    req.admin = admin;
     next();
   });
 };

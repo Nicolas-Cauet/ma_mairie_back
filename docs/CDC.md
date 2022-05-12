@@ -123,7 +123,7 @@ Back end en NodeJs (2 personnes)
 |GET | /admin/articles/:mairie_id/:id | Editer un article|
 *|PATCH | /admin/articles/:id | Editer un article| ***
 |GET | /admin/reporting/:mairie_id | Liste des signalements|
-|GET | /admin/reporting/:mairie_id/:id | Répondre à un signalement|
+|GET | /admin/reporting/:mairie_id/:Reporting_id | Répondre à un signalement|
 *|PATCH | /admin/reporting/:id | Répondre à un signalement|  *** (photos v2)
 *|DELETE | /admin/reporting/:id | Effacer un signalement| ***
 |GET | /admin/new-services/:mairie_id | Ajouter un service v1.1|   
@@ -166,8 +166,10 @@ Back end en NodeJs (2 personnes)
 ### SIGNALEMENT
 | Route  | URL | Page | data |
 | :--------------- |:---------------:| -----:|------:|
-|PUT | /admin/reporting/:id/mairie_id/:id | admin/reporting  | |
+|PUT | /admin/reporting/update/:town_hall_id/:reporting_id | admin/reporting/update/town_hall_id |
 |DELETE | /admin/reporting/:id/mairie_id/:id  | admin/reporting/:id  | |
+|GET | /admin/reporting/:town_hall_id | /admin/reporting/:town_hall_id |
+|GET | /admin/reporting/:town_hall_id/:reporting_id/ /admin/reporting/:town_hall_id/:reporting_id|
 
 ### SERVICES
 | Route  | URL | Page | data |
