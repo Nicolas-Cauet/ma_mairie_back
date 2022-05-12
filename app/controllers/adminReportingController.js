@@ -22,7 +22,7 @@ const adminReportingController = {
     // returns all reports from the database
     const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
     if (reportings) {
-      res.status(200).json(reportings);
+      res.json(reportings);
     } else {
       throw new APIError(`Impossible de récupérer les signalements`);
     }
