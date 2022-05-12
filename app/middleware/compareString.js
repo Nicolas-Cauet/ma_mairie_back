@@ -13,17 +13,31 @@ const compareString = {
       values: [id],
     };
     const allUserText = await client.query(query);
-    console.log(allUserText.rows);
+
+
+
+
+
+
+    let text = allUserText.rows.map(function (x) {
+        return x.user_text
+    })
+
+    console.log(text);
+
+
+
+
+
+
+
     const AllUserTextString = [` `];
 
     for (const rows of allUserText.rows) {
       // console.log(rows[0]);
       AllUserTextString.push(rows);
     }
-    
-    
-    
-    const matches = stringSimilarity.findBestMatch(stringUser, AllUserTextString.rows);
+    const matches = stringSimilarity.findBestMatch(stringUser, AllUserTextString);
     if (matches.bestMatch.rating > 0.8) {
       throw new APIError(`Le contenu du signalement est très similaire a un autre signalement`);
     } else {
