@@ -1,12 +1,13 @@
 const dataMapperArticle = require(`../models/dataMapper/dataMapperArticle`);
+const APIError = require(`../handlers/APIError`);
 
 const adminControllerArticle = {
-  async allArticle() {
+  async allArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     // returns all reports from the database
-    const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
+    const reportings = await dataMapperArticle.getAllReport(req.admin.town_hall_id);
     if (reportings) {
       res.json(reportings);
     } else {
