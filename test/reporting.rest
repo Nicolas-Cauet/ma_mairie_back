@@ -39,7 +39,7 @@ accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZT
 ###
 # POST VISITEUR
 
-POST http://localhost:3000/reporting/1/
+POST http://localhost:3000/reporting/1
 Content-Type: application/json
 Authorization: Bearer
 accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
@@ -50,7 +50,7 @@ accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZT
       "phonenumber": "0807060504",
       "first_name": "anthony",
       "last_name": "legrain",
-      "user_text": "je promener ma femme a coter du magasin de bijoux puis une fois la rue traverser je ne l'ai plus retrouver",
+      "user_text": "michel hello j'ai perdu ma femme Elle est ou ma femme bordel",
       "user_image": "",
       "reporting_category": "animaux"
 }

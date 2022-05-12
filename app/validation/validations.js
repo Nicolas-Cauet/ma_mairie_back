@@ -6,7 +6,7 @@ const validationModule = {
       console.log(req.body);
       const { error } = schema.validate(req.body);
       if (error) {
-        throw new APIError(error);
+        throw new APIError(error).send(error.message);
       }
       next();
     };

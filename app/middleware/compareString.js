@@ -1,7 +1,7 @@
 const APIError = require(`../handlers/APIError`);
 const client = require(`../models/dbClient`);
 const stringSimilarity = require(`string-similarity`);
-const debug = require(`debug`)(`compareString.js`);
+const debug = require(`debug`)(`compareString`);
 
 const compareString = {
   async verifyString(req, res, next) {
@@ -13,37 +13,15 @@ const compareString = {
       values: [id],
     };
     const allUserText = await client.query(query);
-<<<<<<< HEAD
-    //console.log(allUserText.rows);
-    const result = rows => rows.user_text
-    console.log(result);
-=======
 
-
-
-
-
-
-    let text = allUserText.rows.map(function (x) {
-        return x.user_text
-    })
-
-    console.log(text);
-
-
-
-
-
-
-
->>>>>>> main
     const AllUserTextString = [` `];
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const rows of allUserText.rows) {
-      // console.log(rows[0]);
-      AllUserTextString.push(rows);
+      AllUserTextString.push(rows.user_text);
     }
     const matches = stringSimilarity.findBestMatch(stringUser, AllUserTextString);
+    console.log(matches);
     if (matches.bestMatch.rating > 0.8) {
       throw new APIError(`Le contenu du signalement est très similaire a un autre signalement`);
     } else {
