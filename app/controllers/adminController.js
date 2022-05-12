@@ -58,8 +58,9 @@ const adminController = {
       const data = await dataMapperAdmin.userLogin(req.body.email, existingUser.password);
       debug(data);
       const user = { pseudo: data.pseudo, town_hall_id: data.town_hall_id };
+      const adminId = user.town_hall_id;
       const accessToken = jwt.sign(user, secretKey);
-      res.json({ accessToken });
+      res.json({ accessToken, adminId });
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
