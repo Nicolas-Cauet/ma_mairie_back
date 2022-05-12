@@ -3,10 +3,10 @@ POST http://ma-mairie.surge.sh/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo": "adminMairie2",
+    "pseudo": "adminMairie4",
     "insee":"51454",
     "password":"Mamairie@1",
-    "email":"mairie2@gmail.fr"
+    "email":"mairie4@gmail.fr"
 }
 
 
