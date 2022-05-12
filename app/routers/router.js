@@ -1,5 +1,6 @@
 const express = require(`express`);
 const adminController = require(`../controllers/adminController`);
+const adminControllerArticle = require(`../controllers/adminControllerArticle`)
 const adminReportingController = require(`../controllers/adminReportingController`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 const { schemaCreateAdmin } = require(`../validation/schema/createAdminSchema`);
@@ -18,12 +19,18 @@ router.get(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, ro
 router.delete(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.deleteReporting));
 router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.modifyReporting));
 
+/** ******** ARTICLE *********** */
+router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
+router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
+router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
+router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
+
 // route de test
 router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect));
 
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
-router.get(`/admin/reporting/:town_hall_id`, authenticateToken, routerWrapper(adminReportingController.allReporting));
+router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReporting));
 router.post(`/reporting/:town_hall_id`, compareString.verifyString, routerWrapper(adminReportingController.postReporting));
 
 module.exports = router;
