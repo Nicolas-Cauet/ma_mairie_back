@@ -71,6 +71,7 @@ const adminReportingController = {
     }
   },
   async postReporting(req, res) {
+    console.log(req.body);
     const values = {
       title: req.body.title,
       email: req.body.email,
