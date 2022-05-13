@@ -20,6 +20,7 @@ const adminController = {
    * @params {Object} req
    */
   async signup(req, res) {
+    console.log(req.body);
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
