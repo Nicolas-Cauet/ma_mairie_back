@@ -1,7 +1,7 @@
 const express = require(`express`);
 const adminController = require(`../controllers/adminController`);
 // const adminControllerArticle = require(`../controllers/adminControllerArticle`)
-const { oneReporting, allReportingAdmin, modifyReporting, deleteReporting } = require(`../controllers/adminReportingController`);
+const { oneReporting, allReportingAdmin, modifyReporting, deleteReporting, postReporting, allReportingVisitor } = require(`../controllers/adminReportingController`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 const { schemaCreateAdmin } = require(`../validation/schema/createAdminSchema`);
 const { validateCreateAdmin } = require(`../validation/validations`);
@@ -27,7 +27,7 @@ router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, ro
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
 //! TODO CHANGER method visisteur
-router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReportingVisitor));
-router.post(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.postReporting));
+router.get(`/reporting/:town_hall_id`, routerWrapper(allReportingVisitor));
+router.post(`/reporting/:town_hall_id`, routerWrapper(postReporting));
 
 module.exports = router;
