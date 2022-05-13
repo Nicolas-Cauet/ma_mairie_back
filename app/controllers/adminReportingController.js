@@ -8,7 +8,7 @@ const adminReportingController = {
    * @param {*} req
    * @param {*} res
    */
-  async allReportingAdmin(req, res) {
+  async allReporting(req, res) {
     // allows to check if our id pass in request is not different from id of the token
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
@@ -18,19 +18,26 @@ const adminReportingController = {
     console.log(reportings);
     if (reportings) {
       res.json(reportings);
-    } else {
+    } else if (!req.admin) {
+      const reportings = await dataMapperReporting.getAllReportVisitor(req.params.town_hall_id);
+      if (reportings) {
+        res.json(reportings);
+      } else {
+        throw new APIError(`Impossible de récupérer les signalements`);
+      }
+    }else {
       throw new APIError(`Impossible de récupérer les signalements`);
     }
   },
-  async allReportingVisitor(req, res) {
-    const id = Number(req.params.town_hall_id);
-    const reportings = await dataMapperReporting.getAllReportVisitor(id);
-    if (reportings) {
-      res.json(reportings);
-    } else {
-      throw new APIError(`Impossible de récupérer les signalements`);
-    }
-  },
+  // async allReportingVisitor(req, res) {
+  //   const id = Number(req.params.town_hall_id);
+  //   const reportings = await dataMapperReporting.getAllReportVisitor(id);
+  //   if (reportings) {
+  //     res.json(reportings);
+  //   } else {
+  //     throw new APIError(`Impossible de récupérer les signalements`);
+  //   }
+  // },
   async oneReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
