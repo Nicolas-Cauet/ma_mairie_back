@@ -24,9 +24,6 @@ router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, ro
 // router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
 // router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
 
-// route de test
-router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect));
-
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
 //! TODO CHANGER method visisteur
