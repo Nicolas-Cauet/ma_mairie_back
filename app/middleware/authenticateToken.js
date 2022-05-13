@@ -11,15 +11,11 @@ const APIError = require(`../handlers/APIError`);
  * @returns {void}
  */
 const authenticateToken = (req, res, next) => {
-  console.log(req);
-  console.log(req.params);
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(` `)[1];
   if (token == null) res.send(401).json(`Pas de token !`);
   jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, user) => {
     if (err) return res.status(403);
-    console.log(req.params);
-    console.log(user);
     req.admin = user;
     next();
   });

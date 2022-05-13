@@ -2,11 +2,6 @@ const APIError = require(`../handlers/APIError`);
 const { dataMapperReporting } = require(`../models/dataMapper/index`);
 const debug = require(`debug`)(`adminReportingController`);
 
-/**
- * @type {Object}
- * @export adminReportingController
- * @namespace adminReportingController
- */
 const adminReportingController = {
   /**
    *
@@ -15,13 +10,11 @@ const adminReportingController = {
    */
   async allReportingAdmin(req, res) {
     // allows to check if our id pass in request is not different from id of the token
-    // if (req.params.town_hall_id !== req.admin.town_hall_id) {
-    //   throw new APIError(`Vous n'avez pas accès à cette page !`);
-    // }
-    debug(req.params, 'HELLO ID FRONT');
-    console.log(req.params, 'HELLO ID FRONT');
+    if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
+      throw new APIError(`Vous n'avez pas accès à cette page !`);
+    }
     // returns all reports from the database
-    const reportings = await dataMapperReporting.getAllReport(req.params.town_hall_id);
+    const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
     console.log(reportings);
     if (reportings) {
       res.json(reportings);
@@ -30,8 +23,9 @@ const adminReportingController = {
     }
   },
   async allReportingVisitor(req, res) {
-    const id = Number(req.params.town_hall_id);
-    const reportings = await dataMapperReporting.getAllReportVisitor(id);
+    // eslint-disable-next-line max-len
+    const reportings = await dataMapperReporting.getAllReportVisitor(parseInt(req.params.town_hall_id, 10));
+    console.log(reportings);
     if (reportings) {
       res.json(reportings);
     } else {

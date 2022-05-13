@@ -21,21 +21,3 @@ Content-Type: application/json
     "password":"Mamairie@1"
     
 }
-
-###
-
-# TEST ENDPOINT REPORTING
-POST  http://localhost:3000/reporting/:town_hall_id HTTP/1.1
-Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
-
-# TEST ENDPOINT FOR TOKEN
-###
-GET http://localhost:3000/admin
-Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
-
-###
-GET http://localhost:3000/admin
-Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
