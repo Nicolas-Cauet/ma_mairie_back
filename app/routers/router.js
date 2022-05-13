@@ -11,10 +11,10 @@ const router = express.Router();
 
 /** ******** ADMIN *********** */
 router.post(`/signup`, validateCreateAdmin(schemaCreateAdmin), routerWrapper(adminController.signup));
-router.post(`/login`, routerWrapper(adminController.login));
+router.post(`/login`, authenticateToken, routerWrapper(adminController.login));
 
 /** ******** REPORTING *********** */
-router.get(`/admin/reporting/:town_hall_id`, authenticateToken, routerWrapper(adminReportingController.allReporting));
+router.get(`/admin/reporting/:town_hall_id`, authenticateToken, routerWrapper(adminReportingController.allReportingAdmin));
 router.get(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.oneReporting));
 router.delete(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.deleteReporting));
 router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.modifyReporting));
@@ -30,7 +30,7 @@ router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect)
 
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
-router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReporting));
+router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReportingVisitor));
 router.post(`/reporting/:town_hall_id`, compareString.verifyString, routerWrapper(adminReportingController.postReporting));
 
 module.exports = router;

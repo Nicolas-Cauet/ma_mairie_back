@@ -2,7 +2,7 @@ const client = require(`../dbClient`);
 const debug = require(`debug`)(`dataMapperReporting`);
 
 const dataMapperReporting = {
-  async getAllReport(townHallId) {
+  async getAllReportAdmin(townHallId) {
     const query = {
       text: `SELECT * FROM reporting
             WHERE town_hall_id = $1;`,
@@ -11,6 +11,15 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
+  async getAllReportVisitor(townHallId){
+    const query = {
+      text: `SELECT * FROM reporting
+            WHERE town_hall_id = $1;`,
+      values: [townHallId],
+    };
+    const data = await client.query(query);
+    return data.rows;
+  }
   async getOneReport(reportId) {
     const query = {
       text: `SELECT * FROM reporting

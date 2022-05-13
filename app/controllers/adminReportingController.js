@@ -13,16 +13,13 @@ const adminReportingController = {
    * @param {*} req
    * @param {*} res
    */
-  async allReporting(req, res) {
-    console.log(req.params);
-    console.log(req.body);
-    console.log.log(req.admin.town_hall_id);
+  async allReportingAdmin(req, res) {
     // allows to check if our id pass in request is not different from id of the token
-    if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Vous n'avez pas accès à cette page !`);
-    }
+    // if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
+    //   throw new APIError(`Vous n'avez pas accès à cette page !`);
+    // }
     // returns all reports from the database
-    const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
+    const reportings = await dataMapperReporting.getAllReportAdmin(req.params.town_hall_id);
     if (reportings) {
       res.json(reportings);
     } else {
@@ -92,6 +89,15 @@ const adminReportingController = {
       throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
+  async allReportingVisitor(req , res){
+    // returns all reports from the database
+    const reportings = await dataMapperReporting.getAllReportAdmin(req.params.town_hall_id);
+    if (reportings) {
+      res.json(reportings);
+    } else {
+      throw new APIError(`Impossible de récupérer les signalements`);
+    }
+  }
 };
 
 module.exports = adminReportingController;
