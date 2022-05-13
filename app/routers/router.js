@@ -10,7 +10,7 @@ const compareString = require(`../middleware/compareString`);
 const router = express.Router();
 
 /** ******** ADMIN *********** */
-router.post(`/signup`, routerWrapper(adminController.signup));
+router.post(`/signup`, validateCreateAdmin(schemaCreateAdmin), routerWrapper(adminController.signup));
 router.post(`/login`, routerWrapper(adminController.login));
 
 /** ******** REPORTING *********** */
