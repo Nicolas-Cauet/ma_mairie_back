@@ -11,7 +11,7 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
-  async getAllReportVisitor(townHallId){
+  async getAllReportVisitor(townHallId) {
     const query = {
       text: `SELECT * FROM reporting
             WHERE town_hall_id = $1;`,
@@ -53,7 +53,7 @@ const dataMapperReporting = {
       text: `INSERT INTO reporting
             (title, email, phonenumber, first_name, last_name, user_text, user_image, reporting_category, town_hall_id)
       VALUES ($1, $2, $3, $4,  $5,  $6, $7, $8, $9)`,
-      values:[object.title, object.email, object.phonenumber, object.first_name, object.last_name, object.user_text, object.user_image,object.reporting_category, object.town_hall_id],
+      values: [object.title, object.email, object.phonenumber, object.first_name, object.last_name, object.user_text, object.user_image, object.reporting_category, object.town_hall_id],
     };
     const data = await client.query(query);
     return data;
