@@ -20,10 +20,10 @@ router.delete(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken,
 router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.modifyReporting));
 
 /** ******** ARTICLE *********** */
-router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
-router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
-router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
-router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
+// router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
+// router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
+// router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
+// router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
 
 // route de test
 router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect));
@@ -34,3 +34,4 @@ router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.al
 router.post(`/reporting/:town_hall_id`, compareString.verifyString, routerWrapper(adminReportingController.postReporting));
 
 module.exports = router;
+git
