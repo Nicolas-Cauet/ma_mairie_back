@@ -14,7 +14,7 @@ router.post(`/signup`, validateCreateAdmin(schemaCreateAdmin), routerWrapper(adm
 router.post(`/login`, routerWrapper(adminController.login));
 
 /** ******** REPORTING *********** */
-router.get(`/admin/reporting/:town_hall_id`, authenticateToken, routerWrapper(adminReportingController.allReportingAdmin));
+router.get(`/admin/reporting/:town_hall_id`, authenticateToken, routerWrapper(adminReportingController.allReporting));
 router.get(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.oneReporting));
 router.delete(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.deleteReporting));
 router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.modifyReporting));
@@ -27,7 +27,7 @@ router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, ro
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
 //! TODO CHANGER method visisteur
-router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReportingVisitor));
+router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReporting));
 router.post(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.postReporting));
 
 module.exports = router;
