@@ -10,7 +10,7 @@ const compareString = require(`../middleware/compareString`);
 const router = express.Router();
 
 /** ******** ADMIN *********** */
-router.post(`/signup`, validateCreateAdmin(schemaCreateAdmin), routerWrapper(adminController.signup));
+router.post(`/signup`, routerWrapper(adminController.signup));
 router.post(`/login`, routerWrapper(adminController.login));
 
 /** ******** REPORTING *********** */
@@ -18,7 +18,6 @@ router.get(`/admin/reporting/:town_hall_id`, authenticateToken, routerWrapper(ad
 router.get(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.oneReporting));
 router.delete(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.deleteReporting));
 router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, routerWrapper(adminReportingController.modifyReporting));
-
 /** ******** ARTICLE *********** */
 // router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
 // router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
