@@ -11,7 +11,7 @@ const router = express.Router();
 
 /** ******** ADMIN *********** */
 router.post(`/signup`, validateCreateAdmin(schemaCreateAdmin), routerWrapper(adminController.signup));
-router.post(`/login`, authenticateToken, routerWrapper(adminController.login));
+router.post(`/login`, routerWrapper(adminController.login));
 
 /** ******** REPORTING *********** */
 router.get(`/admin/reporting/:town_hall_id`, authenticateToken, routerWrapper(adminReportingController.allReportingAdmin));
