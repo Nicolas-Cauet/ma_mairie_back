@@ -14,6 +14,9 @@ const adminControllerArticle = {
       throw new APIError(`Impossible de récupérer les signalements`);
     }
   },
+  async oneArticle() {
+
+  }
 };
 
 module.exports = adminControllerArticle;
