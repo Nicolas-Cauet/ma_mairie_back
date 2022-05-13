@@ -30,7 +30,7 @@ router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect)
 
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
-router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReportingVisitor));
+router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.adminReportingController));
 router.post(`/reporting/:town_hall_id`, compareString.verifyString, routerWrapper(adminReportingController.postReporting));
 
 module.exports = router;
