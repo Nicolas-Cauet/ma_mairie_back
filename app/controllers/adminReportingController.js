@@ -9,14 +9,12 @@ const adminReportingController = {
    * @param {*} res
    */
   async allReportingAdmin(req, res) {
-    console.log(req.params.town_hall_id);
-    console.log(req.admin);
     // allows to check if our id pass in request is not different from id of the token
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     // returns all reports from the database
-    const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
+    const reportings = await dataMapperReporting.getAllReport(req.admin);
     console.log(reportings);
     if (reportings) {
       res.json(reportings);
@@ -25,11 +23,8 @@ const adminReportingController = {
     }
   },
   async allReportingVisitor(req, res) {
-    console.log(req.params);
     const id = Number(req.params.town_hall_id);
-    console.log(id);
     const reportings = await dataMapperReporting.getAllReportVisitor(id);
-    console.log(reportings);
     if (reportings) {
       res.json(reportings);
     } else {
