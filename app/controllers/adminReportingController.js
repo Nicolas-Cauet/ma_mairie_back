@@ -14,6 +14,7 @@ const adminReportingController = {
    * @param {*} res
    */
   async allReporting(req, res) {
+    console.log(req.params);
     console.log(req.body);
     // allows to check if our id pass in request is not different from id of the token
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
