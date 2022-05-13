@@ -27,7 +27,7 @@ router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, ro
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
 //! TODO CHANGER method visisteur
-router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReportingAdmin));
+router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.allReportingVisitor));
 router.post(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.postReporting));
 
 module.exports = router;

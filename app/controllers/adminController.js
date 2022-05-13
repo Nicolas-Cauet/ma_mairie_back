@@ -20,7 +20,6 @@ const adminController = {
    * @params {Object} req
    */
   async signup(req, res) {
-    console.log(req.body, 'SIGNUP');
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
@@ -65,16 +64,6 @@ const adminController = {
     } else {
       throw new APIError(`Impossible de se connecter recommencer !`);
     }
-  },
-  /**
-   * Test method for the token
-   * @menberof adminController
-   * @method isConnect
-   * @params {Object} req
-   */
-  isConnect(req) {
-    console.log(req.admin);
-    console.log(`coucou`);
   },
 };
 

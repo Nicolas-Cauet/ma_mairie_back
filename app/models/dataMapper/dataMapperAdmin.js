@@ -8,20 +8,20 @@ const client = require(`../dbClient`);
  *@namespace datamapper
  */
 const datamapper = {
-/**
- * Retrieve id of the town hall
- * By comparing the insee code of adminstrator and the town hall
- * @menberof datamapper
- * @method getTownHallId
- * @params {String} insee
- * @return {Number} town_hall_id
- */
+  /**
+   * Retrieve id of the town hall
+   * By comparing the insee code of adminstrator and the town hall
+   * @menberof datamapper
+   * @method getTownHallId
+   * @params {String} insee
+   * @return {Number} town_hall_id
+   */
 
   async getTownHallId(insee) {
     const query = {
       text: `SELECT town_hall_id 
-             FROM town_hall
-             WHERE town_hall.insee = $1`,
+            FROM town_hall
+            WHERE town_hall.insee = $1`,
       values: [insee],
     };
     const idTownHall = await client.query(query);
@@ -41,9 +41,9 @@ const datamapper = {
   async userSignup(pseudo, insee, hashPassword, email, idTownHall) {
     const query = {
       text: `INSERT INTO admin
-               (pseudo,insee,password,email,town_hall_id)
-               VALUES
-               ($1,$2,$3,$4,$5);`,
+              (pseudo,insee,password,email,town_hall_id)
+              VALUES
+              ($1,$2,$3,$4,$5);`,
       values: [pseudo, insee, hashPassword, email, idTownHall],
     };
     const data = await client.query(query);
@@ -60,8 +60,8 @@ const datamapper = {
   async userLogin(email, hashPassword) {
     const query = {
       text: `SELECT * FROM admin 
-             WHERE 
-             email = $1 AND password = $2;`,
+            WHERE 
+            email = $1 AND password = $2;`,
       values: [email, hashPassword],
     };
     const data = await client.query(query);
