@@ -21,6 +21,7 @@ const adminReportingController = {
     // }
     // returns all reports from the database
     const reportings = await dataMapperReporting.getAllReport(req.body.town_hall_id);
+    console.log(reportings);
     if (reportings) {
       res.json(reportings);
     } else {
