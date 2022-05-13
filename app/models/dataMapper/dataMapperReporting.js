@@ -13,11 +13,13 @@ const dataMapperReporting = {
     return data.rows;
   },
   async getAllReportVisitor(townHallId) {
+    debug(townHallId);
     const query = {
       text: `SELECT * FROM reporting WHERE town_hall_id = $1
             AND NOT reporting_statut = $2;`,
       values: [townHallId, `Non validé`],
     };
+    debug(query);
     const data = await client.query(query);
     return data.rows;
   },
