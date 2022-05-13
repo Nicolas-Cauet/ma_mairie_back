@@ -8,6 +8,7 @@ const dataMapperReporting = {
             WHERE town_hall_id = $1;`,
       values: [townHallId],
     };
+    console.log(query);
     const data = await client.query(query);
     return data.rows;
   },
