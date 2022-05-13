@@ -2,7 +2,7 @@ const client = require(`../dbClient`);
 const debug = require(`debug`)(`dataMapperReporting`);
 
 const dataMapperReporting = {
-  async getAllReportAdmin(townHallId) {
+  async getAllReport(townHallId) {
     const query = {
       text: `SELECT * FROM reporting
             WHERE town_hall_id = $1;`,
