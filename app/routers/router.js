@@ -1,6 +1,6 @@
 const express = require(`express`);
 const adminController = require(`../controllers/adminController`);
-const adminControllerArticle = require(`../controllers/adminControllerArticle`)
+const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const adminReportingController = require(`../controllers/adminReportingController`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 const { schemaCreateAdmin } = require(`../validation/schema/createAdminSchema`);
@@ -21,9 +21,10 @@ router.put(`/admin/reporting/:town_hall_id/:reporting_id`, authenticateToken, ro
 
 /** ******** ARTICLE *********** */
 router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
-router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
-router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
-router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
+router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.oneArticle));
+router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.postArticle));
+router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.deleteArticle));
+router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
 
 // route de test
 router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect));

@@ -7,13 +7,13 @@ Content-Type: application/json
     "insee":"51454",
     "password":"Mamairie@1",
     "email":"mairie2@gmail.fr"
-}
+}5000
 
 
 ###
 
 # TEST ENDPOINT LOGIN 
-POST http://localhost:3000/login HTTP/1.1
+POST http://localhost:3003/login HTTP/1.1
 Content-Type: application/json
 
 {
@@ -22,28 +22,9 @@ Content-Type: application/json
     
 }
 
-<<<<<<< HEAD:test/back.http
-###
-
-# TEST ENDPOINT REPORTING
-POST  http://localhost:3000/reporting/:town_hall_id HTTP/1.1
-Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
-
-=======
->>>>>>> 93e36cd93f54ab4b33af035fa92a0e8ccfa1c2b2:test/login.rest
 # TEST ENDPOINT FOR TOKEN
 ###
 GET http://localhost:3000/admin
 Authorization: Bearer
-<<<<<<< HEAD:test/back.http
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
- 
-###
-GET http://localhost:3000/admin
-Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
-=======
 accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
  
->>>>>>> 93e36cd93f54ab4b33af035fa92a0e8ccfa1c2b2:test/login.rest
