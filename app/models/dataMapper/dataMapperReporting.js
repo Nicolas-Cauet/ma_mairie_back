@@ -3,6 +3,7 @@ const debug = require(`debug`)(`dataMapperReporting`);
 
 const dataMapperReporting = {
   async getAllReport(townHallId) {
+    console.log(townHallId);
     const query = {
       text: `SELECT * FROM reporting
             WHERE town_hall_id = $1;`,
@@ -13,6 +14,7 @@ const dataMapperReporting = {
     return data.rows;
   },
   async getAllReportVisitor(townHallId) {
+    console.log(townHallId);
     const query = {
       text: `SELECT * FROM reporting WHERE town_hall_id = $1
             AND NOT reporting_statut = $2;`,

@@ -15,8 +15,7 @@ const adminReportingController = {
    */
   async allReportingAdmin(req, res) {
     console.log(req.params.town_hall_id);
-    console.log(req.params);
-    console.log(req.body);
+    console.log(req.admin);
     // allows to check if our id pass in request is not different from id of the token
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
@@ -32,8 +31,8 @@ const adminReportingController = {
   },
   async allReportingVisitor(req, res) {
     console.log(req.params);
-    console.log(req.body);
     const id = Number(req.params.town_hall_id);
+    console.log(id);
     const reportings = await dataMapperReporting.getAllReportVisitor(id);
     console.log(reportings);
     if (reportings) {
