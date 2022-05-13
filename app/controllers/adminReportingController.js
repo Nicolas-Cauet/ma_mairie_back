@@ -18,26 +18,19 @@ const adminReportingController = {
     console.log(Allreporting);
     if (Allreporting) {
       res.json(Allreporting);
-    } else if (!req.admin) {
-      const reportings = await dataMapperReporting.getAllReportVisitor(req.params.town_hall_id);
-      if (reportings) {
-        res.json(reportings);
-      } else {
-        throw new APIError(`Impossible de récupérer les signalements`);
-      }
-    }else {
+    } else {
       throw new APIError(`Impossible de récupérer les signalements`);
     }
   },
-  // async allReportingVisitor(req, res) {
-  //   const id = Number(req.params.town_hall_id);
-  //   const reportings = await dataMapperReporting.getAllReportVisitor(id);
-  //   if (reportings) {
-  //     res.json(reportings);
-  //   } else {
-  //     throw new APIError(`Impossible de récupérer les signalements`);
-  //   }
-  // },
+  async allReportingVisitor(req, res) {
+    // eslint-disable-next-line max-len
+    const reportings = await dataMapperReporting.getAllReportVisitor(parseInt(req.params.town_hall_id, 10));
+    if (reportings) {
+      res.json(reportings);
+    } else {
+      throw new APIError(`Impossible de récupérer les signalements`);
+    }
+  },
   async oneReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
