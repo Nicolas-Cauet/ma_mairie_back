@@ -92,6 +92,7 @@ const adminReportingController = {
   async allReportingVisitor(req , res){
     // returns all reports from the database
     const reportings = await dataMapperReporting.getAllReportAdmin(req.params.town_hall_id);
+    debug(reportings);
     if (reportings) {
       res.json(reportings);
     } else {
