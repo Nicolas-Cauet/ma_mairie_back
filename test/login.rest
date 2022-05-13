@@ -34,7 +34,7 @@ accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZS
 GET http://localhost:3000/admin
 Authorization: Bearer
 accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyMjExODM5fQ.iFznTIdKPRA4aEbPLXYOcOO0iGDgvPN80rZ_A4ZClqw
- 
+
 ###
 GET http://localhost:3000/admin
 Authorization: Bearer
