@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS "reporting" (
   "admin_text" TEXT,
   "admin_image" TEXT,
   "reporting_category" TEXT,
-  "reporting_statut" TEXT DEFAULT "Non validé",
+  "reporting_statut" TEXT DEFAULT 'Non validé',
   "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id),
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
