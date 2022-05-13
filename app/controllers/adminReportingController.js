@@ -21,9 +21,8 @@ const adminReportingController = {
     debug(req.params, 'HELLO ID FRONT');
     console.log(req.params, 'HELLO ID FRONT');
     // returns all reports from the database
-    const id = Number(req.params.town_hall_id);
     console.log(id);
-    const reportings = await dataMapperReporting.getAllReport();
+    const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
     console.log(reportings);
     if (reportings) {
       res.json(reportings);
@@ -33,7 +32,7 @@ const adminReportingController = {
   },
   async allReportingVisitor(req, res) {
     const id = Number(req.params.town_hall_id);
-    const reportings = await dataMapperReporting.getAllReportVisitor(id);
+    const reportings = await dataMapperReporting.getAllReportVisitor();
     if (reportings) {
       res.json(reportings);
     } else {
