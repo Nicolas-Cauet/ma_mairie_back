@@ -19,11 +19,11 @@ const adminReportingController = {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     debug(req.params, 'HELLO ID FRONT');
-    console.log(req.params, 'HELLO ID FRONT')
+    console.log(req.params, 'HELLO ID FRONT');
     // returns all reports from the database
     const id = Number(req.params.town_hall_id);
     console.log(id);
-    const reportings = await dataMapperReporting.getAllReport(id);
+    const reportings = await dataMapperReporting.getAllReport(req.params.town_hall_id);
     console.log(reportings);
     if (reportings) {
       res.json(reportings);
