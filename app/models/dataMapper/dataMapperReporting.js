@@ -9,6 +9,7 @@ const dataMapperReporting = {
       values: [townHallId],
     };
     const data = await client.query(query);
+    console.log(data.rows);
     return data.rows;
   },
   async getAllReportVisitor(townHallId) {
