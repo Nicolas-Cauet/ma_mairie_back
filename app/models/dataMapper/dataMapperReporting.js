@@ -23,6 +23,7 @@ const dataMapperReporting = {
     };
     console.log(query);
     const data = await client.query(query);
+    console.log(data.rows);
     return data.rows;
   },
   async getOneReport(reportId) {
