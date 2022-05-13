@@ -22,7 +22,7 @@ const adminReportingController = {
     // returns all reports from the database
     const id = Number(req.params.town_hall_id);
     console.log(id);
-    const reportings = await dataMapperReporting.getAllReport(id);
+    const reportings = await dataMapperReporting.getAllReport(req.admin.town_hall_id);
     console.log(reportings);
     if (reportings) {
       res.json(reportings);
