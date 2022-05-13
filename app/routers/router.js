@@ -1,6 +1,6 @@
 const express = require(`express`);
 const adminController = require(`../controllers/adminController`);
-const adminControllerArticle = require(`../controllers/adminControllerArticle`)
+// const adminControllerArticle = require(`../controllers/adminControllerArticle`)
 const adminReportingController = require(`../controllers/adminReportingController`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 const { schemaCreateAdmin } = require(`../validation/schema/createAdminSchema`);
@@ -34,4 +34,3 @@ router.get(`/reporting/:town_hall_id`, routerWrapper(adminReportingController.al
 router.post(`/reporting/:town_hall_id`, compareString.verifyString, routerWrapper(adminReportingController.postReporting));
 
 module.exports = router;
-git
