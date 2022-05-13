@@ -14,10 +14,10 @@ const adminReportingController = {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     // returns all reports from the database
-    const reportings = await dataMapperReporting.getAllReport(req.admin);
-    console.log(reportings);
-    if (reportings) {
-      res.json(reportings);
+    const Allreporting = await dataMapperReporting.getAllReport(req.admin);
+    console.log(Allreporting);
+    if (Allreporting) {
+      res.json(Allreporting);
     } else if (!req.admin) {
       const reportings = await dataMapperReporting.getAllReportVisitor(req.params.town_hall_id);
       if (reportings) {

@@ -14,18 +14,18 @@ const dataMapperReporting = {
     console.log(data.rows);
     return data.rows;
   },
-  // async getAllReportVisitor(townHallId) {
-  //   console.log(typeof townHallId, 'VISITOR');
-  //   const query = {
-  //     text: `SELECT * FROM reporting WHERE town_hall_id = $1
-  //           AND NOT reporting_statut = $2;`,
-  //     values: [townHallId, `Non validé`],
-  //   };
-  //   console.log(query);
-  //   const data = await client.query(query);
-  //   console.log(data.rows);
-  //   return data.rows;
-  // },
+  async getAllReportVisitor(townHallId) {
+    console.log(typeof townHallId, 'VISITOR');
+    const query = {
+      text: `SELECT * FROM reporting WHERE town_hall_id = $1
+            AND NOT reporting_statut = $2;`,
+      values: [townHallId, `Non validé`],
+    };
+    console.log(query);
+    const data = await client.query(query);
+    console.log(data.rows);
+    return data.rows;
+  },
   async getOneReport(reportId) {
     const query = {
       text: `SELECT * FROM reporting
