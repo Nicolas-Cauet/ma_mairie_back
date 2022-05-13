@@ -18,6 +18,7 @@ const adminReportingController = {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
+    console.log(req.params);
     // returns all reports from the database
     const id = Number(req.params.town_hall_id);
     console.log(id);
@@ -83,7 +84,6 @@ const adminReportingController = {
     }
   },
   async postReporting(req, res) {
-    console.log(req.body, `postREPORTING `);
     const values = {
       title: req.body.title,
       email: req.body.email,
