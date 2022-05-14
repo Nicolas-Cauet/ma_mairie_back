@@ -11,6 +11,7 @@ const APIError = require(`../handlers/APIError`);
  * @returns {void}
  */
 const authenticateToken = (req, res, next) => {
+  console.log(req.headers);
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(` `)[1];
   if (token == null) res.sendStatus(401).send('PAS DE TOKEN !!!');
