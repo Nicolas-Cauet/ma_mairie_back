@@ -12,7 +12,6 @@ const APIError = require(`../handlers/APIError`);
  */
 const authenticateToken = (req, res, next) => {
   console.log(req.headers);
-  console.log(req);
   const authHeader = req.headers.authorization;
   console.log(authHeader);
   const token = authHeader && authHeader.split(` `)[1];
