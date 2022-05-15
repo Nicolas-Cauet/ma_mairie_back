@@ -3,10 +3,8 @@ const adminController = require(`../controllers/adminController`);
 // const adminControllerArticle = require(`../controllers/adminControllerArticle`)
 const adminReportingController = require(`../controllers/adminReportingController`);
 const routerWrapper = require(`../handlers/routerWrapper`);
-const {
-  schemaCreateAdmin,
-  schemaCreateReportingUser,
-} = require(`../validation/schema/schemaCreateAdmin`);
+const schemaCreateAdmin = require(`../validation/schema/schemaCreateAdmin`);
+const schemaCreateReportingUser = require(`../validation/schema/schemaCreateReportingUser`);
 const {
   validateCreateAdmin,
   validateCreateReportingUser,
