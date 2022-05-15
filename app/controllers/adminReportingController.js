@@ -10,6 +10,7 @@ const adminReportingController = {
    */
   async allReporting(req, res) {
     console.log(req.params);
+    console.log(req.admin);
     // allows to check if our id pass in request is not different from id of the token
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
