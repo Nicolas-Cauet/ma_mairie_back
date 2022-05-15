@@ -9,13 +9,13 @@ const adminReportingController = {
    * @param {*} res
    */
   async allReporting(req, res) {
+    console.log(req.params);
     // allows to check if our id pass in request is not different from id of the token
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     // returns all reports from the database
     const Allreporting = await dataMapperReporting.getAllReport(req.admin);
-    console.log(Allreporting);
     if (Allreporting) {
       res.json(Allreporting);
     } else {
@@ -24,7 +24,9 @@ const adminReportingController = {
   },
   async allReportingVisitor(req, res) {
     // eslint-disable-next-line max-len
-    const reportings = await dataMapperReporting.getAllReportVisitor(parseInt(req.params.town_hall_id, 10));
+    const reportings = await dataMapperReporting.getAllReportVisitor(
+      parseInt(req.params.town_hall_id, 10)
+    );
     if (reportings) {
       res.json(reportings);
     } else {
@@ -35,8 +37,9 @@ const adminReportingController = {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
-    const report = await dataMapperReporting.getOneReport(req
-      .params.reporting_id);
+    const report = await dataMapperReporting.getOneReport(
+      req.params.reporting_id
+    );
     if (report) {
       res.status(200).json(report);
     }
@@ -46,8 +49,9 @@ const adminReportingController = {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
-    const report = await dataMapperReporting.deleteReport(req
-      .params.reporting_id);
+    const report = await dataMapperReporting.deleteReport(
+      req.params.reporting_id
+    );
     if (report.rowCount) {
       res.status(200).send(`Le signalement est bien supprimer !`);
     } else {
