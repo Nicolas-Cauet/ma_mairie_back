@@ -55,11 +55,11 @@ router.put(
 //! TODO CHANGER method visisteur
 router.get(
   `/reporting/:town_hall_id`,
-  validateCreateReportingUser(schemaCreateReportingUser),
   routerWrapper(adminReportingController.allReporting)
 );
 router.post(
   `/reporting/:town_hall_id`,
+  validateCreateReportingUser(schemaCreateReportingUser),
   routerWrapper(adminReportingController.postReporting)
 );
 
