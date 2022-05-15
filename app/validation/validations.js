@@ -12,6 +12,7 @@ const validationModule = {
   },
   validateCreateReportingUser(schema) {
     return (req, _, next) => {
+      console.log(req.body);
       const { error } = schema.validate(req.body);
       if (error) {
         throw new APIError(`Schema non respecter !`, error);
