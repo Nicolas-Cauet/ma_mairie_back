@@ -27,6 +27,7 @@ const authenticateToken = (req, res, next) => {
       res.sendStatus(error, 403);
     }
     req.admin = user;
+    console.log(req.admin);
     next();
   });
 };
