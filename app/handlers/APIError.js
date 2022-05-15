@@ -1,4 +1,4 @@
-const { appendFile } = require(`fs/promises`);
+const { appendFile } = require("fs/promises");
 
 const path = require(`path`);
 
