@@ -23,8 +23,6 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
-<<<<<<< HEAD
-=======
   /**
    * the method allows to return all the reports
    * @menberof dataMapperReporting
@@ -32,7 +30,6 @@ const dataMapperReporting = {
    * @param {Number} townHallId
    * @returns {Array} Array Returns all reports visitor
    */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async getAllReportVisitor(townHallId) {
     const query = {
       text: `SELECT * FROM reporting WHERE town_hall_id = $1
@@ -42,8 +39,6 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
-<<<<<<< HEAD
-=======
   /**
    * the method allows to return one report
    * @menberof dataMapperReporting
@@ -51,7 +46,6 @@ const dataMapperReporting = {
    * @param {Number} townHallId
    * @returns {Object} Object Returns one report
    */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async getOneReport(reportId) {
     const query = {
       text: `SELECT * FROM reporting
