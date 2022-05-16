@@ -74,6 +74,6 @@ router.post(
 
 router.get(`/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.allCouncil));
 
-router.use(handleError);
+// router.use(handleError);
 
 module.exports = router;
