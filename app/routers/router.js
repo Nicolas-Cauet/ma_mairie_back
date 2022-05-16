@@ -3,8 +3,10 @@ const adminController = require(`../controllers/adminController`);
 const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const adminReportingController = require(`../controllers/adminReportingController`);
 const routerWrapper = require(`../handlers/routerWrapper`);
-const schemaCreateAdmin = require(`../validation/schema/schemaCreateAdmin`);
-const schemaCreateReportingUser = require(`../validation/schema/schemaCreateReportingUser`);
+const {
+  schemaCreateAdmin,
+  schemaCreateReportingUser,
+} = require(`../validation/schema/schemaCreateAdmin`);
 const {
   validateCreateAdmin,
   validateCreateReportingUser,
@@ -17,7 +19,7 @@ const router = express.Router();
 router.post(
   `/signup`,
   validateCreateAdmin(schemaCreateAdmin),
-  routerWrapper(adminController.signup)
+  routerWrapper(adminController.signup),
 );
 router.post(`/login`, routerWrapper(adminController.login));
 
@@ -25,22 +27,22 @@ router.post(`/login`, routerWrapper(adminController.login));
 router.get(
   `/admin/reporting/:town_hall_id`,
   authenticateToken,
-  routerWrapper(adminReportingController.allReporting)
+  routerWrapper(adminReportingController.allReporting),
 );
 router.get(
   `/admin/reporting/:town_hall_id/:reporting_id`,
   authenticateToken,
-  routerWrapper(adminReportingController.oneReporting)
+  routerWrapper(adminReportingController.oneReporting),
 );
 router.delete(
   `/admin/reporting/:town_hall_id/:reporting_id`,
   authenticateToken,
-  routerWrapper(adminReportingController.deleteReporting)
+  routerWrapper(adminReportingController.deleteReporting),
 );
 router.put(
   `/admin/reporting/:town_hall_id/:reporting_id`,
   authenticateToken,
-  routerWrapper(adminReportingController.modifyReporting)
+  routerWrapper(adminReportingController.modifyReporting),
 );
 /** ******** ARTICLE *********** */
 router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
@@ -57,12 +59,12 @@ router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect)
 //! TODO CHANGER method visisteur
 router.get(
   `/reporting/:town_hall_id`,
-  routerWrapper(adminReportingController.allReportingVisitor)
+  routerWrapper(adminReportingController.allReporting),
 );
 router.post(
   `/reporting/:town_hall_id`,
   validateCreateReportingUser(schemaCreateReportingUser),
-  routerWrapper(adminReportingController.postReporting)
+  routerWrapper(adminReportingController.postReporting),
 );
 
 module.exports = router;
