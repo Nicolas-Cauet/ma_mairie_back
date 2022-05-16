@@ -7,36 +7,31 @@ const secretKey = process.env.ACCES_TOKEN_SECRET;
 const { dataMapperAdmin } = require(`../models/dataMapper/index`);
 
 /**
- * @type {object}
+ * @type {Object}
  * @export adminController
  * @namespace adminController
  */
 const adminController = {
-
-  /**
+  /** The method allows you to create an administrator in the database
    * @menberof adminController
    * @method signup
    * @param {Object} req.body
    * @param {Object} res
-   * @returns {VoidFunction}
+   * @returns void
    */
   async signup(req, res) {
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
-    // Hash the password user
     const hashPassword = await bcrypt.hash(req.body.password, 10);
-    // Retrieve id of the town hall
-    // By comparing the insee code of adminstrator and the town hall
-    const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
-    // We check that the user does not already exist in the database
+    const townHallId = await dataMapperAdmin.getTownHallId(parseInt(req.body.insee, 10));
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     if (existingUser) {
       throw new APIError(`L'utilisateur existe déja`);
     }
     const userSignup = await dataMapperAdmin
-      .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
-      // we check if we have registered a user in the database if there is none we return an error
+      // eslint-disable-next-line max-len
+      .userSignup(req.body.pseudo, parseInt(req.body.insee, 10), hashPassword, req.body.email, townHallId);
     if (userSignup) {
       res.status(200).send(`Utilisateur créer en base !`);
     }
@@ -44,17 +39,16 @@ const adminController = {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
   },
-    /**
+  /**
+   * The method allows you to log in as an administrator
    * @menberof adminController
    * @method signup
    * @param {Object} req.body
    * @param {Object} res
-   * @returns {VoidFunction}
-   */ 
+   * @returns {Object} Return token and town_hall_id
+   */
   async login(req, res) {
-    // We check that the user does not already exist in the database
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
-    // We check that the password of the request corresponds to the password hash
     const match = await bcrypt.compare(req.body.password, existingUser.password);
     if (match) {
       const data = await dataMapperAdmin.userLogin(req.body.email, existingUser.password);

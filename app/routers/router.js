@@ -1,4 +1,7 @@
 const express = require(`express`);
+const APIError = require(`../handlers/APIError`);
+const handleError = require(`../handlers/handeError`);
+
 const adminController = require(`../controllers/adminController`);
 const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const adminReportingController = require(`../controllers/adminReportingController`);
@@ -49,8 +52,8 @@ router.put(
   routerWrapper(adminReportingController.modifyReporting),
 );
 /** ******** ARTICLE *********** */
-router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
-router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.oneArticle));
+router.get(`/admin/article/:town_hall_id`, routerWrapper(adminControllerArticle.allArticle));
+router.get(`/admin/article/:town_hall_id/:article_id`, routerWrapper(adminControllerArticle.oneArticle));
 router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.postArticle));
 router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.deleteArticle));
 router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
@@ -75,5 +78,11 @@ router.post(
 /** ******** TOWN_HALL_STAFF *********** */
 
 router.get(`/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.allCouncil));
+
+router.use((req) => {
+  throw new APIError(`Url que vous demander n'est pas trouver`, req.url, 404);
+});
+
+router.use(handleError);
 
 module.exports = router;

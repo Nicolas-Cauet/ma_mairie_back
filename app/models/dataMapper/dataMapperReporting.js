@@ -1,7 +1,19 @@
 const client = require(`../dbClient`);
 const debug = require(`debug`)(`dataMapperReporting`);
 
+/**
+ * @type {Object}
+ * @exports dataMapperReporting
+ * @namespace dataMapperReporting
+ */
 const dataMapperReporting = {
+  /**
+   * the method allows to return all the reports
+   * @menberof dataMapperReporting
+   * @method getAllReport
+   * @param {Number} townHallId
+   * @returns {Array} Array Returns all reports administrator
+   */
   async getAllReport(townHallId) {
     const query = {
       text: `SELECT * FROM reporting
@@ -11,6 +23,13 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
+  /**
+   * the method allows to return all the reports
+   * @menberof dataMapperReporting
+   * @method getAllReportVisitor
+   * @param {Number} townHallId
+   * @returns {Array} Array Returns all reports visitor
+   */
   async getAllReportVisitor(townHallId) {
     const query = {
       text: `SELECT * FROM reporting WHERE town_hall_id = $1
@@ -20,6 +39,13 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
+  /**
+   * the method allows to return one report
+   * @menberof dataMapperReporting
+   * @method getOneReport
+   * @param {Number} townHallId
+   * @returns {Object} Object Returns one report
+   */
   async getOneReport(reportId) {
     const query = {
       text: `SELECT * FROM reporting
@@ -29,6 +55,13 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows[0];
   },
+  /**
+   * The method allows you to delete a report
+   * @menberof dataMapperReporting
+   * @method deleteReport
+   * @param {Number} id
+   * @returns void
+   */
   async deleteReport(id) {
     const query = {
       text: `DELETE FROM reporting
@@ -38,6 +71,13 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data;
   },
+  /**
+   * The method is used to update a report
+   * @menberof dataMapperReporting
+   * @method modifyReport
+   * @param {Object} object
+   * @returns void
+   */
   async modifyReport(object) {
     const query = {
       text: `UPDATE reporting
@@ -58,6 +98,13 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data;
   },
+  /**
+   * The method is used to post a report as a visitor
+   * @menberof dataMapperReporting
+   * @method modifyReport
+   * @param {Object} object
+   * @returns void
+   */
   async postReport(object) {
     const query = {
       text: `INSERT INTO reporting

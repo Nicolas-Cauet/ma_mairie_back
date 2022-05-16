@@ -8,21 +8,17 @@ const APIError = require(`../handlers/APIError`);
  * @param {Object} req
  * @param {Object} res
  * @param {Object} next
- * @returns {void}
+ * @returns {String} Returns administrator id
  */
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(` `)[1];
   if (token == null) {
-    const error = new APIError(`Pas de token merci de vous reconnecter !`);
-    res.sendStatus(error, 401);
+    throw new APIError(`Pas de token merci de vous reconnecter !`);
   }
   jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, user) => {
     if (err) {
-      const error = new APIError(
-        `le token n'a pas pu être vérifiée merci de recommencer !`,
-      );
-      res.sendStatus(error, 403);
+      throw new APIError(`le token n'a pas pu être vérifiée merci de recommencer !`);
     }
     req.admin = user;
     next();

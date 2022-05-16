@@ -1,6 +1,17 @@
 const client = require(`../dbClient`);
 
+/**
+ * @type {Object}
+ * @exports dataMapperCouncil
+ * @namespace dataMapperCouncil
+ */
 const dataMapperCouncil = {
+  /**
+   * @menberof dataMapperCouncil
+   * @method getAllCouncil
+   * @param {Number} townHallId
+   * @returns {Array} Return all councilors
+   */
   async getAllCouncil(townHallId) {
     const query = {
       text: `SELECT * FROM town_hall_staff WHERE id = $1`,
