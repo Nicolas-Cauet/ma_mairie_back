@@ -3,6 +3,7 @@ const adminController = require(`../controllers/adminController`);
 // const adminControllerArticle = require(`../controllers/adminControllerArticle`)
 const adminReportingController = require(`../controllers/adminReportingController`);
 const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
+const adminControllerArticle = require(`../controllers/adminControllerCouncil`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 const compareString = require(`../middleware/compareString`);
@@ -56,17 +57,8 @@ router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper
 router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.deleteArticle));
 router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
 
-// route de test
-router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect));
-
-// router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.allArticle));
-// router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
-// router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
-// router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.));
-
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
-//! TODO CHANGER method visisteur
 router.get(
   `/reporting/:town_hall_id`,
   routerWrapper(adminReportingController.allReporting),
