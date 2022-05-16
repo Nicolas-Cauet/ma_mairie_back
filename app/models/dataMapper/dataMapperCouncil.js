@@ -1,6 +1,5 @@
 const client = require(`../dbClient`);
 
-const dataMapperCouncil = {
 /**
  * @type {Object}
  * @exports dataMapperCouncil
