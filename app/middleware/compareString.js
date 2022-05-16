@@ -43,7 +43,7 @@ const compareString = {
 
     if (verifyIp > 3) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
-    } else if (noBadWords === true) {''
+    } else if (noBadWords === true) {
       throw new APIError(`Les insultes ne sont pas accepter`);
     } else {
       const query = {

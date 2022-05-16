@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "town_hall" (
 CREATE TABLE IF NOT EXISTS "admin" (
   "admin_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "pseudo" VARCHAR(20) UNIQUE,
-  "insee" NUMBER NOT NULL,
+  "insee" INT NOT NULL,
   "password" TEXT NOT NULL,
   "email" TEXT UNIQUE,
   "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id), 
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS "reporting" (
   "last_name" TEXT NOT NULL,
   "user_image" TEXT,
   "user_text" TEXT NOT NULL,
+  "user_ip" TEXT,
   "admin_text" TEXT,
   "admin_image" TEXT,
   "reporting_category" TEXT,
