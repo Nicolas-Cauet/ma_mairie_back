@@ -74,8 +74,8 @@ router.post(
 
 router.get(`/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.allCouncil));
 
-router.use((req) => {
-  throw new APIError(`Url demander n'est pas valide !`, req.url, 404);
+router.use((req, next) => {
+  next(new APIError(`Url demander n'est pas valide !`, req.url, 404));
 });
 
 router.use(handleError);
