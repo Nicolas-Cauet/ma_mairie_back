@@ -40,7 +40,7 @@ router.delete(
   authenticateToken,
   routerWrapper(adminReportingController.deleteReporting),
 );
-router.put(
+router.patch(
   `/admin/reporting/:town_hall_id/:reporting_id`,
   authenticateToken,
   routerWrapper(adminReportingController.modifyReporting),
