@@ -9,7 +9,7 @@ const schemaCreateReportingUser = joi.object({
   email: joi.string().email().required(),
   first_name: joi.string().required().max(20),
   last_name: joi.string().required().max(20),
-  phone_number: joi.string().min(10).max(10),
+  phonenumber: joi.string().min(10).max(10),
   town_hall_id: joi.number(),
 });
 
