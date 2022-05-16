@@ -11,11 +11,21 @@ const APIError = require(`../handlers/APIError`);
  * @returns {void}
  */
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
+  console.log(req.headers);
+  const authHeader = req.headers.authorization;
+  console.log(authHeader);
   const token = authHeader && authHeader.split(` `)[1];
-  if (token == null) res.send(401).json(`Pas de token !`);
+  if (token == null) {
+    const error = new APIError(`Pas de token merci de vous reconnecter !`);
+    res.sendStatus(error, 401);
+  }
   jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, user) => {
-    if (err) return res.status(403);
+    if (err) {
+      const error = new APIError(
+        `le token n'a pas pu être vérifiée merci de recommencer !`
+      );
+      res.sendStatus(error, 403);
+    }
     req.admin = user;
     next();
   });

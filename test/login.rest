@@ -3,11 +3,16 @@ POST http://localhost:3000/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo": "adminMairie2",
+    "pseudo": "adminMairie5",
     "insee":"51454",
     "password":"Mamairie@1",
+<<<<<<< HEAD
     "email":"mairie2@gmail.fr"
 }5000
+=======
+    "email":"mairie5@gmail.fr"
+}
+>>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca
 
 
 ###
@@ -21,6 +26,7 @@ Content-Type: application/json
     "password":"Mamairie@1"
     
 }
+<<<<<<< HEAD
 
 # TEST ENDPOINT FOR TOKEN
 ###
@@ -28,3 +34,5 @@ GET http://localhost:3000/admin
 Authorization: Bearer
 accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
  
+=======
+>>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca

@@ -6,12 +6,24 @@ const adminControllerArticle = {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Impossible de supprimer le signalement !`);
     }
+<<<<<<< HEAD
     const articles = await dataMapperArticle.getAllArticleAdmin(req.params.town_hall_id);
     if (articles) {
       res.json(articles);
     } else {
       throw new APIError(`Impossible de récupérer les articles`);
     }
+=======
+    // returns all reports from the database
+    //   const reportings = await dataMapperArticle.allReportingVisitor(req.admin.town_hall_id);
+    //   if (reportings) {
+    //     res.json(reportings);
+    //   } else {
+    //     throw new APIError(`Impossible de récupérer les signalements`);
+    //   }
+    // },
+    // async oneArticle() {
+>>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca
   },
   async oneArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {

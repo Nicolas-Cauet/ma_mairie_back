@@ -5,6 +5,7 @@ const debug = require(`debug`)(`compareString`);
 
 const compareString = {
   async verifyString(req, res, next) {
+    console.log(req.body);
     const stringUser = req.body.user_text;
     console.log(stringUser);
     const id = req.params.town_hall_id;
