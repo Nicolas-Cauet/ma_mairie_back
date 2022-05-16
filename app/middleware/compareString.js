@@ -40,7 +40,7 @@ const compareString = {
     const id = req.params.town_hall_id;
     const noBadWords = leoProfanity.check(stringUser);
     const ip = compareString.getIp(req);
-    const verifyIp = compareString.verifyIp(ip, req);
+    const verifyIp = await compareString.verifyIp(ip, req);
     console.log(verifyIp);
     if (verifyIp >= 2) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
