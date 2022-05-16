@@ -2,14 +2,11 @@ const APIError = require(`../handlers/APIError`);
 const { dataMapperReporting } = require(`../models/dataMapper/index`);
 const debug = require(`debug`)(`adminReportingController`);
 
-<<<<<<< HEAD
-=======
 /**
  * @type {object}
  * @export adminReportingController
  * @namespace adminReportingController
  */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
 const adminReportingController = {
   /**
    * The method returns all administrator reports
@@ -20,7 +17,6 @@ const adminReportingController = {
    * @returns Return all reports Administrator
    */
   async allReporting(req, res) {
-<<<<<<< HEAD
     // allows to check if our id pass in request is not different from id of the token
     // if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
     //   throw new APIError(`Vous n'avez pas accès à cette page !`);
@@ -37,7 +33,6 @@ const adminReportingController = {
     );
     if (Allreporting) {
       res.json(Allreporting);
-=======
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
@@ -46,13 +41,10 @@ const adminReportingController = {
     );
     if (Allreporting) {
       res.json(Allreporting).status(200);
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
     } else {
       throw new APIError(`Impossible de récupérer les signalements`);
     }
   },
-<<<<<<< HEAD
-=======
   /**
    * The method returns all visitor reports
    * @menberof adminReportingController
@@ -61,7 +53,6 @@ const adminReportingController = {
    * @param {Object} res
    * @returns Return all reports visitor
    */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async allReportingVisitor(req, res) {
     // eslint-disable-next-line max-len
     const reportings = await dataMapperReporting.getAllReportVisitor(
