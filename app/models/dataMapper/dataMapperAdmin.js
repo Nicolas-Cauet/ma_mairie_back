@@ -13,16 +13,11 @@ const datamapper = {
    * By comparing the insee code of adminstrator and the town hall
    * @menberof datamapper
    * @method getTownHallId
-<<<<<<< HEAD
    * @params {String} insee
    * @return {Number} town_hall_id
-   */
-
-=======
    * @param {Number} insee
    * @returns {Number} Return town_hall_id
    */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async getTownHallId(insee) {
     const query = {
       text: `SELECT town_hall_id 
