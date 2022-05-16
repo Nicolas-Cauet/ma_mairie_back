@@ -11,7 +11,7 @@ const compareString = {
     const id = req.params.town_hall_id;
 
     const query = {
-      text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1 `,
+à      text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
       values: [id],
     };
     const allUserText = await client.query(query);
