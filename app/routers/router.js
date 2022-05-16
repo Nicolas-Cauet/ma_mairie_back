@@ -56,7 +56,6 @@ router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect)
 
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
-//! TODO CHANGER method visisteur
 router.get(
   `/reporting/:town_hall_id`,
   routerWrapper(adminReportingController.allReporting),
