@@ -18,7 +18,7 @@ const compareString = {
    * @menberof compareString
    * @method getIp
    * @param {Object} req
-   * @returns {string}
+   * @returns {VoidFunction}
    */
   async getIp(req) {
     const ip = req.headers[`x-forwarded-for`]?.split(`,`).shift()
@@ -35,28 +35,12 @@ const compareString = {
     return result;
   },
   async verifyString(req, res, next) {
-    console.log(req.body);
     const stringUser = req.body.user_text;
     const id = req.params.town_hall_id;
     const noBadWords = leoProfanity.check(stringUser);
     const ip = compareString.getIp(req);
     const verifyIp = compareString.verifyIp(ip);
 
-<<<<<<< HEAD
-    const query = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1 `,
-=======
-      text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
->>>>>>> article
-=======
-      text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
-      values: [id],
-    };
-    const allUserText = await client.query(query);
-=======
     if (verifyIp > 3) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
     } else if (noBadWords === true) {
@@ -67,11 +51,9 @@ const compareString = {
         values: [id],
       };
       const allUserText = await client.query(query);
->>>>>>> reporting
 
       const AllUserTextString = [` `];
 
-<<<<<<< HEAD
       // eslint-disable-next-line no-restricted-syntax
       for (const rows of allUserText.rows) {
         AllUserTextString.push(rows.user_text);
@@ -83,17 +65,6 @@ const compareString = {
       } else {
         next();
       }
-=======
-    // eslint-disable-next-line no-restricted-syntax
-    for (const rows of allUserText.rows) {
-      AllUserTextString.push(rows.user_text);
-    }
-    const matches = stringSimilarity.findBestMatch(stringUser, AllUserTextString);
-    if (matches.bestMatch.rating > 0.8) {
-      throw new APIError(`Le contenu du signalement est très similaire a un autre signalement`);
-    } else {
-      next();
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
     }
   },
 };
