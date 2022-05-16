@@ -1,0 +1,49 @@
+###
+
+
+# GET ALL ARTICLE
+GET  http://localhost:3003/admin/article/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjQ0ODI4MX0.VnvYTiZMNNGQBZsIsiaLjvZBJlRxtim3GTFoURNx_sQ
+
+###
+#SELECT ONE ARTICLE5000
+GET http://localhost:3003/admin/article/1/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjQ0ODI4MX0.VnvYTiZMNNGQBZsIsiaLjvZBJlRxtim3GTFoURNx_sQ
+###
+# DELETE ARTICLE
+DELETE http://localhost:3003/admin/article/1/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
+
+###
+# UPDATE ARTICLE
+PUT http://localhost:3003/admin/article/1/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
+
+{
+      "title": "ok",
+      "description": "ok",
+      "summarize": "ok",
+      "image": "ok",
+      "author": "ok",
+      "article_category": "ok",
+      "article_color": "ok"
+}
+
+###
+# POST ARTICLE
+
+POST http://localhost:3003/admin/new-article/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
+
+{
+        "title": "Hello world",
+      "description": "si ça passe j'ai reussi",
+      "summarize": "un test du dev",
+      "image": "null",
+      "author": "Anthony Legrain",
+      "article_category": "test",
+      "article_color": "rouge"
+}
