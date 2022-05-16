@@ -61,7 +61,7 @@ router.get(
 );
 router.post(
   `/reporting/:town_hall_id`,
-  compareString.verifyString,
+  routerWrapper(compareString.verifyString),
   validateCreateReportingUser(schemaCreateReportingUser),
   routerWrapper(adminReportingController.postReporting),
 );

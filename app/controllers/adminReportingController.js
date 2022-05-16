@@ -136,13 +136,15 @@ const adminReportingController = {
       user_text: req.body.user_text,
       user_image: req.body.user_image,
       reporting_category: req.body.reporting_category,
+      user_ip: req.headers[`x-forwarded-for`]?.split(`,`).shift()
+      || req.socket?.remoteAddress,
       town_hall_id: req.params.town_hall_id,
     };
     const report = await dataMapperReporting.postReport(values);
     if (report.rowCount) {
       res.status(200).send(`Votre signalement est effectué !`);
     } else {
-      throw new APIError(`La mise à jour n'est pas possible !`);
+      throw new APIError(`Votre signalement ne peut pas être effectué !`);
     }
   },
 };

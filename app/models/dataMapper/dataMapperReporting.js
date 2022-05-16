@@ -108,8 +108,8 @@ const dataMapperReporting = {
   async postReport(object) {
     const query = {
       text: `INSERT INTO reporting
-            (title, email, phonenumber, first_name, last_name, user_text, user_image, reporting_category, town_hall_id)
-      VALUES ($1, $2, $3, $4,  $5,  $6, $7, $8, $9)`,
+            (title, email, phonenumber, first_name, last_name, user_text, user_image, reporting_category, user_ip, town_hall_id)
+      VALUES ($1, $2, $3, $4,  $5,  $6, $7, $8, $9, $10)`,
       // eslint-disable-next-line max-len
       values: [
         object.title,
@@ -120,6 +120,7 @@ const dataMapperReporting = {
         object.user_text,
         object.user_image,
         object.reporting_category,
+        object.user_ip,
         object.town_hall_id,
       ],
     };

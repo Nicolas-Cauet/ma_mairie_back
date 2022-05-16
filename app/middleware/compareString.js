@@ -41,7 +41,6 @@ const compareString = {
     const noBadWords = leoProfanity.check(stringUser);
     const ip = compareString.getIp(req);
     const verifyIp = compareString.verifyIp(ip, req);
-
     if (verifyIp > 3) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
     } else if (noBadWords === true) {
