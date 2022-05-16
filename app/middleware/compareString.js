@@ -27,15 +27,13 @@ const compareString = {
   },
   async verifyIp(ip, req) {
     const id = parseInt(req.params.town_hall_id, 10);
-    console.log(id);
-    console.log(ip)
+    console.log(typeof ip);
     const query = {
       text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $2 AND created_at > CAST(NOW() AS DATE) - 1`,
       values: [ip, id],
     };
     const result = await client.query(query);
-    console.log(result.rows[0]);
-    return result;
+    return result.rows[0];
   },
   async verifyString(req, res, next) {
     const stringUser = req.body.user_text;
