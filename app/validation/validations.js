@@ -14,7 +14,8 @@ const validationModule = {
     return (req, _, next) => {
       const { error } = schema.validate(req.body);
       if (error) {
-        throw new APIError(`Schema non respecter !`, error);
+        console.log(error);
+        throw new APIError(`Schema non respecter !`);
       }
       next();
     };
