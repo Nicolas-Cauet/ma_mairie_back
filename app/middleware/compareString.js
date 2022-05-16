@@ -33,15 +33,15 @@ const compareString = {
       text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $2 AND created_at > CAST(NOW() AS DATE) - 1`,
       values: [ip, id],
     };
-    console.log(query);
     const result = await client.query(query);
+    console.log(result.rows[0]);
     return result;
   },
   async verifyString(req, res, next) {
     const stringUser = req.body.user_text;
     const id = req.params.town_hall_id;
     const noBadWords = leoProfanity.check(stringUser);
-    const ip = compareString.getIp(req);
+    const ip = await compareString.getIp(req);
     const verifyIp = await compareString.verifyIp(ip, req);
     if (verifyIp >= 2) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
