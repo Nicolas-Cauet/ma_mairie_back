@@ -21,7 +21,7 @@ const adminReportingController = {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     const Allreporting = await dataMapperReporting.getAllReport(
-      req.admin.town_hall_id,
+      req.params.town_hall_id,
     );
     if (Allreporting) {
       res.json(Allreporting).status(200);

@@ -55,7 +55,7 @@ router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, router
 /** ******** REPORTING *********** */
 router.get(
   `/reporting/:town_hall_id`,
-  routerWrapper(adminReportingController.allReporting),
+  routerWrapper(adminReportingController.getAllReportVisitor),
 );
 router.post(
   `/reporting/:town_hall_id`,
