@@ -25,7 +25,7 @@ const compareString = {
   || req.socket?.remoteAddress;
     return ip;
   },
-  async verifyIp(ip, req) {
+  async verifyIp(req, ip) {
     const id = req.params.town_hall_id;
     const query = {
       text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
