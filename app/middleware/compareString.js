@@ -25,10 +25,10 @@ const compareString = {
   || req.socket?.remoteAddress;
     return ip;
   },
-  async verifyIp(req, ip) {
+  async verifyIp(ip, req) {
     const id = req.params.town_hall_id;
     const query = {
-      text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
+      text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $2 AND created_at > CAST(NOW() AS DATE) - 1`,
       values: [ip, id],
     };
     const result = await client.query(query);
@@ -43,7 +43,7 @@ const compareString = {
 
     if (verifyIp > 3) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
-    } else if (noBadWords === true) {
+    } else if (noBadWords === true) {''
       throw new APIError(`Les insultes ne sont pas accepter`);
     } else {
       const query = {
