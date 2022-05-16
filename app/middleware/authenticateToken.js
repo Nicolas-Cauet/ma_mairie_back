@@ -11,14 +11,10 @@ const APIError = require(`../handlers/APIError`);
  * @returns {String} Returns administrator id
  */
 const authenticateToken = (req, res, next) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
   console.log(req.headers);
   const authHeader = req.headers.authorization;
   console.log(authHeader);
-=======
   const authHeader = req.headers.authorization;
->>>>>>> reporting
   const token = authHeader && authHeader.split(` `)[1];
   if (token == null) {
     const error = new APIError(`Pas de token merci de vous reconnecter !`);
@@ -26,15 +22,8 @@ const authenticateToken = (req, res, next) => {
   }
   jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, user) => {
     if (err) {
-      const error = new APIError(
-<<<<<<< HEAD
-        `le token n'a pas pu être vérifiée merci de recommencer !`
-=======
-        `le token n'a pas pu être vérifiée merci de recommencer !`,
->>>>>>> reporting
-      );
-      res.sendStatus(error, 403);
-=======
+      new APIError(`le token n'a pas pu être vérifiée merci de recommencer !`);
+    }
   const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(` `)[1];
   if (token == null) {
@@ -43,7 +32,6 @@ const authenticateToken = (req, res, next) => {
   jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, user) => {
     if (err) {
       throw new APIError(`le token n'a pas pu être vérifiée merci de recommencer !`);
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
     }
     req.admin = user;
     next();
