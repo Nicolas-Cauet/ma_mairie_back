@@ -34,7 +34,7 @@ const compareString = {
     };
     const result = await client.query(query);
     console.log(result.rows[0]);
-    return result.rows[0];
+    return Number(result.rows[0].count);
   },
   async verifyString(req, res, next) {
     const stringUser = req.body.user_text;
