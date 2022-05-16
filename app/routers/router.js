@@ -4,8 +4,10 @@ const adminController = require(`../controllers/adminController`);
 const adminReportingController = require(`../controllers/adminReportingController`);
 const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
 const adminControllerArticle = require(`../controllers/adminControllerCouncil`);
+const handleError = require(`../handlers/handleError`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
+const APIError = require(`../handlers/APIError`);
 const compareString = require(`../middleware/compareString`);
 
 const { schemaCreationAdmin, schemaCreateReportingUser } = require(`../validation/schema`);
@@ -55,10 +57,11 @@ router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, router
 /** ******** REPORTING *********** */
 router.get(
   `/reporting/:town_hall_id`,
-  routerWrapper(adminReportingController.getAllReportVisitor),
+  routerWrapper(adminReportingController.allReportingVisitor),
 );
 router.post(
   `/reporting/:town_hall_id`,
+  compareString.verifyString,
   validateCreateReportingUser(schemaCreateReportingUser),
   routerWrapper(adminReportingController.postReporting),
 );
@@ -70,5 +73,11 @@ router.post(
 // router.put(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.modifyArticle));
 
 router.get(`/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.allCouncil));
+
+router.use((req) => {
+  throw new APIError(`Url demander n'est pas valide !`, req.url, 404);
+});
+
+router.use(handleError);
 
 module.exports = router;
