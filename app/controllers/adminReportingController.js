@@ -102,7 +102,17 @@ const adminReportingController = {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Impossible de supprimer le signalement !`);
     }
-    const report = await dataMapperReporting.modifyReport(req.body);
+    const values = {
+      title: req.body.title,
+      user_image: req.body.user_image,
+      user_text: req.body.user_text,
+      admin_text: req.body.admin_text,
+      admin_image: req.body.admin_image,
+      reporting_category: req.body.reporting_category,
+      reporting_statut: req.body.reporting_statut,
+      reporting_id: req.params.reporting_id,
+    };
+    const report = await dataMapperReporting.modifyReport(values);
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);
     } else {
