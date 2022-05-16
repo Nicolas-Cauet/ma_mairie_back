@@ -7,7 +7,7 @@ Content-Type: application/json
     "insee":"51454",
     "password":"Mamairie@1",
     "email":"mairie2@gmail.fr"
-}5000
+}
 
 
 ###

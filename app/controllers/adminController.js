@@ -14,10 +14,11 @@ const { dataMapperAdmin } = require(`../models/dataMapper/index`);
 const adminController = {
 
   /**
-   * The method allows to register an administrator
    * @menberof adminController
    * @method signup
-   * @params {Object} req
+   * @param {Object} req.body
+   * @param {Object} res
+   * @returns {VoidFunction}
    */
   async signup(req, res) {
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
@@ -43,12 +44,13 @@ const adminController = {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
   },
-  /**
+    /**
    * @menberof adminController
-   * @method login
-   * @params {Object} req
-   * @return {Object} pseudo
-   */
+   * @method signup
+   * @param {Object} req.body
+   * @param {Object} res
+   * @returns {VoidFunction}
+   */ 
   async login(req, res) {
     // We check that the user does not already exist in the database
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);

@@ -2,23 +2,27 @@ const express = require(`express`);
 const adminController = require(`../controllers/adminController`);
 const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const adminReportingController = require(`../controllers/adminReportingController`);
+const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
+const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
+const compareString = require(`../middleware/compareString`);
+
 const {
-  schemaCreateAdmin,
+  schemaCreationAdmin,
   schemaCreateReportingUser,
-} = require(`../validation/schema/schemaCreateAdmin`);
+} = require(`../validation/schema`);
+
 const {
   validateCreateAdmin,
   validateCreateReportingUser,
 } = require(`../validation/validations`);
-const authenticateToken = require(`../middleware/authenticateToken`);
-const compareString = require(`../middleware/compareString`);
+
 const router = express.Router();
 
 /** ******** ADMIN *********** */
 router.post(
   `/signup`,
-  validateCreateAdmin(schemaCreateAdmin),
+  validateCreateAdmin(schemaCreationAdmin),
   routerWrapper(adminController.signup),
 );
 router.post(`/login`, routerWrapper(adminController.login));
@@ -51,8 +55,11 @@ router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper
 router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.deleteArticle));
 router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
 
-// route de test
-router.get(`/admin`, authenticateToken, routerWrapper(adminController.isConnect));
+/** ******** TOWN_HALL_STAFF *********** */
+
+// router.post(`/admin/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.postArticle));
+// router.delete(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.deleteArticle));
+// router.put(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.modifyArticle));
 
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
@@ -65,5 +72,8 @@ router.post(
   validateCreateReportingUser(schemaCreateReportingUser),
   routerWrapper(adminReportingController.postReporting),
 );
+/** ******** TOWN_HALL_STAFF *********** */
+
+router.get(`/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.allCouncil));
 
 module.exports = router;
