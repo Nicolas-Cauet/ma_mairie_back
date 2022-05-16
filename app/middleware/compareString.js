@@ -26,7 +26,7 @@ const compareString = {
     return ip;
   },
   async verifyIp(ip, req) {
-    const id = req.params.town_hall_id;
+    const id = parseInt(req.params.town_hall_id, 10);
     const query = {
       text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $2 AND created_at > CAST(NOW() AS DATE) - 1`,
       values: [ip, id],
@@ -41,7 +41,8 @@ const compareString = {
     const noBadWords = leoProfanity.check(stringUser);
     const ip = compareString.getIp(req);
     const verifyIp = compareString.verifyIp(ip, req);
-    if (verifyIp > 3) {
+    console.log(verifyIp);
+    if (verifyIp >= 2) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
     } else if (noBadWords === true) {
       throw new APIError(`Les insultes ne sont pas accepter`);
