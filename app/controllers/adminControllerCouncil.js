@@ -3,15 +3,10 @@ const { dataMapperCouncil } = require(`../models/dataMapper`);
 const debug = require(`debug`)(`adminController`);
 
 /**
-   *
-   * @param {*} req
-   * @param {*} res
-   */
-const adminControllerCouncil = {
-   * @type {Object}
-   * @export adminControllerCouncil
-   * @namespace adminControllerCouncil
-   */
+ * @type {Object}
+ * @export adminControllerCouncil
+ * @namespace adminControllerCouncil
+ */
 const adminControllerCouncil = {
   /** The method returns the list of municipal councilors and the mayor
    * @menberof adminControllerCouncil
@@ -22,7 +17,7 @@ const adminControllerCouncil = {
    */
   async allCouncil(req, res) {
     const townHallStaff = await dataMapperCouncil.getAllCouncil(
-      parseInt(req.params.town_hall_id, 10),
+      parseInt(req.params.town_hall_id, 10)
     );
     if (townHallStaff) {
       res.json(townHallStaff).status(200);

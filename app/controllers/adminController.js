@@ -20,7 +20,6 @@ const adminController = {
    * @returns void
    */
   async signup(req, res) {
-    console.log(req.body);
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
@@ -53,7 +52,6 @@ const adminController = {
     const match = await bcrypt.compare(req.body.password, existingUser.password);
     if (match) {
       const data = await dataMapperAdmin.userLogin(req.body.email, existingUser.password);
-      debug(data);
       const user = { pseudo: data.pseudo, town_hall_id: data.town_hall_id };
       const townHallId = user.town_hall_id;
       const accessToken = jwt.sign(user, secretKey);

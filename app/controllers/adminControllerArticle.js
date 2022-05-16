@@ -24,15 +24,6 @@ const adminControllerArticle = {
     } else {
       throw new APIError(`Impossible de récupérer la listes des articles`);
     }
-    // returns all reports from the database
-    //   const reportings = await dataMapperArticle.allReportingVisitor(req.admin.town_hall_id);
-    //   if (reportings) {
-    //     res.json(reportings);
-    //   } else {
-    //     throw new APIError(`Impossible de récupérer les signalements`);
-    //   }
-    // },
-    // async oneArticle() {
   },
   /**
    * The method returns an article
