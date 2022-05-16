@@ -9,6 +9,7 @@ const schemaCreateReportingUser = joi.object({
   email: joi.string().email().required(),
   first_name: joi.string().required().max(20),
 <<<<<<< HEAD
+<<<<<<< HEAD
   last_name: joi.string().required.max(20),
   phone_number: joi.string().min(10).max(10),
   town_hall_id: joi.string(),
@@ -17,6 +18,11 @@ const schemaCreateReportingUser = joi.object({
   phonenumber: joi.string().min(10).max(10),
   town_hall_id: joi.number(),
 >>>>>>> reporting
+=======
+  last_name: joi.string().required().max(20),
+  phonenumber: joi.string().min(10).max(10),
+  town_hall_id: joi.number(),
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
 });
 
 module.exports = schemaCreateReportingUser;

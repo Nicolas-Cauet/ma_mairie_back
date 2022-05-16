@@ -36,6 +36,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "title": "Je ne retrouve pas ma femme",
       "user_image": "null",
       "user_text": "HEHOOOOOOOO",
@@ -46,6 +47,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
 =======
 =======
 >>>>>>> reporting
+=======
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
       "title": "homme perdu",
       "user_image": "ok",
       "user_text": "michel j'ai perdu mon homme Elle est ou mon homme",
@@ -70,21 +73,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
 
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "title": "COUCOU",
 =======
       "reporting_category": "animaux",
       "title": "badWords",
       "user_text": "hello putain de merde bordel policier comment allez vous",
 >>>>>>> reporting
+=======
+      "title": "COUCOU",
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
       "email": "anthony@gmail.com",
       "first_name": "anthony",
       "last_name": "legrain",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       "user_text": "HEHOOOOOOOO",
 =======
       "user_text": "abibrgpiearngeargzeg",
 >>>>>>> article
+=======
+      "user_text": "abibrgpiearngeargzeg",
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
       "user_image": "",
       "reporting_category": "animaux"
 =======

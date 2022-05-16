@@ -45,10 +45,14 @@ const compareString = {
 <<<<<<< HEAD
     const query = {
 <<<<<<< HEAD
+<<<<<<< HEAD
       text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1 `,
 =======
       text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
 >>>>>>> article
+=======
+      text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
       values: [id],
     };
     const allUserText = await client.query(query);
@@ -67,6 +71,7 @@ const compareString = {
 
       const AllUserTextString = [` `];
 
+<<<<<<< HEAD
       // eslint-disable-next-line no-restricted-syntax
       for (const rows of allUserText.rows) {
         AllUserTextString.push(rows.user_text);
@@ -78,6 +83,17 @@ const compareString = {
       } else {
         next();
       }
+=======
+    // eslint-disable-next-line no-restricted-syntax
+    for (const rows of allUserText.rows) {
+      AllUserTextString.push(rows.user_text);
+    }
+    const matches = stringSimilarity.findBestMatch(stringUser, AllUserTextString);
+    if (matches.bestMatch.rating > 0.8) {
+      throw new APIError(`Le contenu du signalement est très similaire a un autre signalement`);
+    } else {
+      next();
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
     }
   },
 };

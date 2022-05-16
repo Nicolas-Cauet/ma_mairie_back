@@ -1,6 +1,18 @@
 const client = require(`../dbClient`);
 
+/**
+ *@type {Object}
+ *@export dataMapperArticle
+ *@namespace dataMapperArticle
+ */
 const dataMapperArticle = {
+  /**
+   * The method returns the list of all articles
+   * @menberof getAllArticleAdmin
+   * @method getAllArticleAdmin
+   * @param {Number} townHallId
+   * @returns {Object} Return all articles
+   */
   async getAllArticleAdmin(townHallId) {
     const query = {
       text: `SELECT * FROM article
@@ -10,6 +22,13 @@ const dataMapperArticle = {
     const data = await client.query(query);
     return data.rows;
   },
+  /**
+   * The method returns one article
+   * @menberof getAllArticleAdmin
+   * @method getOneArticle
+   * @param {Number} articleId
+   * @returns Return one article
+   */
   async getOneArticle(articleId) {
     const query = {
       text: `SELECT * FROM article
@@ -19,6 +38,13 @@ const dataMapperArticle = {
     const data = await client.query(query);
     return data.rows;
   },
+  /**
+   * The method delete one article
+   * @menberof getAllArticleAdmin
+   * @method deleteArticle
+   * @param {Number} id
+   * @returns void
+   */
   async deleteArticle(id) {
     const query = {
       text: `DELETE FROM article
@@ -28,6 +54,13 @@ const dataMapperArticle = {
     const data = await client.query(query);
     return data;
   },
+  /**
+   * The method allows to update an article
+   * @menberof getAllArticleAdmin
+   * @method modifyArticle
+   * @param {object} object
+   * @returns void
+   */
   async modifyArticle(object) {
     const query = {
       text: `UPDATE article
@@ -47,6 +80,13 @@ const dataMapperArticle = {
     const data = await client.query(query);
     return data;
   },
+  /**
+   * The method allows you to post an article not as an administrator
+   * @menberof getAllArticleAdmin
+   * @method postArticle
+   * @param {object} object
+   * @returns void
+   */
   async postArticle(object) {
     const query = {
       text: `INSERT INTO article

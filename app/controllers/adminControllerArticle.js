@@ -1,17 +1,32 @@
 const { dataMapperArticle } = require(`../models/dataMapper/index`);
 const APIError = require(`../handlers/APIError`);
 
+/**
+ * @type {Object}
+ * @namespace adminControllerArticle
+ * @exports adminControllerArticle
+ */
 const adminControllerArticle = {
+  /** The method returns the list of all items
+   * @menberof adminControllerArticle
+   * @method allArticle
+   * @param {Object} req
+   * @param {Object} res
+   * @returns {Array} Return all articles
+   */
   async allArticle(req, res) {
+<<<<<<< HEAD
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Impossible de supprimer le signalement !`);
     }
 <<<<<<< HEAD
+=======
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
     const articles = await dataMapperArticle.getAllArticleAdmin(req.params.town_hall_id);
     if (articles) {
-      res.json(articles);
+      res.json(articles).status(200);
     } else {
-      throw new APIError(`Impossible de récupérer les articles`);
+      throw new APIError(`Impossible de récupérer la listes des articles`);
     }
 =======
     // returns all reports from the database
@@ -25,17 +40,29 @@ const adminControllerArticle = {
     // async oneArticle() {
 >>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca
   },
+  /**
+   * The method returns an article
+   * @menberof adminControllerArticle
+   * @method oneArticle
+   * @param {Object} req
+   * @param {Object} res
+   * @returns {Object} Return one article
+   */
   async oneArticle(req, res) {
-    if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Impossible de supprimer le signalement !`);
-    }
     const articles = await dataMapperArticle.getOneArticle(req.params.article_id);
     if (articles) {
-      res.json(articles);
+      res.json(articles).status(200);
     } else {
       throw new APIError(`Impossible de séléctionéel l'article`);
     }
   },
+  /** The method allows you to delete an article
+   * @menberof adminControllerArticle
+   * @method deleteArticle
+   * @param {Object} req
+   * @param {Object} res
+   * @returns void
+   */
   async deleteArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Impossible de supprimer le signalement !`);
@@ -48,6 +75,14 @@ const adminControllerArticle = {
       throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
+  /**
+   * The method allows you to modify an article
+   * @menberof adminControllerArticle
+   * @method modifyArticle
+   * @param {Object} req
+   * @param {Object} res
+   * @return void
+   */
   async modifyArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Impossible de supprimer le signalement !`);
@@ -69,6 +104,14 @@ const adminControllerArticle = {
       throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
+  /**
+   * The method allows you to create an article
+   * @menberof adminControllerArticle
+   * @method postArticle
+   * @param {Object} req
+   * @param {Object} res
+   * @returns void
+   */
   async postArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Impossible de supprimer l'article !`);

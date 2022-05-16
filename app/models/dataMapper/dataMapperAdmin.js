@@ -1,5 +1,5 @@
 const debug = require(`debug`)(`dataMapper`);
-
+const APIError = require(`../../handlers/APIError`);
 const client = require(`../dbClient`);
 
 /**
@@ -13,10 +13,16 @@ const datamapper = {
    * By comparing the insee code of adminstrator and the town hall
    * @menberof datamapper
    * @method getTownHallId
+<<<<<<< HEAD
    * @params {String} insee
    * @return {Number} town_hall_id
    */
 
+=======
+   * @param {Number} insee
+   * @returns {Number} Return town_hall_id
+   */
+>>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async getTownHallId(insee) {
     const query = {
       text: `SELECT town_hall_id 
@@ -31,12 +37,12 @@ const datamapper = {
    * The method allows you to create an administrator
    * @menberof datamapper
    * @method userSignup
-   * @params {String} pseudo
-   * @params {String} insee
-   * @params {String} hashPassword
-   * @params {String} email
-   * @params {Number} idTownHall
-   * @return {Object} data
+   * @param {String} pseudo
+   * @param {Number} insee
+   * @param {String} hashPassword
+   * @param {String} email
+   * @param {Number} idTownHall
+   * @returns {Object} Returns object if insertion in database went well
    */
   async userSignup(pseudo, insee, hashPassword, email, idTownHall) {
     const query = {
@@ -50,12 +56,12 @@ const datamapper = {
     return data;
   },
   /**
-   * the method allows you to log in as an admin
+   * The method allows you to log in as an admin
    * @menberof datamapper
    * @method userLogin
-   * @params {String} email
-   * @params {String} hashPassword
-   * @return {object}
+   * @param {String} email
+   * @param {String} hashPassword
+   * @returns {Object} Return administrator information
    */
   async userLogin(email, hashPassword) {
     const query = {
@@ -68,10 +74,11 @@ const datamapper = {
     return data.rows[0];
   },
   /**
+   * The method returns an administrator according to his email
    * @menberof datamapper
    * @method getOneAdmin
-   * @params {String} email
-   * @return {Object}
+   * @param {String} email
+   * @returns {Object} Return administrator information
    */
   async getOneAdmin(email) {
     const query = {
