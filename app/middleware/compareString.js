@@ -33,6 +33,7 @@ const compareString = {
       values: [ip, id],
     };
     const result = await client.query(query);
+    console.log(result.rows[0]);
     return result.rows[0];
   },
   async verifyString(req, res, next) {
@@ -41,6 +42,7 @@ const compareString = {
     const noBadWords = leoProfanity.check(stringUser);
     const ip = await compareString.getIp(req);
     const verifyIp = await compareString.verifyIp(ip, req);
+    console.log(verifyIp);
     if (verifyIp >= 2) {
       throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
     } else if (noBadWords === true) {
