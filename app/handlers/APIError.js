@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 const { appendFile } = require("fs/promises");
 
 const path = require(`path`);
+=======
+const debug = require(`debug`)(`APIERROR`);
+>>>>>>> reporting
 
 class APIError extends Error {
   constructor(message, url, status = 500) {
@@ -16,7 +20,13 @@ class APIError extends Error {
    */
   async log() {
     // Gestion de l'affichage de l'erreur dans la console - instantanéité
+    const error = {
+      url: this.url,
+      message: this.message,
+      date: new Date(),
+    };
     console.error(this.url, this.message, new Date());
+<<<<<<< HEAD
     // Gestion des fichiers de log - historique
     const logPath = path.resolve(__dirname);
     const fileName = `${new Date().toISOString().split(`T`)[0]}.csv`;
@@ -27,6 +37,10 @@ class APIError extends Error {
       `${logPath}/${fileName}`,
       `${new Date().toLocaleTimeString()},${this.url},${this.message}\n`
     );
+=======
+    debug(error);
+    return error;
+>>>>>>> reporting
   }
 }
 

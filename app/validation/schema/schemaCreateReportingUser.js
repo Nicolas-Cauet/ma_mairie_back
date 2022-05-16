@@ -8,9 +8,15 @@ const schemaCreateReportingUser = joi.object({
   user_text: joi.string().required(),
   email: joi.string().email().required(),
   first_name: joi.string().required().max(20),
+<<<<<<< HEAD
   last_name: joi.string().required.max(20),
   phone_number: joi.string().min(10).max(10),
   town_hall_id: joi.string(),
+=======
+  last_name: joi.string().required().max(20),
+  phonenumber: joi.string().min(10).max(10),
+  town_hall_id: joi.number(),
+>>>>>>> reporting
 });
 
 module.exports = schemaCreateReportingUser;

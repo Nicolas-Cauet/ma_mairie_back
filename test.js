@@ -1,12 +1,11 @@
-const stringSimilarity = require(`string-similarity`);
-
-const similarity = stringSimilarity.compareTwoStrings(`healed`, `sealed`);
-
-const matches = stringSimilarity.findBestMatch(`healed`, [
-  `edward`,
-  `sealed`,
-  `theatre`,
-]);
-
-console.log(similarity);
-console.log(matches);
+var leoProfanity = require('leo-profanity');
+var frenchBadwordsList = require('french-badwords-list');
+ 
+// Only keep french badwords
+leoProfanity.clearList();
+leoProfanity.add(frenchBadwordsList.array);
+ 
+// output: true
+let tableau = leoProfanity.check('je taime');
+ 
+console.log(tableau);

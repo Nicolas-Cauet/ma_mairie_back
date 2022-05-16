@@ -20,5 +20,5 @@ app.use((req, res, next) => {
 app.use(router);
 
 app.listen(PORT, () => {
-  debug(`Listening on https://localhost:${PORT} `);
+  debug(`Listening on http://localhost:${PORT} `);
 });

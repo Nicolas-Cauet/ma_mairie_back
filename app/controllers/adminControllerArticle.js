@@ -1,4 +1,4 @@
-const dataMapperArticle = require(`../models/dataMapper/dataMapperArticle`);
+const { dataMapperArticle } = require(`../models/dataMapper/index`);
 const APIError = require(`../handlers/APIError`);
 
 const adminControllerArticle = {

@@ -9,22 +9,19 @@ const adminReportingController = {
    * @param {*} res
    */
   async allReporting(req, res) {
-<<<<<<< HEAD
     // allows to check if our id pass in request is not different from id of the token
     // if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
     //   throw new APIError(`Vous n'avez pas accès à cette page !`);
     // }
     // returns all reports from the database
     const reportings = await dataMapperReporting.getAllReport(req.body.town_hall_id);
-=======
-    console.log(req.params);
     // allows to check if our id pass in request is not different from id of the token
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     // returns all reports from the database
     const Allreporting = await dataMapperReporting.getAllReport(
-      req.admin.town_hall_id
+      req.admin.town_hall_id,
     );
     if (Allreporting) {
       res.json(Allreporting);
@@ -35,9 +32,8 @@ const adminReportingController = {
   async allReportingVisitor(req, res) {
     // eslint-disable-next-line max-len
     const reportings = await dataMapperReporting.getAllReportVisitor(
-      parseInt(req.params.town_hall_id, 10)
+      parseInt(req.params.town_hall_id, 10),
     );
->>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca
     if (reportings) {
       res.json(reportings);
     } else {
@@ -49,7 +45,7 @@ const adminReportingController = {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     const report = await dataMapperReporting.getOneReport(
-      req.params.reporting_id
+      req.params.reporting_id,
     );
     if (report) {
       res.status(200).json(report);
@@ -61,7 +57,7 @@ const adminReportingController = {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     const report = await dataMapperReporting.deleteReport(
-      req.params.reporting_id
+      req.params.reporting_id,
     );
     if (report.rowCount) {
       res.status(200).send(`Le signalement est bien supprimer !`);
@@ -91,7 +87,6 @@ const adminReportingController = {
     }
   },
   async postReporting(req, res) {
-    conslotchange.log(req.body 'postREPORTING !!!')
     const values = {
       title: req.body.title,
       email: req.body.email,

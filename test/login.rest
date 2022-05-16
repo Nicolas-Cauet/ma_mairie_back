@@ -8,11 +8,15 @@ Content-Type: application/json
     "password":"Mamairie@1",
 <<<<<<< HEAD
     "email":"mairie2@gmail.fr"
+<<<<<<< HEAD
 }5000
 =======
     "email":"mairie5@gmail.fr"
 }
 >>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca
+=======
+}
+>>>>>>> reporting
 
 
 ###
