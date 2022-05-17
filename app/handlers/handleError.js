@@ -14,8 +14,9 @@ const handleError = async (req, res, err) => {
   } else {
     myError = new APIError(err, req.url);
   }
-  await myError.log();
-  res.send(console.log(`ICI MIDDLEWARE ERROR RETOUR FRONT`));
+  // myError c'est un instance APIERROR
+  const error = await myError.log();
+  res.send(error);
   // res.status(myError.status).send(myError.message, `COUCOUCOUCOUCOUCO`);
 };
 

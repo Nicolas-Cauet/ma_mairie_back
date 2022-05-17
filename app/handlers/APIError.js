@@ -18,6 +18,7 @@ class APIError extends Error {
    * @returns void
    */
   async log() {
+    //! MARCHE PAS
     console.error(this.url, this.message, new Date());
   }
 }
