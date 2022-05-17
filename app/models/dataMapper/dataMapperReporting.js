@@ -81,18 +81,14 @@ const dataMapperReporting = {
   async modifyReport(object) {
     const query = {
       text: `UPDATE reporting
-      SET title = $1, user_image = $2, user_text = $3, admin_text = $4, admin_image = $5, reporting_category = $6, reporting_statut = $7
+      SET last_name = $1, first_name = $2, role = $3,
       WHERE reporting_id = $8; `,
       // eslint-disable-next-line max-len
       values: [
-        object.title,
-        object.user_image,
-        object.user_text,
-        object.admin_text,
-        object.admin_image,
-        object.reporting_category,
-        object.reporting_statut,
-        object.reporting_id,
+        object.lasttName,
+        object.firstName,
+        object.role,
+        object.townHallId
       ],
     };
     const data = await client.query(query);
