@@ -20,6 +20,7 @@ const dataMapperReporting = {
             WHERE town_hall_id = $1;`,
       values: [townHallId],
     };
+    
     const data = await client.query(query);
     return data.rows;
   },
@@ -90,6 +91,7 @@ const dataMapperReporting = {
         object.reporting_id,
       ],
     };
+    console.log(query);
     const data = await client.query(query);
     return data;
   },

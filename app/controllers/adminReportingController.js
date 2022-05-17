@@ -106,6 +106,7 @@ const adminReportingController = {
       reporting_statut: req.body.reporting_statut,
       reporting_id: req.params.reporting_id,
     };
+    console.log(values);
     const report = await dataMapperReporting.modifyReport(values);
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);
