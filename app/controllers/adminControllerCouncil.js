@@ -1,15 +1,8 @@
 const APIError = require(`../handlers/APIError`);
-const { dataMapperCouncil } = require(`../models/dataMapper`);
+const dataMapperCouncil = require(`../models/dataMapper/dataMapperCouncil`);
 const debug = require(`debug`)(`adminController`);
 
 /**
-<<<<<<< HEAD
-   *
-   * @param {*} req
-   * @param {*} res
-   */
-const adminControllerCouncil = {
-=======
    * @type {Object}
    * @export adminControllerCouncil
    * @namespace adminControllerCouncil
@@ -22,7 +15,6 @@ const adminControllerCouncil = {
    * @param {Object} res
    * @returns {Array} Return all municipal councilors
    */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async allCouncil(req, res) {
     const townHallStaff = await dataMapperCouncil.getAllCouncil(
       parseInt(req.params.town_hall_id, 10),
@@ -30,12 +22,51 @@ const adminControllerCouncil = {
     if (townHallStaff) {
       res.json(townHallStaff).status(200);
     } else {
-<<<<<<< HEAD
-      const error = new APIError(`Impossible de récupèrer les Conseillers`);
-      res.json(error);
-=======
       throw new APIError(`Impossible de récupèrer les Conseillers`);
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
+    }
+  },
+  async postOneMember(req, res) {
+    const member = {
+      lastName : req.body.lastName,
+      firstName : req.body.firstName,
+      role : req.body.role,
+      townHallId : req.params.town_hall_id
+    }
+    const result = await dataMapperCouncil.postMemberCouncil(member);
+    if (result.rowCount) {
+      res.status(200).send(`Votre ajout à été effectué !`);
+    } else {
+      throw new APIError(`La mise à jour n'est pas possible !`);
+    }
+  },
+  async deleteMemberCouncil(req, res) {
+    if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
+      throw new APIError(`Vous n'avez pas accès à cette page !`);
+    }
+    const report = await dataMapperCouncil.deleteMember(
+      req.params.Council_id,
+    );
+    if (report.rowCount) {
+      res.status(200).send(`Le Membre à bien été supprimer !`);
+    } else {
+      throw new APIError(`La mise à jour n'est pas possible !`);
+    }
+  },
+  async modifyMemberCouncil(req, res) {
+    if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
+      throw new APIError(`Impossible de supprimer le signalement !`);
+    }
+    const values = {
+      lastName : req.body.lastName,
+      firstName : req.body.firstName,
+      role : req.body.role,
+      townHallId : req.params.town_hall_id
+    };
+    const report = await dataMapperCouncil.modifyCouncil(values);
+    if (report.rowCount) {
+      res.status(200).send(`La mise à jour est bien passée.`);
+    } else {
+      throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
 };

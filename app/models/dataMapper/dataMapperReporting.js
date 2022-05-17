@@ -23,8 +23,6 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
-<<<<<<< HEAD
-=======
   /**
    * the method allows to return all the reports
    * @menberof dataMapperReporting
@@ -32,7 +30,6 @@ const dataMapperReporting = {
    * @param {Number} townHallId
    * @returns {Array} Array Returns all reports visitor
    */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async getAllReportVisitor(townHallId) {
     const query = {
       text: `SELECT * FROM reporting WHERE town_hall_id = $1
@@ -42,8 +39,6 @@ const dataMapperReporting = {
     const data = await client.query(query);
     return data.rows;
   },
-<<<<<<< HEAD
-=======
   /**
    * the method allows to return one report
    * @menberof dataMapperReporting
@@ -51,7 +46,6 @@ const dataMapperReporting = {
    * @param {Number} townHallId
    * @returns {Object} Object Returns one report
    */
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
   async getOneReport(reportId) {
     const query = {
       text: `SELECT * FROM reporting
@@ -87,18 +81,14 @@ const dataMapperReporting = {
   async modifyReport(object) {
     const query = {
       text: `UPDATE reporting
-      SET title = $1, user_image = $2, user_text = $3, admin_text = $4, admin_image = $5, reporting_category = $6, reporting_statut = $7
+      SET last_name = $1, first_name = $2, role = $3,
       WHERE reporting_id = $8; `,
       // eslint-disable-next-line max-len
       values: [
-        object.title,
-        object.user_image,
-        object.user_text,
-        object.admin_text,
-        object.admin_image,
-        object.reporting_category,
-        object.reporting_statut,
-        object.reporting_id,
+        object.lasttName,
+        object.firstName,
+        object.role,
+        object.townHallId
       ],
     };
     const data = await client.query(query);

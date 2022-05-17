@@ -33,6 +33,7 @@ class APIError extends Error {
    */
   async log() {
     // Gestion de l'affichage de l'erreur dans la console - instantanéité
+<<<<<<< HEAD
     const error = {
       url: this.url,
       message: this.message,
@@ -57,6 +58,9 @@ class APIError extends Error {
 >>>>>>> reporting
 =======
 >>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
+=======
+    console.error(this.message);
+>>>>>>> coucil
   }
 }
 
