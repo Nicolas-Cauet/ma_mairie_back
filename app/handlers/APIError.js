@@ -1,3 +1,5 @@
+const debug = require(`debug`)(`APIERROR`);
+
 /**
  * @type {class}
  * @namespace APIError
@@ -19,7 +21,7 @@ class APIError extends Error {
    */
   async log() {
     //! MARCHE PAS
-    console.error(this.url, this.message, new Date());
+    debug(this.message);
   }
 }
 
