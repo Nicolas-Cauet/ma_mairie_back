@@ -19,7 +19,7 @@ const adminController = {
    * @param {Object} res
    * @returns void
    */
-  async signup(req, res) {
+  async signup(req, res, next) {
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
@@ -28,7 +28,7 @@ const adminController = {
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     debug(existingUser);
     if (existingUser) {
-      throw new APIError(`L'utilisateur existe déja`);
+      next(new APIError(`L'utilisateur existe déja`));
     }
     const userSignup = await dataMapperAdmin
       // eslint-disable-next-line max-len

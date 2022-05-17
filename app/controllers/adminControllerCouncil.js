@@ -17,7 +17,7 @@ const adminControllerCouncil = {
    */
   async allCouncil(req, res) {
     const townHallStaff = await dataMapperCouncil.getAllCouncil(
-      parseInt(req.params.town_hall_id, 10)
+      parseInt(req.params.town_hall_id, 10),
     );
     if (townHallStaff) {
       res.json(townHallStaff).status(200);

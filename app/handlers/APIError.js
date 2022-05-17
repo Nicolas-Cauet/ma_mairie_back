@@ -18,6 +18,7 @@ class APIError extends Error {
    * @returns void
    */
   async log() {
+<<<<<<< HEAD
     // Gestion de l'affichage de l'erreur dans la console - instantanéité
 <<<<<<< HEAD
     console.error(this.message);
@@ -51,6 +52,9 @@ class APIError extends Error {
     console.error(this.message);
 >>>>>>> coucil
 >>>>>>> develop
+=======
+    console.error(this.url, this.message, new Date());
+>>>>>>> 2f03b7bb540566910a49bdaa3de017e6662022b2
   }
 }
 

@@ -4,10 +4,9 @@ const adminController = require(`../controllers/adminController`);
 const adminReportingController = require(`../controllers/adminReportingController`);
 const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
 const adminControllerArticle = require(`../controllers/adminControllerCouncil`);
-const handleError = require(`../handlers/handleError`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
-const APIError = require(`../handlers/APIError`);
+
 const compareString = require(`../middleware/compareString`);
 
 const { schemaCreationAdmin, schemaCreateReportingUser } = require(`../validation/schema`);
@@ -73,7 +72,5 @@ router.get(`/council/:town_hall_id`, routerWrapper(adminControllerCouncil.allCou
 // router.use((req, res, next) => {
 //   next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
 // });
-
-router.use(handleError);
 
 module.exports = router;
