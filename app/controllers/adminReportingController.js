@@ -104,7 +104,7 @@ const adminReportingController = {
     const values = {
       admin_text: req.body.admin_text,
       reporting_statut: req.body.reporting_statut,
-      reporting_id: req.params.reporting_id,
+      reporting_id: Number(req.params.reporting_id),
     };
     console.log(values);
     const report = await dataMapperReporting.modifyReport(values);
