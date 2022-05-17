@@ -3,7 +3,7 @@ const adminController = require(`../controllers/adminController`);
 // const adminControllerArticle = require(`../controllers/adminControllerArticle`)
 const adminReportingController = require(`../controllers/adminReportingController`);
 const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
-const adminControllerArticle = require(`../controllers/adminControllerCouncil`);
+const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 
@@ -46,7 +46,9 @@ router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(admi
 router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.oneArticle));
 router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.postArticle));
 router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.deleteArticle));
-router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
+router.patch(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
+
+
 
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
@@ -63,11 +65,11 @@ router.post(
 
 /** ******** TOWN_HALL_STAFF *********** */
 
-// router.post(`/admin/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.postArticle));
-// router.delete(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.deleteArticle));
-// router.put(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.modifyArticle));
-
 router.get(`/council/:town_hall_id`, routerWrapper(adminControllerCouncil.allCouncil));
+router.post(`/admin/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.postOneMember));
+router.delete(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.deleteMemberCouncil));
+router.patch(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.modifyMemberCouncil));
+
 
 // router.use((req, res, next) => {
 //   next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
