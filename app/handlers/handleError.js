@@ -8,7 +8,7 @@ const APIError = require(`./APIError`);
  * @returns {String} Returns error message
  */
 const handleError = async (req, res, err) => {
-  console.log(err, `HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYyy`);
+  console.log(`HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYyy`);
   let myError;
   if (err instanceof APIError) {
     myError = err;
@@ -16,8 +16,8 @@ const handleError = async (req, res, err) => {
     myError = new APIError(err, req.url);
   }
   // myError c'est un instance APIERROR
-  const error = await myError.log();
-  res.send(error);
+  await myError.log();
+  res.send(`coucou`);
   // res.status(myError.status).send(myError.message, `COUCOUCOUCOUCOUCO`);
 };
 
