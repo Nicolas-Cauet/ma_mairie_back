@@ -103,12 +103,7 @@ const adminReportingController = {
       throw new APIError(`Impossible de supprimer le signalement !`);
     }
     const values = {
-      title: req.body.title,
-      user_image: req.body.user_image,
-      user_text: req.body.user_text,
       admin_text: req.body.admin_text,
-      admin_image: req.body.admin_image,
-      reporting_category: req.body.reporting_category,
       reporting_statut: req.body.reporting_statut,
       reporting_id: req.params.reporting_id,
     };

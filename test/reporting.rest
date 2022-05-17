@@ -21,47 +21,13 @@ accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZT
 
 ###
 # UPDATE REPORTING
-<<<<<<< HEAD
-<<<<<<< HEAD
-PUT http://localhost:3000/admin/reporting/1/32
-=======
-PUT http://localhost:3003/admin/reporting/1/34
->>>>>>> article
-=======
-PUT http://localhost:3000/admin/reporting/1/4
->>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca
+PATCH http://localhost:3000/admin/reporting/1/4
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "title": "Je ne retrouve pas ma femme",
-      "user_image": "null",
-      "user_text": "HEHOOOOOOOO",
-      "admin_text": "Ok je vois",
-      "admin_image": "null",
-      "reporting_category": "animaux",
-      "reporting_statut": "En cours"
-=======
-=======
->>>>>>> reporting
-=======
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
-      "title": "homme perdu",
-      "user_image": "ok",
-      "user_text": "michel j'ai perdu mon homme Elle est ou mon homme",
-      "admin_text": "tqt tu va la retrouver",
-      "admin_image": "ok",
-<<<<<<< HEAD
-      "reporting_category": "animaux",
-      "reporting_statut": "Non validé"
->>>>>>> article
-=======
-      "reporting_category": "ok",
-      "reporting_statut": "Non validé"
->>>>>>> e29e8d8c4b5437bf2e6f5d16ba2d73f1ecafedca
+      "reporting_statut": "En cours",
+      "admin_text": "tqt tu va la retrouver"
 }
 
 ###
@@ -72,33 +38,18 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
       "title": "COUCOU",
-=======
       "reporting_category": "animaux",
       "title": "badWords",
       "user_text": "hello putain de merde bordel policier comment allez vous",
->>>>>>> reporting
-=======
       "title": "COUCOU",
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
       "email": "anthony@gmail.com",
       "first_name": "anthony",
       "last_name": "legrain",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       "user_text": "HEHOOOOOOOO",
-=======
       "user_text": "abibrgpiearngeargzeg",
->>>>>>> article
-=======
       "user_text": "abibrgpiearngeargzeg",
->>>>>>> 5853bdf2793af3884d53a2c28032ce5236f62d86
       "user_image": "",
       "reporting_category": "animaux"
-=======
       "phonenumber": "0807060504"
->>>>>>> reporting
 }
