@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS "article" (
 
 CREATE TABLE IF NOT EXISTS "reporting" (
   "reporting_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "title"  VARCHAR(30) NOT NULL,
+  "title"  VARCHAR(50) NOT NULL,
   "email" TEXT NOT NULL,
   "phonenumber" CHAR(10) NOT NULL,
   "first_name" TEXT NOT NULL,

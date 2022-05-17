@@ -8,8 +8,6 @@ const schemaCreateAdmin = joi
     email: joi.string().email(),
     password: joi.string().pattern(new RegExp(`^([a-zA-Z0-9@*#!?]{8,15})$`)),
     insee: joi.string().min(5),
-  })
-  .required()
-  .min(4);
+  }).required().min(4);
 
 module.exports = schemaCreateAdmin;

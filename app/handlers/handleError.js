@@ -7,7 +7,7 @@ const APIError = require(`./APIError`);
  * @param {Object} res
  * @returns {String} Returns error message
  */
-const handleError = async (err, req, res) => {
+const handleError = async (req, res, err) => {
   let myError;
   if (err instanceof APIError) {
     myError = err;
@@ -16,7 +16,7 @@ const handleError = async (err, req, res) => {
   }
   await myError.log();
 
-  res.json(myError.message).status(myError.status);
+  res.send(myError);
 };
 
 module.exports = handleError;

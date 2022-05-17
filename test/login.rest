@@ -1,12 +1,12 @@
 # TEST ENDPOINT SIGNUP
-POST http://localhost:3000/signu HTTP/1.1
+POST http://localhost:3000/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "pseudo": "adminMairie6",
+    "pseudo": "oooiuopàui",
     "insee":"51454",
-    "password":"Mamairie@1",
-    "email":"mairie5@gmail.fr"
+    "password":"lolo",
+    "email": "cocololo@gmail.com"
 }
 
 ###
@@ -16,8 +16,7 @@ POST http://localhost:3000/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "mairie2@gmail.fr",
-    "password":"Mamairie@1"
-    
+    "email": "nico@gmail.fr",
+    "password":"Mamairie"
 }
 

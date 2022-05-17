@@ -26,18 +26,17 @@ const adminController = {
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const townHallId = await dataMapperAdmin.getTownHallId(parseInt(req.body.insee, 10));
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
+    debug(existingUser);
     if (existingUser) {
       throw new APIError(`L'utilisateur existe déja`);
     }
     const userSignup = await dataMapperAdmin
       // eslint-disable-next-line max-len
       .userSignup(req.body.pseudo, parseInt(req.body.insee, 10), hashPassword, req.body.email, townHallId);
-    if (userSignup) {
-      res.status(200).send(`Utilisateur créer en base !`);
-    }
     if (!userSignup.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
+    res.status(200).send(`L'utilisateur est bien enregistré en base !`);
   },
   /**
    * The method allows you to log in as an administrator

@@ -17,11 +17,7 @@ const { validateCreateAdmin, validateCreateReportingUser } = require(`../validat
 const router = express.Router();
 
 /** ******** ADMIN *********** */
-router.post(
-  `/signup`,
-  validateCreateAdmin(schemaCreationAdmin),
-  routerWrapper(adminController.signup),
-);
+router.post(`/signup`, validateCreateAdmin(schemaCreationAdmin), routerWrapper(adminController.signup));
 router.post(`/login`, routerWrapper(adminController.login));
 
 /** ******** REPORTING *********** */
@@ -72,8 +68,12 @@ router.post(
 // router.delete(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.deleteArticle));
 // router.put(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.modifyArticle));
 
-router.get(`/council/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.allCouncil));
+router.get(`/council/:town_hall_id`, routerWrapper(adminControllerCouncil.allCouncil));
 
-// router.use(handleError);
+router.use((req, res, next) => {
+  next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
+});
+
+router.use(handleError);
 
 module.exports = router;
