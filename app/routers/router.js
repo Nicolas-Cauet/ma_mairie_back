@@ -70,9 +70,9 @@ router.post(
 
 router.get(`/council/:town_hall_id`, routerWrapper(adminControllerCouncil.allCouncil));
 
-router.use((req, res, next) => {
-  next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
-});
+// router.use((req, res, next) => {
+//   next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
+// });
 
 router.use(handleError);
 
