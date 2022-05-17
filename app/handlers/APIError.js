@@ -18,7 +18,8 @@ class APIError extends Error {
    * @returns void
    */
   async log() {
-    console.error(this.url, this.message, new Date());
+    // Gestion de l'affichage de l'erreur dans la console - instantanéité
+    console.error(this.message);
   }
 }
 
