@@ -82,7 +82,7 @@ const dataMapperReporting = {
   async modifyReport(object) {
     const query = {
       text: `UPDATE reporting
-      SET admin_text = $1, reporting_statut = $2,
+      SET admin_text = $1, reporting_statut = $2
       WHERE reporting_id = $3; `,
       // eslint-disable-next-line max-len
       values: [
