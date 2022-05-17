@@ -41,7 +41,7 @@ const dataMapperCouncil = {
     const data = await client.query(query);
     return data;
   },
-  async modifyReport(object) {
+  async modifyCouncil(object) {
     const query = {
       text: `UPDATE reporting
       SET title = $1, user_image = $2, user_text = $3, admin_text = $4, admin_image = $5, reporting_category = $6, reporting_statut = $7

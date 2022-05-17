@@ -3,7 +3,7 @@ const adminController = require(`../controllers/adminController`);
 // const adminControllerArticle = require(`../controllers/adminControllerArticle`)
 const adminReportingController = require(`../controllers/adminReportingController`);
 const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
-const adminControllerArticle = require(`../controllers/adminControllerCouncil`);
+const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 
@@ -46,7 +46,15 @@ router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(admi
 router.get(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.oneArticle));
 router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerArticle.postArticle));
 router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.deleteArticle));
-router.put(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
+router.patch(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
+
+
+/** ******** COUNCIL *********** */
+
+router.get(`/admin/article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.allCouncil));
+router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper(adminControllerCouncil.postOneMember));
+router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerCouncil.deleteMemberCouncil));
+router.patch(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerCouncil.modifyMemberCouncil));
 
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
