@@ -11,6 +11,7 @@ const APIError = require(`../handlers/APIError`);
  * @returns {String} Returns administrator id
  */
 const authenticateToken = (req, res, next) => {
+  console.log(req.headers);
   const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(` `)[1];
   if (token == null) {
@@ -21,6 +22,7 @@ const authenticateToken = (req, res, next) => {
       throw new APIError(`le token n'a pas pu être vérifiée merci de recommencer !`);
     }
     req.admin = user;
+    console.log(req.admin);
     next();
   });
 };
