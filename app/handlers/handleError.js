@@ -8,7 +8,6 @@ const APIError = require(`./APIError`);
  * @returns {String} Returns error message
  */
 const handleError = async (req, res, err) => {
-  console.log(`HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYyy`);
   let myError;
   if (err instanceof APIError) {
     myError = err;
