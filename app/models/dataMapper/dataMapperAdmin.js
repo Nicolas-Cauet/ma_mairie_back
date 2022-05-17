@@ -1,4 +1,3 @@
-const debug = require(`debug`)(`dataMapper`);
 const client = require(`../dbClient`);
 
 /**

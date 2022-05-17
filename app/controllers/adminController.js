@@ -18,22 +18,26 @@ const adminController = {
    * @param {Object} res
    * @returns void
    */
-  async signup(req, res) {
+  async signup(req, res, next) {
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
-      throw new Error(`Merci de saisir tous les champs !`);
+      const err = new Error(`Merci de saisir tous les champs !`);
+      err.status = 406;
+      next(err);
     }
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     debug(existingUser);
     if (existingUser) {
-      // next(new APIError(`L'utilisateur existe déja`));
+      const err = new Error(`L'utilisateur existe déja`);
+      next(err);
     }
     const userSignup = await dataMapperAdmin
       // eslint-disable-next-line max-len
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
     if (!userSignup.rowCount) {
-      // throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
+      const err = new Error(`La connexion a échoué vérifier vos données !`);
+      next(err);
     }
     res.status(200).send(`L'utilisateur est bien enregistré en base !`);
   },
@@ -45,7 +49,7 @@ const adminController = {
    * @param {Object} res
    * @returns {Object} Return token and town_hall_id
    */
-  async login(req, res) {
+  async login(req, res, next) {
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     const match = await bcrypt.compare(req.body.password, existingUser.password);
     if (match) {
@@ -55,7 +59,8 @@ const adminController = {
       const accessToken = jwt.sign(user, secretKey);
       res.json({ accessToken, townHallId });
     } else {
-      // throw new APIError(`Impossible de se connecter recommencer !`);
+      const err = new Error(`La connexion a échoué vérifier vos données !`);
+      next(err);
     }
   },
 };

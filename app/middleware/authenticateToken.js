@@ -13,11 +13,15 @@ const authenticateToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(` `)[1];
   if (token == null) {
-    // throw new APIError(`Pas de token merci de vous reconnecter !`);
+    const err = new Error(`Pas de token merci de vous reconnecter !`);
+    err.status = 401;
+    next(err);
   }
-  jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (err, user) => {
-    if (err) {
-      // throw new APIError(`le token n'a pas pu être vérifiée merci de recommencer !`);
+  jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (error, user) => {
+    if (error) {
+      const err = new Error(`le token n'a pas pu être vérifiée merci de recommencer !`);
+      err.status = 401;
+      next(err);
     }
     req.admin = user;
     next();

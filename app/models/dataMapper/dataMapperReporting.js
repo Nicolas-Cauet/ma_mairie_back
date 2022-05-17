@@ -1,5 +1,4 @@
 const client = require(`../dbClient`);
-const debug = require(`debug`)(`dataMapperReporting`);
 
 /**
  * @type {Object}
