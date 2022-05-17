@@ -26,7 +26,7 @@ const adminReportingController = {
     if (Allreporting) {
       res.json(Allreporting).status(200);
     } else {
-      "throw new APIError(`Impossible de récupérer les signalements`);
+      throw new APIError(`Impossible de récupérer les signalements`);
     }
   },
   /**
