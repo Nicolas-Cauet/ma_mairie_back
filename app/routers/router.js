@@ -114,10 +114,4 @@ router.patch(
   routerWrapper(adminControllerCouncil.modifyMemberCouncil),
 );
 
-// router.use((req, res, next) => {
-//   next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
-// });
-
-// router.use(handleError);
-
 module.exports = router;

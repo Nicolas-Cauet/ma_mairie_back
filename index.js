@@ -2,6 +2,7 @@ require(`dotenv`).config();
 const express = require(`express`);
 const debug = require(`debug`)(`APP`);
 const router = require(`./app/routers/router`);
+const handleError = require(`./app/handlers/handleError`);
 const PORT = process.env.PORT || 3333;
 
 const app = express();
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
 });
 
 app.use(router);
+
+app.use(handleError);
 
 app.listen(PORT, () => {
   debug(`Listening on http://localhost:${PORT} `);
