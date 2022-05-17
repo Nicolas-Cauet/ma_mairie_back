@@ -1,6 +1,6 @@
 const APIError = require(`../handlers/APIError`);
 const { dataMapperReporting } = require(`../models/dataMapper/index`);
-const debug = require(`debug`)(`adminReportingController`);
+// const debug = require(`debug`)(`adminReportingController`);
 
 /**
  * @type {object}

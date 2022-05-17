@@ -17,7 +17,7 @@ const handleError = async (req, res, err) => {
   // myError c'est un instance APIERROR
   await myError.log();
   console.log(`COUCOU`);
-  // res.status(myError.status).send(myError.message, `COUCOUCOUCOUCOUCO`);
+  res.status(myError.status);
 };
 
 module.exports = handleError;
