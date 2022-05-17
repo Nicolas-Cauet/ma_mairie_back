@@ -15,6 +15,7 @@ const handleError = async (req, res, err) => {
     myError = new APIError(err, req.url);
   }
   // myError c'est un instance APIERROR
+  console.log(myError, `HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYyy`);
   const error = await myError.log();
   res.send(error);
   // res.status(myError.status).send(myError.message, `COUCOUCOUCOUCOUCO`);
