@@ -1,5 +1,4 @@
 require(`dotenv`).config();
-const APIError = require(`../handlers/APIError`);
 const bcrypt = require(`bcrypt`);
 const debug = require(`debug`)(`adminController`);
 const jwt = require(`jsonwebtoken`);
@@ -19,22 +18,22 @@ const adminController = {
    * @param {Object} res
    * @returns void
    */
-  async signup(req, res, next) {
+  async signup(req, res) {
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
-      throw new APIError(`Merci de saisir tous les champs !`);
+      throw new Error(`Merci de saisir tous les champs !`);
     }
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     debug(existingUser);
     if (existingUser) {
-      next(new APIError(`L'utilisateur existe déja`));
+      // next(new APIError(`L'utilisateur existe déja`));
     }
     const userSignup = await dataMapperAdmin
       // eslint-disable-next-line max-len
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
     if (!userSignup.rowCount) {
-      throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
+      // throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }
     res.status(200).send(`L'utilisateur est bien enregistré en base !`);
   },
@@ -56,7 +55,7 @@ const adminController = {
       const accessToken = jwt.sign(user, secretKey);
       res.json({ accessToken, townHallId });
     } else {
-      throw new APIError(`Impossible de se connecter recommencer !`);
+      // throw new APIError(`Impossible de se connecter recommencer !`);
     }
   },
 };

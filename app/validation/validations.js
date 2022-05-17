@@ -1,11 +1,11 @@
-const APIError = require(`../handlers/APIError`);
-
 const validationModule = {
   validateCreateAdmin(schema) {
     return (req, _, next) => {
       const { error } = schema.validate(req.body);
       if (error) {
-        throw new APIError(error);
+        const err = new Error(error);
+        err.status = 406;
+        next(err);
       }
       next();
     };
@@ -14,7 +14,9 @@ const validationModule = {
     return (req, _, next) => {
       const { error } = schema.validate(req.body);
       if (error) {
-        throw new APIError(error);
+        const err = new Error(error);
+        err.status = 406;
+        next(err);
       }
       next();
     };

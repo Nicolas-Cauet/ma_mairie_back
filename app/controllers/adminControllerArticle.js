@@ -1,5 +1,4 @@
 const { dataMapperArticle } = require(`../models/dataMapper/index`);
-const APIError = require(`../handlers/APIError`);
 
 /**
  * @type {Object}
@@ -16,13 +15,13 @@ const adminControllerArticle = {
    */
   async allArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Impossible de supprimer le signalement !`);
+      // throw new APIError(`Impossible de supprimer le signalement !`);
     }
     const articles = await dataMapperArticle.getAllArticleAdmin(req.params.town_hall_id);
     if (articles) {
       res.json(articles).status(200);
     } else {
-      throw new APIError(`Impossible de récupérer la listes des articles`);
+      // throw new APIError(`Impossible de récupérer la listes des articles`);
     }
   },
   /**
@@ -38,7 +37,7 @@ const adminControllerArticle = {
     if (articles) {
       res.json(articles).status(200);
     } else {
-      throw new APIError(`Impossible de séléctionéel l'article`);
+      // throw new APIError(`Impossible de séléctionéel l'article`);
     }
   },
   /** The method allows you to delete an article
@@ -50,14 +49,14 @@ const adminControllerArticle = {
    */
   async deleteArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Impossible de supprimer le signalement !`);
+      // throw new APIError(`Impossible de supprimer le signalement !`);
     }
     const articles = await dataMapperArticle.deleteArticle(req
       .params.article_id);
     if (articles.rowCount) {
       res.status(200).send(`Le signalement est bien supprimer !`);
     } else {
-      throw new APIError(`La mise à jour n'est pas possible !`);
+      // throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
   /**
@@ -70,7 +69,7 @@ const adminControllerArticle = {
    */
   async modifyArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Impossible de supprimer le signalement !`);
+      // throw new APIError(`Impossible de supprimer le signalement !`);
     }
     const values = {
       title: req.body.title,
@@ -86,7 +85,7 @@ const adminControllerArticle = {
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);
     } else {
-      throw new APIError(`La mise à jour n'est pas possible !`);
+      // throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
   /**
@@ -99,7 +98,7 @@ const adminControllerArticle = {
    */
   async postArticle(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Impossible de supprimer l'article !`);
+      // throw new APIError(`Impossible de supprimer l'article !`);
     }
     const values = {
       title: req.body.title,
@@ -115,7 +114,7 @@ const adminControllerArticle = {
     if (report.rowCount) {
       res.status(200).send(`L'article à été poster!`);
     } else {
-      throw new APIError(`La mise à jour n'est pas possible !`);
+      // throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
 

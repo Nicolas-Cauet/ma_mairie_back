@@ -1,4 +1,3 @@
-const APIError = require(`../handlers/APIError`);
 const client = require(`../models/dbClient`);
 const stringSimilarity = require(`string-similarity`);
 const debug = require(`debug`)(`compareString`);
@@ -41,9 +40,9 @@ const compareString = {
     const ip = await compareString.getIp(req);
     const verifyIp = await compareString.verifyIp(ip, req);
     if (verifyIp >= 100) {
-      throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
+      // throw new APIError(`Vous avez deja poster 3 fois aujourd'hui`);
     } else if (noBadWords === true) {
-      throw new APIError(`Les insultes ne sont pas accepter`);
+      // throw new APIError(`Les insultes ne sont pas accepter`);
     } else {
       const query = {
         text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
@@ -59,7 +58,7 @@ const compareString = {
       }
       const matches = stringSimilarity.findBestMatch(stringUser, AllUserTextString);
       if (matches.bestMatch.rating > 0.8) {
-        throw new APIError(`Le contenu du signalement est très similaire a un autre signalement`);
+        // throw new APIError(`Le contenu du signalement est très similaire a un autre signalement`);
       } else {
         next();
       }

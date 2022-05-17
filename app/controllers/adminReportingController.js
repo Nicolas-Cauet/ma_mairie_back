@@ -1,4 +1,3 @@
-const APIError = require(`../handlers/APIError`);
 const { dataMapperReporting } = require(`../models/dataMapper/index`);
 // const debug = require(`debug`)(`adminReportingController`);
 
@@ -18,7 +17,7 @@ const adminReportingController = {
    */
   async allReporting(req, res) {
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
-      throw new APIError(`Vous n'avez pas accès à cette page !`);
+      // throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     const Allreporting = await dataMapperReporting.getAllReport(
       req.params.town_hall_id,
@@ -26,7 +25,7 @@ const adminReportingController = {
     if (Allreporting) {
       res.json(Allreporting).status(200);
     } else {
-      throw new APIError(`Impossible de récupérer les signalements`);
+     // throw new APIError(`Impossible de récupérer les signalements`);
     }
   },
   /**
@@ -45,7 +44,7 @@ const adminReportingController = {
     if (reportings) {
       res.json(reportings).status(200);
     } else {
-      throw new APIError(`Impossible de récupérer les signalements`);
+      // throw new APIError(`Impossible de récupérer les signalements`);
     }
   },
   /**
@@ -58,7 +57,7 @@ const adminReportingController = {
    */
   async oneReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Vous n'avez pas accès à cette page !`);
+      // throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     const report = await dataMapperReporting.getOneReport(
       req.params.reporting_id,
@@ -66,7 +65,7 @@ const adminReportingController = {
     if (report) {
       res.json(report).status(200);
     }
-    throw new APIError(`Impossible de récupérer le signalement`);
+    // throw new APIError(`Impossible de récupérer le signalement`);
   },
   /**
    * The method allows you to delete a report
@@ -78,7 +77,7 @@ const adminReportingController = {
    */
   async deleteReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Vous n'avez pas accès à cette page !`);
+      // throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     const report = await dataMapperReporting.deleteReport(
       req.params.reporting_id,
@@ -86,7 +85,7 @@ const adminReportingController = {
     if (report.rowCount) {
       res.status(200).send(`Le signalement est bien supprimer !`);
     } else {
-      throw new APIError(`La mise à jour n'est pas possible !`);
+      // throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
   /**
@@ -99,7 +98,7 @@ const adminReportingController = {
    */
   async modifyReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Impossible de supprimer le signalement !`);
+      // throw new APIError(`Impossible de supprimer le signalement !`);
     }
     const values = {
       admin_text: req.body.admin_text,
@@ -111,7 +110,7 @@ const adminReportingController = {
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);
     } else {
-      throw new APIError(`La mise à jour n'est pas possible !`);
+      // throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
   /**
@@ -140,7 +139,7 @@ const adminReportingController = {
     if (report.rowCount) {
       res.status(200).send(`Votre signalement est effectué !`);
     } else {
-      throw new APIError(`Votre signalement ne peut pas être effectué !`);
+      // throw new APIError(`Votre signalement ne peut pas être effectué !`);
     }
   },
 };
