@@ -22,7 +22,7 @@ class APIError extends Error {
   async log() {
     //! MARCHE PAS
     debug(this.message);
-    console.log(this.message);
+    console.log(`APIERROR !!!!!!!!!!!!!`);
   }
 }
 
