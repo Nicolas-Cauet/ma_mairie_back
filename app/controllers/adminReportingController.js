@@ -17,8 +17,6 @@ const adminReportingController = {
    * @returns Return all reports Administrator
    */
   async allReporting(req, res) {
-    console.log(req.url);
-    console.log(req.admin, `DU GENOUX !!!`)
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
