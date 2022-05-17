@@ -18,7 +18,8 @@ const dataMapperCouncil = {
       values: [townHallId],
     };
     const data = await client.query(query);
-    return data.row;
+    console.log(data.rows);
+    return data.rows;
   },
 };
 
