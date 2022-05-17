@@ -22,8 +22,6 @@ const adminControllerCouncil = {
     if (townHallStaff) {
       res.json(townHallStaff).status(200);
     } else {
-      const error = new APIError(`Impossible de récupèrer les Conseillers`);
-      res.json(error);
       throw new APIError(`Impossible de récupèrer les Conseillers`);
     }
   },
