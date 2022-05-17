@@ -17,7 +17,7 @@ const adminReportingController = {
    * @returns Return all reports Administrator
    */
   async allReporting(req, res) {
-    if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
+    if (req.params.town_hall_id !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
     const Allreporting = await dataMapperReporting.getAllReport(
@@ -106,7 +106,6 @@ const adminReportingController = {
       reporting_statut: req.body.reporting_statut,
       reporting_id: req.params.reporting_id,
     };
-    console.log(values);
     const report = await dataMapperReporting.modifyReport(values);
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);
