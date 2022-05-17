@@ -24,7 +24,7 @@ const adminController = {
       throw new APIError(`Merci de saisir tous les champs !`);
     }
     const hashPassword = await bcrypt.hash(req.body.password, 10);
-    const townHallId = await dataMapperAdmin.getTownHallId(parseInt(req.body.insee, 10));
+    const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     debug(existingUser);
     if (existingUser) {
@@ -32,7 +32,7 @@ const adminController = {
     }
     const userSignup = await dataMapperAdmin
       // eslint-disable-next-line max-len
-      .userSignup(req.body.pseudo, parseInt(req.body.insee, 10), hashPassword, req.body.email, townHallId);
+      .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
     if (!userSignup.rowCount) {
       throw new APIError(`Impossible d'enregistrer 'l'utilisateur en base !`);
     }

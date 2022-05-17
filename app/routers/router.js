@@ -6,6 +6,7 @@ const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
 const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
+const handleError = require(`../handlers/handleError`);
 
 const compareString = require(`../middleware/compareString`);
 
@@ -48,8 +49,6 @@ router.post(`/admin/new-article/:town_hall_id`, authenticateToken, routerWrapper
 router.delete(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.deleteArticle));
 router.patch(`/admin/article/:town_hall_id/:article_id`, authenticateToken, routerWrapper(adminControllerArticle.modifyArticle));
 
-
-
 /** ******** VISITEUR *********** */
 /** ******** REPORTING *********** */
 router.get(
@@ -70,9 +69,10 @@ router.post(`/admin/council/:town_hall_id`, authenticateToken, routerWrapper(adm
 router.delete(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.deleteMemberCouncil));
 router.patch(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateToken, routerWrapper(adminControllerCouncil.modifyMemberCouncil));
 
-
 // router.use((req, res, next) => {
 //   next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
 // });
+
+router.use(handleError);
 
 module.exports = router;

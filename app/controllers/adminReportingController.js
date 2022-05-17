@@ -98,7 +98,6 @@ const adminReportingController = {
    * @returns void
    */
   async modifyReporting(req, res) {
-    console.log(req.body);
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Impossible de supprimer le signalement !`);
     }

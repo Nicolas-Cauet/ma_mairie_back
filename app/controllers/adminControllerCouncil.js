@@ -3,10 +3,10 @@ const dataMapperCouncil = require(`../models/dataMapper/dataMapperCouncil`);
 const debug = require(`debug`)(`adminController`);
 
 /**
-   * @type {Object}
-   * @export adminControllerCouncil
-   * @namespace adminControllerCouncil
-   */
+ * @type {Object}
+ * @export adminControllerCouncil
+ * @namespace adminControllerCouncil
+ */
 const adminControllerCouncil = {
   /** The method returns the list of municipal councilors and the mayor
    * @menberof adminControllerCouncil
@@ -17,7 +17,7 @@ const adminControllerCouncil = {
    */
   async allCouncil(req, res) {
     const townHallStaff = await dataMapperCouncil.getAllCouncil(
-      parseInt(req.params.town_hall_id, 10),
+      parseInt(req.params.town_hall_id, 10)
     );
     if (townHallStaff) {
       res.json(townHallStaff).status(200);
@@ -27,11 +27,11 @@ const adminControllerCouncil = {
   },
   async postOneMember(req, res) {
     const member = {
-      lastName : req.body.lastName,
-      firstName : req.body.firstName,
-      role : req.body.role,
-      townHallId : req.params.town_hall_id
-    }
+      lastName: req.body.lastName,
+      firstName: req.body.firstName,
+      role: req.body.role,
+      townHallId: req.params.town_hall_id,
+    };
     const result = await dataMapperCouncil.postMemberCouncil(member);
     if (result.rowCount) {
       res.status(200).send(`Votre ajout à été effectué !`);
@@ -43,9 +43,7 @@ const adminControllerCouncil = {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       throw new APIError(`Vous n'avez pas accès à cette page !`);
     }
-    const report = await dataMapperCouncil.deleteMember(
-      req.params.Council_id,
-    );
+    const report = await dataMapperCouncil.deleteMember(req.params.Council_id);
     if (report.rowCount) {
       res.status(200).send(`Le Membre à bien été supprimer !`);
     } else {
@@ -57,10 +55,10 @@ const adminControllerCouncil = {
       throw new APIError(`Impossible de supprimer le signalement !`);
     }
     const values = {
-      lastName : req.body.lastName,
-      firstName : req.body.firstName,
-      role : req.body.role,
-      townHallId : req.params.town_hall_id
+      lastName: req.body.lastName,
+      firstName: req.body.firstName,
+      role: req.body.role,
+      townHallId: req.params.town_hall_id,
     };
     const report = await dataMapperCouncil.modifyCouncil(values);
     if (report.rowCount) {
