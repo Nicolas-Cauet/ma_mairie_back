@@ -73,6 +73,6 @@ router.patch(`/admin/council/:town_hall_id/:town_hall_staff_id`, authenticateTok
 //   next(new APIError(`Url que vous demander n'existe pas !`, req.url, 404));
 // });
 
-router.use(handleError);
+// router.use(handleError);
 
 module.exports = router;
