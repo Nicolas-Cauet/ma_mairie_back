@@ -15,7 +15,8 @@ const handleError = async (req, res, err) => {
     myError = new APIError(err, req.url);
   }
   await myError.log();
-  res.status(myError.status).send(myError.message);
+  console.log(`ICI MIDDLEWARE ERROR RETOUR FRONT`);
+  res.status(myError.status).send(myError.message, `COUCOUCOUCOUCOUCO`);
 };
 
 module.exports = handleError;
