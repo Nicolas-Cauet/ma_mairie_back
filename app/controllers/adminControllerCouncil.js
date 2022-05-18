@@ -69,10 +69,8 @@ const adminControllerCouncil = {
       lastName: req.body.last_name,
       firstName: req.body.first_name,
       role: req.body.role,
-      townHallId: req.params.town_hall_id,
+      townHallStaffId: req.params.town_hall_staff_id,
     };
-    console.log(values);
-    console.log(req.body);
     const report = await dataMapperCouncil.modifyCouncil(values);
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);

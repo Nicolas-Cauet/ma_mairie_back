@@ -42,11 +42,13 @@ const dataMapperCouncil = {
     const query = {
       text: `UPDATE town_hall_staff
       SET last_name = $1, first_name = $2, role = $3, 
-      WHERE town_hall_id = $4; `,
+      WHERE town_hall_staff_id = $4; `,
       // eslint-disable-next-line max-len
-      values: [object.lastName, object.firstName, object.role, object.townHallId],
+      values: [object.lastName, object.firstName, object.role, object.townHallStaffId],
     };
+    console.log(query);
     const data = await client.query(query);
+    console.log(data.rowCount);
     return data;
   },
 };
