@@ -1,5 +1,3 @@
-const debug = require(`debug`)(`dataMapper`);
-const APIError = require(`../../handlers/APIError`);
 const client = require(`../dbClient`);
 
 /**

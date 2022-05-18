@@ -21,9 +21,6 @@ const dataMapperCouncil = {
     return data.rows;
   },
   async postMemberCouncil(object) {
-    if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      throw new APIError(`Vous n'avez pas accès à cette page !`);
-    }
     const query = {
       text: `INSERT INTO town_hall_staff(last_name, first_name, role, town_hall_id)
             VALUES($1, $2, $3, $4)`,
