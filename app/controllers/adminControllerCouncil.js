@@ -30,6 +30,7 @@ const adminControllerCouncil = {
       lastName: req.body.last_name,
       firstName: req.body.first_name,
       role: req.body.role,
+      photo: req.body.photo,
       townHallId: req.params.town_hall_id,
     };
     const result = await dataMapperCouncil.postMemberCouncil(member);
@@ -69,6 +70,7 @@ const adminControllerCouncil = {
       lastName: req.body.last_name,
       firstName: req.body.first_name,
       role: req.body.role,
+      photo: req.body.photo,
       townHallStaffId: req.params.town_hall_staff_id,
     };
     const report = await dataMapperCouncil.modifyCouncil(values);
