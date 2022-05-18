@@ -107,9 +107,17 @@ const dataMapperArticle = {
     return data;
   },
 
+  /**
+   * The method get all article as a visitor
+   * @menberof getAllArticleAdmin
+   * @method postArticle
+   * @param {object} object
+   * @returns {array}
+   */
+
   async getAllArticle(townHallId) {
     const query = {
-      text: `SELECT * FROM reporting
+      text: `SELECT * FROM article
                     WHERE town_hall_id = $1;`,
       values: [townHallId],
     };
