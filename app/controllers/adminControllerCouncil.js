@@ -50,7 +50,7 @@ const adminControllerCouncil = {
       err.status = 401;
       next(err);
     }
-    const report = await dataMapperCouncil.deleteMember(req.params.Council_id);
+    const report = await dataMapperCouncil.deleteMember(req.params.town_hall_staff_id);
     if (report.rowCount) {
       res.status(200).send(`Le Membre à bien été supprimer !`);
     } else {

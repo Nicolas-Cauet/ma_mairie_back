@@ -41,7 +41,7 @@ const dataMapperCouncil = {
   async modifyCouncil(object) {
     const query = {
       text: `UPDATE town_hall_staff
-      SET last_name = $1, first_name = $2, role = $3, 
+      SET last_name = $1, first_name = $2, role = $3
       WHERE town_hall_staff_id = $4; `,
       // eslint-disable-next-line max-len
       values: [object.lastName, object.firstName, object.role, object.townHallStaffId],
