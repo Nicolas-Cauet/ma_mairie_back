@@ -14,7 +14,7 @@ const dataMapperCouncil = {
    */
   async getAllCouncil(townHallId) {
     const query = {
-      text: `SELECT * FROM town_hall_staff WHERE town_hall__id = $1`,
+      text: `SELECT * FROM town_hall_staff WHERE town_hall_id = $1`,
       values: [townHallId],
     };
     const data = await client.query(query);
