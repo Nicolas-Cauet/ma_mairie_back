@@ -20,6 +20,12 @@ const dataMapperCouncil = {
     const data = await client.query(query);
     return data.rows;
   },
+   /**
+   * @menberof dataMapperCouncil
+   * @method postMemberCouncil
+   * @param {object} object
+   * @returns {void} post one new memner into database
+   */
   async postMemberCouncil(object) {
     const query = {
       text: `INSERT INTO town_hall_staff(last_name, first_name, role, photo, town_hall_id)
@@ -29,6 +35,12 @@ const dataMapperCouncil = {
     const data = await client.query(query);
     return data;
   },
+    /**
+   * @menberof dataMapperCouncil
+   * @method deleteMember
+   * @param {number} id
+   * @returns {Array} delete a member with id 
+   */
   async deleteMember(id) {
     const query = {
       text: `DELETE FROM town_hall_staff
@@ -38,6 +50,12 @@ const dataMapperCouncil = {
     const data = await client.query(query);
     return data;
   },
+    /**
+   * @menberof dataMapperCouncil
+   * @method modifyCouncil
+   * @param {object} object
+   * @returns {Array} modify a member
+   */
   async modifyCouncil(object) {
     const query = {
       text: `UPDATE town_hall_staff

@@ -25,6 +25,13 @@ const adminControllerCouncil = {
       next(err);
     }
   },
+    /** this method posts a new advisor member
+   * @menberof adminControllerCouncil
+   * @method postOneMember
+   * @param {Object} req
+   * @param {Object} res
+   * @returns {void} post the new adviser
+   */
   async postOneMember(req, res, next) {
     const member = {
       lastName: req.body.last_name,
@@ -43,6 +50,14 @@ const adminControllerCouncil = {
       next(err);
     }
   },
+    /** 
+    this method removes a board member by his id
+  * @menberof adminControllerCouncil
+  * @method deleteMemberCouncil
+  * @param {Object} req
+  * @param {Object} res
+  * @returns {array}delete the board member
+  */
   async deleteMemberCouncil(req, res, next) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       const err = new Error(
@@ -58,6 +73,15 @@ const adminControllerCouncil = {
       // throw new APIError(`La mise à jour n'est pas possible !`);
     }
   },
+      /** 
+    this method modify a board member by his id
+  * @menberof adminControllerCouncil
+  * @method modifyMemberCouncil
+  * @param {Object} req
+  * @param {Object} res
+  * @returns {array}modify the board member
+  */
+
   async modifyMemberCouncil(req, res, next) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       const err = new Error(
