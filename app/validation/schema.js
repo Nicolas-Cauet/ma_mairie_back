@@ -1,5 +1,5 @@
 const schemaCreationAdmin = require(`./schema/schemaCreateAdmin`);
 const schemaCreateReportingUser = require(`./schema/schemaCreateReportingUser`);
-const schemaReportingUser = require(`./schema/schemaValidateReporting`);
+const schemaValidateReportingUser = require(`./schema/schemaValidateReportingUser`);
 
-module.exports = { schemaCreationAdmin, schemaReportingUser, schemaCreateReportingUser };
+module.exports = { schemaCreationAdmin, schemaValidateReportingUser, schemaCreateReportingUser };

@@ -54,7 +54,10 @@ const adminControllerCouncil = {
     if (report.rowCount) {
       res.status(200).send(`Le Membre à bien été supprimer !`);
     } else {
-      // throw new APIError(`La mise à jour n'est pas possible !`);
+      const err = new Error(
+        `La mise à jour n'est pas possible !`,
+      );
+      next(err);
     }
   },
   async modifyMemberCouncil(req, res, next) {

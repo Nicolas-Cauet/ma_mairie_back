@@ -1,6 +1,5 @@
-const { status } = require("express/lib/response");
 const client = require(`../dbClient`);
-const debug = require(`debug`)(`datamapperlog`);
+
 /**
  *@type {Object}
  *@export datamapper

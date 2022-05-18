@@ -1,5 +1,3 @@
-const debug = require(`debug`)(`validation`);
-
 const validationModule = {
   validateCreateAdmin(schema) {
     return (req, _, next) => {
@@ -21,14 +19,6 @@ const validationModule = {
           );
           err.status = 406;
           next(err);
-        } else if (
-          error.message === `Cannot read properties of undefined (reading 'town_hall_id')`
-        ) {
-          const err = new Error(
-            `Le code insee est invalide !`,
-          );
-          err.status = `HELLO`;
-          next(err);
         }
       }
       next();
@@ -39,6 +29,17 @@ const validationModule = {
       const { error } = schema.validate(req.body);
       if (error) {
         const err = new Error(error);
+        err.status = 406;
+        next(err);
+      }
+      next();
+    };
+  },
+  validateReportingUser(schema) {
+    return (req, _, next) => {
+      const { error } = schema.validate(req.body);
+      if (error.message === `"reporting_category" is required`) {
+        const err = new Error(`Le statut du signalement est obligatoire !`);
         err.status = 406;
         next(err);
       }

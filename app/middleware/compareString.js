@@ -52,7 +52,6 @@ const compareString = {
       const allUserText = await client.query(query);
 
       const AllUserTextString = [` `];
-
       // eslint-disable-next-line no-restricted-syntax
       for (const rows of allUserText.rows) {
         AllUserTextString.push(rows.user_text);
