@@ -41,14 +41,10 @@ const dataMapperCouncil = {
   async modifyCouncil(object) {
     const query = {
       text: `UPDATE reporting
-      SET title = $1, user_image = $2, user_text = $3, admin_text = $4, admin_image = $5, reporting_category = $6, reporting_statut = $7
-      WHERE reporting_id = $8; `,
+      SET last_name = $1, first_name = $2, role = $3, 
+      WHERE town_hall_id = $4; `,
       // eslint-disable-next-line max-len
-      values: [
-        object.title,
-        object.user_image,
-        object.user_text,
-      ],
+      values: [object.lastName, object.firstName, object.role, object.townHallId],
     };
     const data = await client.query(query);
     return data;

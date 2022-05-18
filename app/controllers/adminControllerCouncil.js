@@ -27,8 +27,8 @@ const adminControllerCouncil = {
   },
   async postOneMember(req, res, next) {
     const member = {
-      lastName: req.body.lastName,
-      firstName: req.body.firstName,
+      lastName: req.body.last_name,
+      firstName: req.body.first_name,
       role: req.body.role,
       townHallId: req.params.town_hall_id,
     };
@@ -66,8 +66,8 @@ const adminControllerCouncil = {
       next(err);
     }
     const values = {
-      lastName: req.body.lastName,
-      firstName: req.body.firstName,
+      lastName: req.body.last_name,
+      firstName: req.body.first_name,
       role: req.body.role,
       townHallId: req.params.town_hall_id,
     };
