@@ -27,7 +27,6 @@ const adminController = {
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
-    debug(existingUser);
     if (existingUser) {
       const err = new Error(`L'utilisateur existe déja`);
       next(err);

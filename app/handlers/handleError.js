@@ -1,12 +1,12 @@
 const debug = require(`debug`)(`handleError`);
 
-const handleError = async (err, req, res, next) => {
-  debug(err.message);
-  res.status(err.status || 500);
+const handleError = async (error, req, res, next) => {
+  debug(error.message);
+  res.status(error.status || 500);
   res.send({
     error: {
-      status: err.status,
-      message: err.message,
+      status: error.status,
+      message: error.message,
     },
   });
 };

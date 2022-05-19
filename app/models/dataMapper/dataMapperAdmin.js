@@ -1,5 +1,6 @@
+const { status } = require("express/lib/response");
 const client = require(`../dbClient`);
-
+const debug = require(`debug`)(`datamapperlog`);
 /**
  *@type {Object}
  *@export datamapper
@@ -24,6 +25,9 @@ const datamapper = {
       values: [insee],
     };
     const idTownHall = await client.query(query);
+    if (!idTownHall.rowCount) {
+      throw new Error(`Le code Insee est invalide !`);
+    }
     return idTownHall.rows[0].town_hall_id;
   },
   /**

@@ -12,7 +12,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "debug": "DEBUG=APP,handleError nodemon index.js"
+    "debug": "DEBUG=APP,handleError,validation,adminController,datamapperlog nodemon index.js"
   },
   "repository": {
     "type": "git",
