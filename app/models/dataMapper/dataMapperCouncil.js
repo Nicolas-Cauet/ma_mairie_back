@@ -64,9 +64,7 @@ const dataMapperCouncil = {
       // eslint-disable-next-line max-len
       values: [object.lastName, object.firstName, object.role, object.photo ,object.townHallStaffId],
     };
-    console.log(query);
     const data = await client.query(query);
-    console.log(data.rowCount);
     return data;
   },
 };
