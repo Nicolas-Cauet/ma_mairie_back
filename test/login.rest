@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "pseudo": "helo",
-    "insee":"02350",
+    "insee":"02356",
     "password":"Froro123@",
     "email": "d@gmail.com"
 }
@@ -16,7 +16,7 @@ POST http://localhost:3000/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "lolo@gmail.com",
-    "password":"Mamairie"
+    "email": "d@gmail.com",
+    "password":"Froro123@"
 }
 

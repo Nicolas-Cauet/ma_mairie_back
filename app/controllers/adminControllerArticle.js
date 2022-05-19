@@ -125,7 +125,7 @@ const adminControllerArticle = {
       author: req.body.author,
       article_categorie: req.body.article_categorie,
       article_color: req.body.article_color,
-      article_id: req.params.mairie_id,
+      article_id: req.params.town_hall_id,
     };
     const report = await dataMapperArticle.postArticle(values);
     if (report.rowCount) {

@@ -1,6 +1,5 @@
 require(`dotenv`).config();
 const bcrypt = require(`bcrypt`);
-const debug = require(`debug`)(`adminController`);
 const jwt = require(`jsonwebtoken`);
 const secretKey = process.env.ACCES_TOKEN_SECRET;
 const { dataMapperAdmin } = require(`../models/dataMapper/index`);
@@ -32,7 +31,6 @@ const adminController = {
       next(err);
     }
     const userSignup = await dataMapperAdmin
-      // eslint-disable-next-line max-len
       .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
     if (!userSignup.rowCount) {
       const err = new Error(`La connexion a échoué vérifier vos données !`);
@@ -50,6 +48,10 @@ const adminController = {
    */
   async login(req, res, next) {
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
+    if (!existingUser) {
+      const err = new Error(`Impossible de récupérer Administrateur en base !`);
+      next(err);
+    }
     const match = await bcrypt.compare(req.body.password, existingUser.password);
     if (match) {
       const data = await dataMapperAdmin.userLogin(req.body.email, existingUser.password);

@@ -1,9 +1,9 @@
 ###
-# GET ALL REPORTINGS
+# GET ALL REPORTINGS VISSITOR
 GET  http://localhost:3000/reporting/1 HTTP/1.1
 
 ###
-# GET ALL REPORTINGS
+# GET ALL REPORTINGS ADMINISTRATOR
 GET  http://localhost:3000/admin/reporting/1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
@@ -12,44 +12,38 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
 
 GET http://localhost:3000/admin/reporting/1/1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
+
 ###
 # DELETE REPORTING
 DELETE http://localhost:3000/admin/reporting/1/3
 Content-Type: application/json
-Authorization: Bearer
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 ###
 # UPDATE REPORTING
-PATCH http://localhost:3000/admin/reporting/1/4
+
+PATCH  http://localhost:3000/admin/reporting/1/2
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 {
       "reporting_statut": "En cours",
-      "admin_text": "tqt tu va la retrouver"
+      "admin_text":"Hello tout est ok !"
 }
 
 ###
 # POST VISITEUR
 
-POST http://localhost:3003/reporting/1
+POST http://localhost:3000/reporting/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 {
       "title": "COUCOU",
-      "reporting_category": "animaux",
-      "title": "badWords",
-      "user_text": "hello putain de merde bordel policier comment allez vous",
-      "title": "COUCOU",
       "email": "anthony@gmail.com",
+      "user_text": "BONJOUR",
       "first_name": "anthony",
       "last_name": "legrain",
-      "user_text": "HEHOOOOOOOO",
-      "user_text": "abibrgpiearngeargzeg",
-      "user_text": "abibrgpiearngeargzeg",
-      "user_image": "",
-      "reporting_category": "animaux"
+      "reporting_category": "animaux",
       "phonenumber": "0807060504"
 }

@@ -104,6 +104,9 @@ const dataMapperArticle = {
       ],
     };
     const data = await client.query(query);
+    if (data.Error === `une valeur NULL viole la contrainte NOT NULL de la colonne « description » dans la relation « article »`) {
+      throw new Error(`Le champs description est requis !`);
+    }
     return data;
   },
 

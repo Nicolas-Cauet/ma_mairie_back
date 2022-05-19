@@ -1,28 +1,35 @@
 const express = require(`express`);
 const adminController = require(`../controllers/adminController`);
-// const adminControllerArticle = require(`../controllers/adminControllerArticle`)
 const adminReportingController = require(`../controllers/adminReportingController`);
 const adminControllerCouncil = require(`../controllers/adminControllerCouncil`);
 const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
-const handleError = require(`../handlers/handleError`);
 
 const compareString = require(`../middleware/compareString`);
 
 const {
   schemaCreationAdmin,
+  schemaValidateReportingUser,
   schemaCreateReportingUser,
+  schemaCreateArticle,
+  schemaUpdateArticle,
+  schemaCreateCouncilMember,
 } = require(`../validation/schema`);
 
 const {
   validateCreateAdmin,
   validateCreateReportingUser,
+  validateReportingUser,
+  validateCreateArticle,
+  validateUpdateArticle,
+  validateCreateCouncilMember,
 } = require(`../validation/validations`);
 
 const router = express.Router();
 
 /** ******** ADMIN *********** */
+
 router.post(
   `/signup`,
   validateCreateAdmin(schemaCreationAdmin),
@@ -46,9 +53,11 @@ router.delete(
   authenticateToken,
   routerWrapper(adminReportingController.deleteReporting),
 );
+
 router.patch(
   `/admin/reporting/:town_hall_id/:reporting_id`,
   authenticateToken,
+  validateReportingUser(schemaValidateReportingUser),
   routerWrapper(adminReportingController.modifyReporting),
 );
 /** ******** ARTICLE *********** */
@@ -63,9 +72,11 @@ router.get(
   authenticateToken,
   routerWrapper(adminControllerArticle.oneArticle),
 );
+
 router.post(
   `/admin/new-article/:town_hall_id`,
   authenticateToken,
+  validateCreateArticle(schemaCreateArticle),
   routerWrapper(adminControllerArticle.postArticle),
 );
 router.delete(
@@ -73,9 +84,11 @@ router.delete(
   authenticateToken,
   routerWrapper(adminControllerArticle.deleteArticle),
 );
+
 router.patch(
   `/admin/article/:town_hall_id/:article_id`,
   authenticateToken,
+  validateUpdateArticle(schemaUpdateArticle),
   routerWrapper(adminControllerArticle.modifyArticle),
 );
 
@@ -85,6 +98,7 @@ router.get(
   `/reporting/:town_hall_id`,
   routerWrapper(adminReportingController.allReportingVisitor),
 );
+//* joi ok
 router.post(
   `/reporting/:town_hall_id`,
   routerWrapper(compareString.verifyString),
@@ -93,14 +107,15 @@ router.post(
 );
 
 /** ******** TOWN_HALL_STAFF *********** */
-
 router.get(
   `/council/:town_hall_id`,
   routerWrapper(adminControllerCouncil.allCouncil),
 );
+
 router.post(
   `/admin/council/:town_hall_id`,
   authenticateToken,
+  validateCreateCouncilMember(schemaCreateCouncilMember),
   routerWrapper(adminControllerCouncil.postOneMember),
 );
 router.delete(
@@ -108,6 +123,7 @@ router.delete(
   authenticateToken,
   routerWrapper(adminControllerCouncil.deleteMemberCouncil),
 );
+
 router.patch(
   `/admin/council/:town_hall_id/:town_hall_staff_id`,
   authenticateToken,

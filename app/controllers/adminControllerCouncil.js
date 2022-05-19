@@ -25,7 +25,7 @@ const adminControllerCouncil = {
       next(err);
     }
   },
-    /** this method posts a new advisor member
+  /** this method posts a new advisor member
    * @menberof adminControllerCouncil
    * @method postOneMember
    * @param {Object} req
@@ -50,7 +50,7 @@ const adminControllerCouncil = {
       next(err);
     }
   },
-    /** 
+  /**
     this method removes a board member by his id
   * @menberof adminControllerCouncil
   * @method deleteMemberCouncil
@@ -70,10 +70,13 @@ const adminControllerCouncil = {
     if (report.rowCount) {
       res.status(200).send(`Le Membre à bien été supprimer !`);
     } else {
-      // throw new APIError(`La mise à jour n'est pas possible !`);
+      const err = new Error(
+        `La mise à jour n'est pas possible !`,
+      );
+      next(err);
     }
   },
-      /** 
+  /**
     this method modify a board member by his id
   * @menberof adminControllerCouncil
   * @method modifyMemberCouncil

@@ -1,5 +1,3 @@
-const debug = require(`debug`)(`validation`);
-
 const validationModule = {
   validateCreateAdmin(schema) {
     return (req, _, next) => {
@@ -13,21 +11,11 @@ const validationModule = {
           );
           err.status = 406;
           next(err);
-        } else if (
-          error.message === `"email" must be a valid email`
-        ) {
+        } else if (error.message === `"email" must be a valid email`) {
           const err = new Error(
             `L'adresse e-mail doit être conforme ex: test@gmail.fr`,
           );
           err.status = 406;
-          next(err);
-        } else if (
-          error.message === `Cannot read properties of undefined (reading 'town_hall_id')`
-        ) {
-          const err = new Error(
-            `Le code insee est invalide !`,
-          );
-          err.status = `HELLO`;
           next(err);
         }
       }
@@ -38,7 +26,66 @@ const validationModule = {
     return (req, _, next) => {
       const { error } = schema.validate(req.body);
       if (error) {
-        const err = new Error(error);
+        const err = new Error(error.message);
+        err.status = 406;
+        next(err);
+      }
+      next();
+    };
+  },
+  validateReportingUser(schema) {
+    return (req, _, next) => {
+      const { error } = schema.validate(req.body);
+      if (
+        error.message === `"admin_text" length must be at least 10 characters long`
+      ) {
+        const err = new Error(
+          `Le texte de administrateur doit contenir une réponse d'au moins 10 caractères !`,
+        );
+        err.status = 406;
+        next(err);
+      }
+      next();
+    };
+  },
+  validateCreateArticle(schema) {
+    return (req, _, next) => {
+      const { error } = schema.validate(req.body);
+      if (error) {
+        const err = new Error(error.message);
+        err.status = 406;
+        next(err);
+      }
+      next();
+    };
+  },
+  validateUpdateArticle(schema) {
+    return (req, _, next) => {
+      const { error } = schema.validate(req.body);
+      if (error) {
+        const err = new Error(error.message);
+        err.status = 406;
+        next(err);
+      }
+      next();
+    };
+  },
+  validateCreateCouncilMember(schema) {
+    return (req, _, next) => {
+      const { error } = schema.validate(req.body);
+      if (error) {
+        const err = new Error(error.message);
+        err.status = 406;
+        next(err);
+      }
+      next();
+    };
+  },
+  validateUpdateCouncilMember(schema) {
+    return (req, _, next) => {
+      const { error } = schema.validate(req.body);
+      if (error) {
+        const err = new Error(error.message);
         err.status = 406;
         next(err);
       }
