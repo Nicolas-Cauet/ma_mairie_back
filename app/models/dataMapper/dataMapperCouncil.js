@@ -20,7 +20,7 @@ const dataMapperCouncil = {
     const data = await client.query(query);
     return data.rows;
   },
-   /**
+  /**
    * @menberof dataMapperCouncil
    * @method postMemberCouncil
    * @param {object} object
@@ -35,7 +35,7 @@ const dataMapperCouncil = {
     const data = await client.query(query);
     return data;
   },
-    /**
+  /**
    * @menberof dataMapperCouncil
    * @method deleteMember
    * @param {number} id
@@ -50,7 +50,7 @@ const dataMapperCouncil = {
     const data = await client.query(query);
     return data;
   },
-    /**
+  /**
    * @menberof dataMapperCouncil
    * @method modifyCouncil
    * @param {object} object

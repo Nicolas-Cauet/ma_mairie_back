@@ -16,8 +16,8 @@ const dataMapperReporting = {
   async getAllReport(townHallId) {
     const query = {
       text: `SELECT * FROM reporting
-            WHERE town_hall_id = $1;`,
-      values: [townHallId],
+            WHERE town_hall_id = $1 ORDER BY reporting_statut = $2 DESC;`,
+      values: [townHallId, `Non validé`],
     };
     const data = await client.query(query);
     return data.rows;
@@ -32,8 +32,8 @@ const dataMapperReporting = {
   async getAllReportVisitor(townHallId) {
     const query = {
       text: `SELECT * FROM reporting WHERE town_hall_id = $1
-            AND NOT reporting_statut = $2;`,
-      values: [townHallId, `Non validé`],
+      AND reporting_statut = $2 OR reporting_statut = $3 OR reporting_statut = $4 AND NOT reporting_statut = $5 ORDER BY reporting_statut = $6 OR reporting_statut = $7 DESC;`,
+      values: [townHallId, `En cours`, `Résolu`, `Non résolu`, `Non validé`, `En cours`, `Résolu`],
     };
     const data = await client.query(query);
     return data.rows;

@@ -12,18 +12,24 @@ const {
   schemaCreationAdmin,
   schemaValidateReportingUser,
   schemaCreateReportingUser,
+  schemaCreateArticle,
+  schemaUpdateArticle,
+  schemaCreateCouncilMember,
 } = require(`../validation/schema`);
 
 const {
   validateCreateAdmin,
   validateCreateReportingUser,
   validateReportingUser,
+  validateCreateArticle,
+  validateUpdateArticle,
+  validateCreateCouncilMember,
 } = require(`../validation/validations`);
 
 const router = express.Router();
 
 /** ******** ADMIN *********** */
-//* joi ok
+
 router.post(
   `/signup`,
   validateCreateAdmin(schemaCreationAdmin),
@@ -47,11 +53,11 @@ router.delete(
   authenticateToken,
   routerWrapper(adminReportingController.deleteReporting),
 );
-//! joi à faire
+
 router.patch(
   `/admin/reporting/:town_hall_id/:reporting_id`,
   authenticateToken,
-  validateReportingUser(schemaCreateReportingUser),
+  validateReportingUser(schemaValidateReportingUser),
   routerWrapper(adminReportingController.modifyReporting),
 );
 /** ******** ARTICLE *********** */
@@ -66,10 +72,11 @@ router.get(
   authenticateToken,
   routerWrapper(adminControllerArticle.oneArticle),
 );
-//! joi à faire
+
 router.post(
   `/admin/new-article/:town_hall_id`,
   authenticateToken,
+  validateCreateArticle(schemaCreateArticle),
   routerWrapper(adminControllerArticle.postArticle),
 );
 router.delete(
@@ -77,10 +84,11 @@ router.delete(
   authenticateToken,
   routerWrapper(adminControllerArticle.deleteArticle),
 );
-//! joi à faire
+
 router.patch(
   `/admin/article/:town_hall_id/:article_id`,
   authenticateToken,
+  validateUpdateArticle(schemaUpdateArticle),
   routerWrapper(adminControllerArticle.modifyArticle),
 );
 
@@ -94,7 +102,7 @@ router.get(
 router.post(
   `/reporting/:town_hall_id`,
   routerWrapper(compareString.verifyString),
-  validateCreateReportingUser(schemaValidateReportingUser),
+  validateCreateReportingUser(schemaCreateReportingUser),
   routerWrapper(adminReportingController.postReporting),
 );
 
@@ -103,10 +111,11 @@ router.get(
   `/council/:town_hall_id`,
   routerWrapper(adminControllerCouncil.allCouncil),
 );
-//! joi à faire
+
 router.post(
   `/admin/council/:town_hall_id`,
   authenticateToken,
+  validateCreateCouncilMember(schemaCreateCouncilMember),
   routerWrapper(adminControllerCouncil.postOneMember),
 );
 router.delete(
@@ -114,7 +123,7 @@ router.delete(
   authenticateToken,
   routerWrapper(adminControllerCouncil.deleteMemberCouncil),
 );
-//! joi à faire
+
 router.patch(
   `/admin/council/:town_hall_id/:town_hall_staff_id`,
   authenticateToken,

@@ -80,7 +80,7 @@ echo "const httpStatusCodes = {
     NOT_FOUND: 404,
     INTERNAL_SERVER: 500
 };
-   
+
 module.exports = httpStatusCodes;"  > httpStatusCodes.js;
 echo "const { appendFile } = require('fs/promises');
 const path = require(path);

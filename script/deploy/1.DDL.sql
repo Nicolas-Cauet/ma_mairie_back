@@ -74,9 +74,9 @@ CREATE TABLE IF NOT EXISTS "service" (
 
 CREATE TABLE IF NOT EXISTS "town_hall_staff" (
   "town_hall_staff_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "last_name" TEXT,
-  "first_name" TEXT,
-  "role" TEXT,
+  "last_name" TEXT NOT NULL,
+  "first_name" TEXT NOT NULL,
+  "role" TEXT NOT NULL,
   "photo" TEXT,
   "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id),
   "created_at" TIMESTAMPTZ DEFAULT NOW(),

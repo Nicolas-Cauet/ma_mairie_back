@@ -42,7 +42,7 @@ const datamapper = {
    */
   async userSignup(pseudo, insee, hashPassword, email, idTownHall) {
     const query = {
-      text: `INSERT INTO admin
+      text: ` INSERT INTO admin
               (pseudo,insee,password,email,town_hall_id)
               VALUES
               ($1,$2,$3,$4,$5);`,

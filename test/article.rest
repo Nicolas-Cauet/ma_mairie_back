@@ -1,23 +1,22 @@
 ###
 
-
 # GET ALL ARTICLE
-GET  http://localhost:3003/admin/article/1 HTTP/1.1
+GET  http://localhost:3000/admin/article/1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjQ0ODI4MX0.VnvYTiZMNNGQBZsIsiaLjvZBJlRxtim3GTFoURNx_sQ
 
 ###
-#SELECT ONE ARTICLE5000
-GET http://localhost:3003/admin/article/1/1 HTTP/1.1
+# SELECT ONE ARTICLE
+GET http://localhost:3000/admin/article/1/1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjQ0ODI4MX0.VnvYTiZMNNGQBZsIsiaLjvZBJlRxtim3GTFoURNx_sQ
 ###
 # DELETE ARTICLE
-DELETE http://localhost:3003/admin/article/1/2
+DELETE http://localhost:3000/admin/article/1/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 ###
 # UPDATE ARTICLE
-PUT http://localhost:3003/admin/article/1/2
+PATCH http://localhost:3000/admin/article/1/2
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
@@ -34,16 +33,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
 ###
 # POST ARTICLE
 
-POST http://localhost:3003/admin/new-article/1
-Content-Type: application/json
+POST http://localhost:3000/admin/new-article/1
+Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 {
       "title": "Hello world",
-      "description": "si ça passe j'ai reussi",
+      "description": "Hello ",
       "summarize": "un test du dev",
       "image": "null",
       "author": "Anthony Legrain",
-      "article_category": "test",
-      "article_color": "rouge"
+      "article_categorie": "test",
+      "article_color": "rouge",
+      "town_hall_id": "1"
 }

@@ -25,7 +25,7 @@ const adminControllerCouncil = {
       next(err);
     }
   },
-    /** this method posts a new advisor member
+  /** this method posts a new advisor member
    * @menberof adminControllerCouncil
    * @method postOneMember
    * @param {Object} req
@@ -50,7 +50,7 @@ const adminControllerCouncil = {
       next(err);
     }
   },
-    /** 
+  /**
     this method removes a board member by his id
   * @menberof adminControllerCouncil
   * @method deleteMemberCouncil
@@ -76,7 +76,7 @@ const adminControllerCouncil = {
       next(err);
     }
   },
-      /** 
+  /**
     this method modify a board member by his id
   * @menberof adminControllerCouncil
   * @method modifyMemberCouncil
