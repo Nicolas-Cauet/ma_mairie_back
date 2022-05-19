@@ -7,7 +7,7 @@ const client = require(`../dbClient`);
  */
 const dataMapperArticle = {
   /**
-   * The method returns the list of all articles
+   * The method returns the list of all articles as visitor
    * @menberof getAllArticleAdmin
    * @method getAllArticleAdmin
    * @param {Number} townHallId
@@ -23,7 +23,7 @@ const dataMapperArticle = {
     return data.rows;
   },
   /**
-   * The method returns one article
+   * The method returns one article as visitor
    * @menberof getAllArticleAdmin
    * @method getOneArticle
    * @param {Number} articleId
@@ -39,7 +39,7 @@ const dataMapperArticle = {
     return data.rows;
   },
   /**
-   * The method delete one article
+   * The method delete one article as administrator
    * @menberof getAllArticleAdmin
    * @method deleteArticle
    * @param {Number} id
@@ -55,7 +55,7 @@ const dataMapperArticle = {
     return data;
   },
   /**
-   * The method allows to update an article
+   * The method allows to update an article as administrator
    * @menberof getAllArticleAdmin
    * @method modifyArticle
    * @param {object} object
@@ -81,7 +81,7 @@ const dataMapperArticle = {
     return data;
   },
   /**
-   * The method allows you to post an article not as an administrator
+   * The method allows you to post an article not as administrator
    * @menberof getAllArticleAdmin
    * @method postArticle
    * @param {object} object
@@ -111,13 +111,12 @@ const dataMapperArticle = {
   },
 
   /**
-   * The method get all article as a visitor
+   * The method allows to retrieve all the articles as visitor
    * @menberof getAllArticleAdmin
    * @method postArticle
    * @param {object} object
    * @returns {array}
    */
-
   async getAllArticle(townHallId) {
     const query = {
       text: `SELECT * FROM article

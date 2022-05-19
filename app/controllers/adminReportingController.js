@@ -23,7 +23,7 @@ const adminReportingController = {
       next(err);
     }
     const Allreporting = await dataMapperReporting.getAllReport(
-      req.params.town_hall_id
+      req.params.town_hall_id,
     );
     if (Allreporting) {
       res.json(Allreporting).status(200);
@@ -75,11 +75,15 @@ const adminReportingController = {
     );
     if (report) {
       res.json(report).status(200);
+    } else {
+      const err = new Error(
+        `Impossible de récupérer le signalement !`,
+      );
+      next(err);
     }
-    // throw new APIError(`Impossible de récupérer le signalement`);
   },
   /**
-   * The method allows you to delete a report
+   * The method allows you to delete a report as administrator
    * @menberof adminReportingController
    * @method deleteReporting
    * @param {Object} req
@@ -107,7 +111,7 @@ const adminReportingController = {
     }
   },
   /**
-   * The method allows you to modify a report
+   * The method allows you to modify a report as administrator
    * @menberof adminReportingController
    * @method modifyReporting
    * @param {Object} req

@@ -7,22 +7,33 @@ leoProfanity.clearList();
 leoProfanity.add(frenchBadwordsList.array);
 
 /**
+ * object contains methods to filter reports
  * @type {object}
  * @export compareString
  * @namespace compareString
  */
 const compareString = {
   /**
+   * la method permet de récupérer adresse ip
    * @menberof compareString
    * @method getIp
    * @param {Object} req
-   * @returns {VoidFunction}
+   * @returns {String} string
    */
   async getIp(req) {
     const ip = req.headers[`x-forwarded-for`]?.split(`,`).shift()
   || req.socket?.remoteAddress;
     return ip;
   },
+  /**
+   * the method allows you to check if ip address
+   * has already been stored for a user report
+   * @menberof compareString
+   * @method verifyIp
+   * @param {String} ip
+   * @param {Object} req
+   * @returns {Number} Number
+   */
   async verifyIp(ip, req) {
     const id = parseInt(req.params.town_hall_id, 10);
     const query = {
@@ -32,6 +43,18 @@ const compareString = {
     const result = await client.query(query);
     return Number(result.rows[0].count);
   },
+  /**
+   * The method makes it possible to check whether the text,
+   * of the report has not already been posted. If the person
+   * whose ip has already reported more than
+   * 3 times a day and if the report does not contain an insult
+   * @menberof compareString
+   * @method verifyString
+   * @param {Object} req
+   * @param {Object} res
+   * @param {Function} next
+   * @returns void
+   */
   async verifyString(req, res, next) {
     const stringUser = req.body.user_text;
     const id = req.params.town_hall_id;

@@ -48,7 +48,7 @@ const adminControllerArticle = {
       next(err);
     }
   },
-  /** The method allows you to delete an article
+  /** The method allows you to delete an article as administrator
    * @menberof adminControllerArticle
    * @method deleteArticle
    * @param {Object} req
@@ -72,7 +72,7 @@ const adminControllerArticle = {
     }
   },
   /**
-   * The method allows you to modify an article
+   * The method allows you to modify an article as administrator
    * @menberof adminControllerArticle
    * @method modifyArticle
    * @param {Object} req
@@ -104,7 +104,7 @@ const adminControllerArticle = {
     }
   },
   /**
-   * The method allows you to create an article
+   * The method allows you to create an article as administrator
    * @menberof adminControllerArticle
    * @method postArticle
    * @param {Object} req

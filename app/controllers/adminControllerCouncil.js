@@ -5,7 +5,7 @@ const dataMapperCouncil = require(`../models/dataMapper/dataMapperCouncil`);
  * @namespace adminControllerCouncil
  */
 const adminControllerCouncil = {
-  /** The method returns the list of municipal councilors and the mayor
+  /** The method returns the list of municipal councilors and the mayor as visitor
    * @menberof adminControllerCouncil
    * @method allCouncil
    * @param {Object} req
@@ -25,7 +25,7 @@ const adminControllerCouncil = {
       next(err);
     }
   },
-  /** this method posts a new advisor member
+  /** this method posts a new advisor member as administrator
    * @menberof adminControllerCouncil
    * @method postOneMember
    * @param {Object} req
@@ -51,7 +51,7 @@ const adminControllerCouncil = {
     }
   },
   /**
-    this method removes a board member by his id
+    this method removes a board member by his id as administrator
   * @menberof adminControllerCouncil
   * @method deleteMemberCouncil
   * @param {Object} req
@@ -77,7 +77,7 @@ const adminControllerCouncil = {
     }
   },
   /**
-    this method modify a board member by his id
+    this method modify a board member by his id as administrator
   * @menberof adminControllerCouncil
   * @method modifyMemberCouncil
   * @param {Object} req

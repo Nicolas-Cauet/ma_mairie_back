@@ -6,7 +6,7 @@ const jwt = require(`jsonwebtoken`);
  * @method authenticateToken
  * @param {Object} req
  * @param {Object} res
- * @param {Object} next
+ * @param {Function} next
  * @returns {String} Returns administrator id
  */
 const authenticateToken = (req, res, next) => {

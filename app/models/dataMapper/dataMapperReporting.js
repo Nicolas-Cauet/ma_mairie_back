@@ -7,7 +7,7 @@ const client = require(`../dbClient`);
  */
 const dataMapperReporting = {
   /**
-   * the method allows to return all the reports
+   * the method allows to return all the reports as administrator
    * @menberof dataMapperReporting
    * @method getAllReport
    * @param {Number} townHallId
@@ -23,7 +23,7 @@ const dataMapperReporting = {
     return data.rows;
   },
   /**
-   * the method allows to return all the reports
+   * the method allows to return all the reports as visitor
    * @menberof dataMapperReporting
    * @method getAllReportVisitor
    * @param {Number} townHallId
@@ -39,7 +39,7 @@ const dataMapperReporting = {
     return data.rows;
   },
   /**
-   * the method allows to return one report
+   * the method allows to return one report as administrator
    * @menberof dataMapperReporting
    * @method getOneReport
    * @param {Number} townHallId
@@ -55,7 +55,7 @@ const dataMapperReporting = {
     return data.rows[0];
   },
   /**
-   * The method allows you to delete a report
+   * The method allows you to delete a report as administrator
    * @menberof dataMapperReporting
    * @method deleteReport
    * @param {Number} id
@@ -71,7 +71,7 @@ const dataMapperReporting = {
     return data;
   },
   /**
-   * The method is used to update a report
+   * The method is used to update a report as administrator
    * @menberof dataMapperReporting
    * @method modifyReport
    * @param {Object} object
