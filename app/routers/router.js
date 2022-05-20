@@ -886,6 +886,7 @@ router.patch(
 
 router.get(`/apidocs`, (req, res) => {
   res.sendFile(`index.html`, { root: `./docs` });
+  res.end();
 });
 
 module.exports = router;
