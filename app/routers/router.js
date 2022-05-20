@@ -884,7 +884,7 @@ router.patch(
   routerWrapper(adminControllerCouncil.modifyMemberCouncil),
 );
 
-router.get(`/apidocs`, authenticateToken, (req, res) => {
+router.get(`/apidocs`, (req, res) => {
   res.sendFile(`index.html`, { root: `./docs` });
 });
 
