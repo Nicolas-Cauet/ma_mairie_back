@@ -885,7 +885,7 @@ router.patch(
 );
 
 router.get(`/apidocs`, (req, res) => {
-  res.send(`index.html`, { root: `./docs` });
+  res.sendFile(`index.html`, { root: `./docs/` });
   res.end();
 });
 
