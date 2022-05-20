@@ -6,6 +6,7 @@ const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 const compareString = require(`../middleware/compareString`);
+const path = require(`path`);
 
 const {
   schemaCreationAdmin,
@@ -882,5 +883,9 @@ router.patch(
   authenticateToken,
   routerWrapper(adminControllerCouncil.modifyMemberCouncil),
 );
+
+router.get(`/apidocs`, authenticateToken, (req, res) => {
+  res.sendFile(`index.html`, { root: `./docs` });
+});
 
 module.exports = router;
