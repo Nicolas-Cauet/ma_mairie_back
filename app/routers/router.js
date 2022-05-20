@@ -242,7 +242,7 @@ router.get(
 );
 /**
  *@api {delete} /admin/reporting/:town_hall_id/:reporting_id
- *Delete Reporting:  Delete one report from the town hall
+ *Delete:  Delete one report from the town hall
  *@apiName Delete Reporting
  *@apiGroup Admin Reportings
  *@apiParam {Number} town_hall_id the town hall unique identifer
@@ -280,7 +280,7 @@ router.delete(
 );
 /**
  *@api {patch} /admin/reporting/:town_hall_id/:reporting_id
- *Update Reporting:  Update one report from the town hall
+ *Update:  Update one report from the town hall
  *@apiName Update Reporting
  *@apiGroup Admin Reportings
  *@apiParam {Number} town_hall_id the town hall unique identifer
