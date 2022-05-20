@@ -4,7 +4,7 @@ const joi = require(`joi`);
 
 const schemaCreateAdmin = joi
   .object({
-    pseudo: joi.string().min(3).max(20),
+    pseudo: joi.string().min(3).max(20).required(),
     email: joi.string().email(new RegExp(`^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$`)),
     password: joi.string().pattern(new RegExp(`^([a-zA-Z0-9@*#!?]{8,15})$`)),
     insee: joi.string().min(5),

@@ -9,13 +9,13 @@ const validationModule = {
           const err = new Error(
             `Le mot de passe doit contenir une majuscule un caractère spécial est au minimum 8 caractères et maximum 15 caractères les chiffres sont autorisés.`,
           );
-          err.status = 406;
+          err.status = 400;
           next(err);
         } else if (error.message === `"email" must be a valid email`) {
           const err = new Error(
             `L'adresse e-mail doit être conforme ex: test@gmail.fr`,
           );
-          err.status = 406;
+          err.status = 400;
           next(err);
         }
       }
@@ -27,7 +27,7 @@ const validationModule = {
       const { error } = schema.validate(req.body);
       if (error) {
         const err = new Error(error.message);
-        err.status = 406;
+        err.status = 400;
         next(err);
       }
       next();
@@ -42,7 +42,7 @@ const validationModule = {
         const err = new Error(
           `Le texte de administrateur doit contenir une réponse d'au moins 10 caractères !`,
         );
-        err.status = 406;
+        err.status = 400;
         next(err);
       }
       next();
@@ -53,7 +53,7 @@ const validationModule = {
       const { error } = schema.validate(req.body);
       if (error) {
         const err = new Error(error.message);
-        err.status = 406;
+        err.status = 400;
         next(err);
       }
       next();
@@ -64,7 +64,7 @@ const validationModule = {
       const { error } = schema.validate(req.body);
       if (error) {
         const err = new Error(error.message);
-        err.status = 406;
+        err.status = 400;
         next(err);
       }
       next();
@@ -75,7 +75,7 @@ const validationModule = {
       const { error } = schema.validate(req.body);
       if (error) {
         const err = new Error(error.message);
-        err.status = 406;
+        err.status = 400;
         next(err);
       }
       next();
@@ -86,7 +86,7 @@ const validationModule = {
       const { error } = schema.validate(req.body);
       if (error) {
         const err = new Error(error.message);
-        err.status = 406;
+        err.status = 400;
         next(err);
       }
       next();

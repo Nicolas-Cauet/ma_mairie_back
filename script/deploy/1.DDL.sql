@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS "admin" (
   "pseudo" VARCHAR(20) UNIQUE,
   "insee" INT NOT NULL,
   "password" TEXT NOT NULL,
-  "email" TEXT UNIQUE,
+  "email" TEXT UNIQUE NOT NULL,
   "town_hall_id" INT NOT NULL REFERENCES town_hall(town_hall_id), 
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ

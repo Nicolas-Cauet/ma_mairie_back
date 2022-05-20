@@ -16,7 +16,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
 
 ###
 # UPDATE ARTICLE
-PATCH http://localhost:3000/admin/article/1/2
+PATCH http://localhost:3000/admin/article/1/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
@@ -26,7 +26,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
       "summarize": "ok",
       "image": "ok",
       "author": "ok",
-      "article_category": "ok",
+      "article_categorie": "ok",
       "article_color": "ok"
 }
 

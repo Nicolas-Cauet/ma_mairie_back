@@ -14,11 +14,6 @@ const adminControllerArticle = {
    * @returns {Array} Return all articles
    */
   async allArticle(req, res, next) {
-    if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(`Vous n'avez pas accès à cette page !`);
-      err.status = 401;
-      next(err);
-    }
     const articles = await dataMapperArticle.getAllArticleAdmin(
       req.params.town_hall_id,
     );
@@ -65,7 +60,7 @@ const adminControllerArticle = {
       req.params.article_id,
     );
     if (articles.rowCount) {
-      res.status(200).send(`Le signalement est bien supprimer !`);
+      res.status(200).send(`L'article est bien supprimer !`);
     } else {
       const err = new Error(`La suppression de l'article n'est pas possible !`);
       next(err);

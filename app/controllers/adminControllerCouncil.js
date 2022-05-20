@@ -71,7 +71,7 @@ const adminControllerCouncil = {
       res.status(200).send(`Le Membre à bien été supprimer !`);
     } else {
       const err = new Error(
-        `La mise à jour n'est pas possible !`,
+        `La suppression du membre n'est pas possible !`,
       );
       next(err);
     }
@@ -102,7 +102,7 @@ const adminControllerCouncil = {
     };
     const report = await dataMapperCouncil.modifyCouncil(values);
     if (report.rowCount) {
-      res.status(200).send(`La mise à jour est bien passée.`);
+      res.status(200).send(`La mise à jour du membre du conseiller, c'est bien passé.`);
     } else {
       const err = new Error(
         `La mise à jour n'est pas possible !`,

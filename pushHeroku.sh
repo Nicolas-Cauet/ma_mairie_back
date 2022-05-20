@@ -1,8 +1,8 @@
 echo -n "Que veux tu faire ?
- 1 : coucou
- 2 : Heroku push
- 3 : git commit github
- 4 : git push github
+s1 : coucou
+2 : Heroku push
+3 : git commit github
+4 : git push github
 Entrée un chiffre : "
 read action
 if [[ $action == 1 ]]
