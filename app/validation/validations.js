@@ -44,6 +44,12 @@ const validationModule = {
         );
         err.status = 400;
         next(err);
+      } else if (error.message === `"length must be at least 5 characters long"`) {
+        const err = new Error(
+          `Le titre doit contenir au moins 5 caractères !`,
+        );
+        err.status = 400;
+        next(err);
       }
       next();
     };

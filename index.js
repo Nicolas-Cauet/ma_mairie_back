@@ -8,7 +8,6 @@ const deleteIp = require(`./app/middleware/deleteIp`);
 const PORT = process.env.PORT || 3333;
 
 const app = express();
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use((req, res, next) => {
@@ -20,6 +19,7 @@ app.use((req, res, next) => {
 });
 
 app.use(router);
+app.use(express.static(`docs`));
 app.use(deleteIp.deleteIp);
 
 app.use(handleError);

@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS "reporting" (
   "reporting_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "title"  VARCHAR(50) NOT NULL,
   "email" TEXT NOT NULL,
-  "phonenumber" CHAR(10) NOT NULL,
+  "phonenumber" CHAR(10),
   "first_name" TEXT NOT NULL,
   "last_name" TEXT NOT NULL,
   "user_image" TEXT,

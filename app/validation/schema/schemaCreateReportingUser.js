@@ -10,7 +10,7 @@ const schemaCreateReportingUser = joi.object({
   email: joi.string().email().required().label(`Votre email dans le signalement est requis !`),
   first_name: joi.string().required().max(20).label(`le Prénom dans le signalement est requis !`),
   last_name: joi.string().required().max(20).label(`le Nom de famille dans le signalement est requis !`),
-  phonenumber: joi.string().min(10).max(10),
+  phonenumber: joi.string().min(10).max(10).optional(),
   town_hall_id: joi.number(),
 });
 
