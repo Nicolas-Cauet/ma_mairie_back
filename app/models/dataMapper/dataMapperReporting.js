@@ -17,7 +17,7 @@ const dataMapperReporting = {
     const query = {
       text: `SELECT * FROM reporting
             WHERE town_hall_id = $1 ORDER BY reporting_statut = $2, reporting_statut = $3, reporting_statut = $4, reporting_statut = $5 DESC;`,
-      values: [townHallId, `Non validé`, `Résolu`, `En cours`, `Non validé`],
+      values: [townHallId, `Non Résolu`, `Résolu`, `En cours`, `Non validé`],
     };
     const data = await client.query(query);
     return data.rows;
