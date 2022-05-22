@@ -17,6 +17,12 @@ const validationModule = {
           );
           err.status = 400;
           next(err);
+        } else if (error.message === `"length must be less than or equal to 10 characters long"`) {
+          const err = new Error(
+            `Le numéro de téléphone doit contenir au minimum 10 caractères est maximum 10 caractères !`,
+          );
+          err.status = 400;
+          next(err);
         }
       }
       next();
