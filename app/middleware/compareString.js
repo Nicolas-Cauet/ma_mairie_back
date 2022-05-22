@@ -56,15 +56,20 @@ const compareString = {
    * @returns void
    */
   async verifyString(req, res, next) {
+    const { title } = req.body;
     const stringUser = req.body.user_text;
     const id = req.params.town_hall_id;
     const noBadWords = leoProfanity.check(stringUser);
+    const noBadTitle = leoProfanity.check(title);
     const ip = await compareString.getIp(req);
     const verifyIp = await compareString.verifyIp(ip, req);
     if (verifyIp >= 100) {
       const err = new Error(`Vous avez deja poster 3 fois aujourd'hui`);
       next(err);
     } else if (noBadWords === true) {
+      const err = new Error(`Les insultes ne sont pas accepter`);
+      next(err);
+    } else if (noBadTitle === true) {
       const err = new Error(`Les insultes ne sont pas accepter`);
       next(err);
     } else {

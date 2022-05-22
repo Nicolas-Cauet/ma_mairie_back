@@ -15,6 +15,7 @@ const {
   schemaCreateArticle,
   schemaUpdateArticle,
   schemaCreateCouncilMember,
+  schemaUpdateCouncilMember
 } = require(`../validation/schema`);
 
 const {
@@ -24,6 +25,7 @@ const {
   validateCreateArticle,
   validateUpdateArticle,
   validateCreateCouncilMember,
+  validateUpdateCouncilMember,
 } = require(`../validation/validations`);
 
 const router = express.Router();
@@ -881,6 +883,7 @@ router.delete(
 router.patch(
   `/admin/council/:town_hall_id/:town_hall_staff_id`,
   authenticateToken,
+  validateUpdateCouncilMember(schemaUpdateCouncilMember),
   routerWrapper(adminControllerCouncil.modifyMemberCouncil),
 );
 

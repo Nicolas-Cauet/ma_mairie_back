@@ -49,7 +49,7 @@ const adminController = {
   async login(req, res, next) {
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     if (!existingUser) {
-      const err = new Error(`Impossible de récupérer Administrateur en base !`);
+      const err = new Error(`Adresse e-mail saisie n'existe pas !`);
       next(err);
     }
     const match = await bcrypt.compare(req.body.password, existingUser.password);
@@ -60,7 +60,7 @@ const adminController = {
       const accessToken = jwt.sign(user, secretKey);
       res.json({ accessToken, townHallId });
     } else {
-      const err = new Error(`La connexion a échoué vérifier vos données !`);
+      const err = new Error(`Votre mail et/ou mot de passe sont incorrect !`);
       next(err);
     }
   },

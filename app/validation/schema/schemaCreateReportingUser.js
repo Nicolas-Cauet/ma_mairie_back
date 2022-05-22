@@ -12,6 +12,6 @@ const schemaCreateReportingUser = joi.object({
   last_name: joi.string().required().max(20).label(`le Nom de famille dans le signalement est requis !`),
   phonenumber: joi.string().min(10).max(10).allow(``),
   town_hall_id: joi.number(),
-});
+}).required().min(5);
 
 module.exports = schemaCreateReportingUser;
