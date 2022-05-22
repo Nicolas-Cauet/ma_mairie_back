@@ -12,7 +12,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "debug": "DEBUG=APP,handleError,validation,adminController,datamapperlog nodemon index.js",
+    "debug": "DEBUG=APP,ADMINREPORT,CONTROLLER nodemon index.js",
     "docs": "apidoc -i ./ -e node_modules -o ./docs"
   },
   "repository": {

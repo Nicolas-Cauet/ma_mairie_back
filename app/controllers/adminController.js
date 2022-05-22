@@ -2,6 +2,7 @@ require(`dotenv`).config();
 const bcrypt = require(`bcrypt`);
 const jwt = require(`jsonwebtoken`);
 const secretKey = process.env.ACCES_TOKEN_SECRET;
+const debug = require(`debug`)(`CONTROLLER`);
 const { dataMapperAdmin } = require(`../models/dataMapper/index`);
 
 /**
@@ -26,17 +27,22 @@ const adminController = {
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
-    if (existingUser) {
-      const err = new Error(`L'utilisateur existe déja`);
+    if (!existingUser) {
+      const userSignup = await dataMapperAdmin
+        .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
+      res.status(200).send(`Votre compte a bien été créé, vous pouvez vous connecter.`);
+      if (!userSignup.rowCount) {
+        const err = new Error(`La connexion a échoué vérifier vos données !`);
+        next(err);
+      }
+    }
+    if (existingUser.pseudo === req.body.pseudo) {
+      const err = new Error(`Le pseudo est déjà prit merci d'en saisir un autre !`);
+      next(err);
+    } else if (existingUser.email === req.body.email) {
+      const err = new Error(`Adresse email est déjà prise merci d'en saisir une autre !`);
       next(err);
     }
-    const userSignup = await dataMapperAdmin
-      .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
-    if (!userSignup.rowCount) {
-      const err = new Error(`La connexion a échoué vérifier vos données !`);
-      next(err);
-    }
-    res.status(200).send(`L'utilisateur est bien enregistré en base !`);
   },
   /**
    * The method allows you to log in as an administrator

@@ -19,7 +19,7 @@ const authenticateToken = (req, res, next) => {
   }
   jwt.verify(token, process.env.ACCES_TOKEN_SECRET, (error, user) => {
     if (error) {
-      const err = new Error(`le token n'a pas pu être vérifiée merci de recommencer !`);
+      const err = new Error(`Vous n'avez pas les droits requis pour faire cette action car votre token a expiré merci de vous reconnecter !`);
       err.status = 401;
       next(err);
     }

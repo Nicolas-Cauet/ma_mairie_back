@@ -1,5 +1,5 @@
 const { dataMapperReporting } = require(`../models/dataMapper/index`);
-
+const debug = require(`debug`)(`ADMINREPORT`);
 /**
  * @type {object}
  * @export adminReportingController
@@ -98,11 +98,12 @@ const adminReportingController = {
       err.status = 401;
       next(err);
     }
+    const deleteReport = await dataMapperReporting.getOneReport(req.params.reporting_id);
     const report = await dataMapperReporting.deleteReport(
       req.params.reporting_id,
     );
     if (report.rowCount) {
-      res.status(200).send(`Le signalement est bien supprimer !`);
+      res.status(200).send(`Le signalement ${deleteReport.title} du visiteur ${deleteReport.first_name} est bien supprimer !`);
     } else {
       const err = new Error(
         `Impossible de supprimer le signalement !`,
@@ -166,7 +167,7 @@ const adminReportingController = {
     };
     const report = await dataMapperReporting.postReport(values);
     if (report.rowCount) {
-      res.status(200).send(`Votre signalement est effectué !`);
+      res.status(200).send(`Le signalement ${req.body.title} de ${req.body.first_name} est effectué !`);
     } else {
       const err = new Error(
         `Impossible de poster votre  signalement !`,
