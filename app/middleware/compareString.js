@@ -63,7 +63,7 @@ const compareString = {
     const noBadTitle = leoProfanity.check(title);
     const ip = await compareString.getIp(req);
     const verifyIp = await compareString.verifyIp(ip, req);
-    if (verifyIp >= 100) {
+    if (verifyIp >= 2) {
       const err = new Error(`Vous avez deja poster 3 fois aujourd'hui`);
       next(err);
     } else if (noBadWords === true) {

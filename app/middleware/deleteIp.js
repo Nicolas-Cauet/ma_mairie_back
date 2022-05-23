@@ -20,7 +20,7 @@ const DeleteIp = {
       const query = {
         text: `UPDATE reporting
                 SET user_ip= '$1'
-                WHERE created_at < CAST(NOW() AS DATE) - 1 AND user_ip != '$2'`,
+                WHERE created_at < CAST(NOW() AS DATE) - 30 AND user_ip != '$2'`,
         values: [`null`, `null`],
       };
       await client.query(query);
