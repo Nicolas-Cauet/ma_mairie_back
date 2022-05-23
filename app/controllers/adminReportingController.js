@@ -103,7 +103,7 @@ const adminReportingController = {
       req.params.reporting_id,
     );
     if (report.rowCount) {
-      res.status(200).send(`Le signalement ${deleteReport.title} du visiteur ${deleteReport.first_name} est bien supprimer !`);
+      res.status(200).send(`Le signalement < ${deleteReport.title} > du visiteur < ${deleteReport.first_name} > est bien supprimé !`);
     } else {
       const err = new Error(
         `Impossible de supprimer le signalement !`,

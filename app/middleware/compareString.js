@@ -67,10 +67,10 @@ const compareString = {
       const err = new Error(`Vous avez deja poster 3 fois aujourd'hui`);
       next(err);
     } else if (noBadWords === true) {
-      const err = new Error(`Les insultes ne sont pas accepter`);
+      const err = new Error(`Les insultes ne sont pas acceptées dans le texte du signalement.`);
       next(err);
     } else if (noBadTitle === true) {
-      const err = new Error(`Les insultes ne sont pas accepter`);
+      const err = new Error(`Les insultes ne sont pas acceptées dans le titre du signalement.`);
       next(err);
     } else {
       const query = {
