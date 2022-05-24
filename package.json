@@ -2,7 +2,7 @@
   "name": "mairie",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "jest --watchAll --verbose --runInBand",
-    "start": "node ./server.js",
+    "start": "node index.js",
     "debug": "DEBUG=SERVER,ADMINREPORT,CONTROLLER nodemon ./server.js",
     "docs": "apidoc -i ./ -e node_modules -o ./docs"
   },
