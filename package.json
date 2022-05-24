@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest --watchAll --verbose --runInBand",
     "start": "node index.js",
-    "debug": "DEBUG=SERVER,ADMINREPORT,CONTROLLER nodemon ./server.js",
+    "debug": "DEBUG=SERVER,ADMINREPORT,CONTROLLER nodemon .index.js",
     "docs": "apidoc -i ./ -e node_modules -o ./docs"
   },
   "repository": {
