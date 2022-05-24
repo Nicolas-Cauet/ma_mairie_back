@@ -4,7 +4,7 @@ GET  http://localhost:3000/reporting/1 HTTP/1.1
 
 ###
 # GET ALL REPORTINGS ADMINISTRATOR
-GET  http://localhost:3000/admin/reporting/1 HTTP/1.1
+GET  http://localhost:3000/admin/reporting/24 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 ###

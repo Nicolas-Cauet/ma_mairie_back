@@ -6,7 +6,6 @@ const adminControllerArticle = require(`../controllers/adminControllerArticle`);
 const authenticateToken = require(`../middleware/authenticateToken`);
 const routerWrapper = require(`../handlers/routerWrapper`);
 const compareString = require(`../middleware/compareString`);
-const path = require(`path`);
 
 const {
   schemaCreationAdmin,
@@ -15,7 +14,7 @@ const {
   schemaCreateArticle,
   schemaUpdateArticle,
   schemaCreateCouncilMember,
-  schemaUpdateCouncilMember
+  schemaUpdateCouncilMember,
 } = require(`../validation/schema`);
 
 const {
@@ -259,13 +258,13 @@ router.get(
  *@apiSuccessExample Success-response:
  *            HTTP/1.1 200 OK
  *              {
- *                  "Le signalement est bien supprimer !"
+ *                  "Le signalement est bien supprimé !"
  *               }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
  *            {
  *             "error" : {
- *                "message": "Impossible de supprimer le signalement !"
+ *                "message": "Impossible de supprimé le signalement !"
  *              }
  *            }
  * @apiErrorExample {json} Error-Response:
