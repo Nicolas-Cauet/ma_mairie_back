@@ -103,7 +103,7 @@ const adminReportingController = {
       req.params.reporting_id,
     );
     if (report.rowCount) {
-      res.status(200).send(`Le signalement < ${deleteReport.title} > du visiteur < ${deleteReport.first_name} > est bien supprimé !`);
+      res.status(200).send(`Le signalement "${deleteReport.title}" du visiteur "${deleteReport.first_name}" est bien supprimé !`);
     } else {
       const err = new Error(
         `Impossible de supprimer le signalement !`,
@@ -127,6 +127,7 @@ const adminReportingController = {
       err.status = 401;
       next(err);
     }
+    const getReport = await dataMapperReporting.getOneReport(req.params.reporting_id);
     const values = {
       admin_text: req.body.admin_text,
       reporting_statut: req.body.reporting_statut,
@@ -134,7 +135,7 @@ const adminReportingController = {
     };
     const report = await dataMapperReporting.modifyReport(values);
     if (report.rowCount) {
-      res.status(200).send(`La mise à jour est bien passée.`);
+      res.status(200).send(`Le signalement "${getReport.title}", numéro "${getReport.reporting_id}" a bien été mis à jour."`);
     } else {
       const err = new Error(
         `Impossible de modifier le signalement !`,
