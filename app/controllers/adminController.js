@@ -26,10 +26,10 @@ const adminController = {
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
-    if (existingUser) {
-      const err = new Error(`L'utilisateur existe déja`);
-      next(err);
-    }
+    // if (existingUser) {
+    //   const err = new Error(`L'utilisateur existe déja`);
+    //   next(err);
+    // }
     if (!existingUser) {
       const userSignup = await dataMapperAdmin
         .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
