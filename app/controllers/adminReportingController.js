@@ -135,7 +135,7 @@ const adminReportingController = {
     };
     const report = await dataMapperReporting.modifyReport(values);
     if (report.rowCount) {
-      res.status(200).send(`Le signalement "${getReport.title}", numéro "${getReport.reporting_id}" a bien été mis à jour."`);
+      res.status(200).send(`Le signalement "${getReport.title}", numéro "${getReport.reporting_id}", a bien été mis à jour."`);
     } else {
       const err = new Error(
         `Impossible de modifier le signalement !`,
