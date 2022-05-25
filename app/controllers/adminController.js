@@ -30,10 +30,20 @@ const adminController = {
       const err = new Error(`L'utilisateur existe déja`);
       next(err);
     }
-    const userSignup = await dataMapperAdmin
-      .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
-    if (!userSignup.rowCount) {
-      const err = new Error(`La connexion a échoué vérifier vos données !`);
+    if (!existingUser) {
+      const userSignup = await dataMapperAdmin
+        .userSignup(req.body.pseudo, req.body.insee, hashPassword, req.body.email, townHallId);
+      res.status(200).send(`Votre compte a bien été créé, vous pouvez vous connecter.`);
+      if (!userSignup.rowCount) {
+        const err = new Error(`La connexion a échoué vérifier vos données !`);
+        next(err);
+      }
+    }
+    if (existingUser.pseudo === req.body.pseudo) {
+      const err = new Error(`Le pseudo est déjà prit merci d'en saisir un autre !`);
+      next(err);
+    } else if (existingUser.email === req.body.email) {
+      const err = new Error(`Adresse email est déjà prise merci d'en saisir une autre !`);
       next(err);
     }
     res.status(200).send(`L'utilisateur est bien enregistré en base !`);
