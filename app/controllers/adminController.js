@@ -19,8 +19,6 @@ const adminController = {
    * @returns void
    */
   async signup(req, res, next) {
-    console.log(req.body);
-    console.log(typeof req.body.insee);
     if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
       const err = new Error(`Merci de saisir tous les champs !`);
       err.status = 406;
