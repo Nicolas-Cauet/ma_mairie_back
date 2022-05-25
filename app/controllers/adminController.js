@@ -19,10 +19,7 @@ const adminController = {
    */
   async signup(req, res, next) {
     if (
-      req.body.pseudo === `` ||
-      req.body.insee === `` ||
-      req.body.password === `` ||
-      req.body.email === ``
+      req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``
     ) {
       const err = new Error(`Merci de saisir tous les champs !`);
       err.status = 406;
@@ -77,12 +74,12 @@ const adminController = {
     }
     const match = await bcrypt.compare(
       req.body.password,
-      existingUser.password
+      existingUser.password,
     );
     if (match) {
       const data = await dataMapperAdmin.userLogin(
         req.body.email,
-        existingUser.password
+        existingUser.password,
       );
       const user = { pseudo: data.pseudo, town_hall_id: data.town_hall_id };
       const townHallId = user.town_hall_id;
