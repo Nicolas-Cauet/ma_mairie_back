@@ -46,7 +46,6 @@ const adminController = {
       const err = new Error(`Adresse email est déjà prise merci d'en saisir une autre !`);
       next(err);
     }
-    res.status(200).send(`L'utilisateur est bien enregistré en base !`);
   },
   /**
    * The method allows you to log in as an administrator
