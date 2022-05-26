@@ -21,7 +21,7 @@ const adminController = {
     if (
       req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``
     ) {
-      const err = new Error(`Merci de saisir tous les champs !`);
+      const err = new Error(`Merci de saisir tous les champs.`);
       err.status = 406;
       next(err);
     }
@@ -31,12 +31,12 @@ const adminController = {
     if (existingUser) {
       if (existingUser.pseudo === req.body.pseudo) {
         const err = new Error(
-          `Le pseudo est déjà prit merci d'en saisir un autre !`,
+          `Le pseudo est déjà prit merci d'en saisir un autre.`,
         );
         next(err);
       } else if (existingUser.email === req.body.email) {
         const err = new Error(
-          `Adresse email est déjà prise merci d'en saisir une autre !`,
+          `Adresse email est déjà prise merci d'en saisir une autre.`,
         );
         next(err);
       }
@@ -53,7 +53,7 @@ const adminController = {
         .status(200)
         .send(`Votre compte a bien été créé, vous pouvez vous connecter.`);
       if (!userSignup.rowCount) {
-        const err = new Error(`La connexion a échoué vérifier vos données !`);
+        const err = new Error(`La creation de votre compte a échoué vérifier vos données.`);
         next(err);
       }
     }
@@ -69,7 +69,7 @@ const adminController = {
   async login(req, res, next) {
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     if (!existingUser) {
-      const err = new Error(`Impossible de récupérer Administrateur en base !`);
+      const err = new Error(`Impossible de récupérer Administrateur en base.`);
       next(err);
     }
     const match = await bcrypt.compare(
@@ -86,7 +86,7 @@ const adminController = {
       const accessToken = jwt.sign(user, secretKey);
       res.json({ accessToken, townHallId });
     } else {
-      const err = new Error(`La connexion a échoué vérifier vos données !`);
+      const err = new Error(`La connexion a échoué vérifier vos données.`);
       next(err);
     }
   },

@@ -20,7 +20,7 @@ const adminControllerCouncil = {
       res.json(townHallStaff).status(200);
     } else {
       const err = new Error(
-        `Impossible de récupèrer les Conseillers`,
+        `Impossible de récupèrer les Conseillers.`,
       );
       next(err);
     }
@@ -42,10 +42,10 @@ const adminControllerCouncil = {
     };
     const result = await dataMapperCouncil.postMemberCouncil(member);
     if (result.rowCount) {
-      res.status(200).send(`Votre ajout à été effectué !`);
+      res.status(200).send(`Votre ajout à été effectué.`);
     } else {
       const err = new Error(
-        `La mise à jour n'est pas possible !`,
+        `La mise à jour n'est pas possible.`,
       );
       next(err);
     }
@@ -61,17 +61,17 @@ const adminControllerCouncil = {
   async deleteMemberCouncil(req, res, next) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       const err = new Error(
-        `Vous n'avez pas accès à cette page !`,
+        `Vous n'avez pas accès à cette page.`,
       );
       err.status = 401;
       next(err);
     }
     const report = await dataMapperCouncil.deleteMember(req.params.town_hall_staff_id);
     if (report.rowCount) {
-      res.status(200).send(`Le Membre à bien été supprimer !`);
+      res.status(200).send(`Le Membre à bien été supprimer.`);
     } else {
       const err = new Error(
-        `La suppression du membre n'est pas possible !`,
+        `La suppression du membre n'est pas possible.`,
       );
       next(err);
     }
@@ -88,7 +88,7 @@ const adminControllerCouncil = {
   async modifyMemberCouncil(req, res, next) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
       const err = new Error(
-        `Vous n'avez pas accès à cette page !`,
+        `Vous n'avez pas accès à cette page.`,
       );
       err.status = 401;
       next(err);
@@ -105,7 +105,7 @@ const adminControllerCouncil = {
       res.status(200).send(`La mise à jour du membre du conseiller, c'est bien passé.`);
     } else {
       const err = new Error(
-        `La mise à jour n'est pas possible !`,
+        `La mise à jour n'est pas possible.`,
       );
       next(err);
     }

@@ -3,7 +3,7 @@
 BEGIN;
 
 INSERT INTO "reporting" ("title","email","phonenumber","first_name","last_name","user_text","reporting_category","town_hall_id")
-VALUES('Chien errant','alain.proviste.@gmail.com','0688789531','Alain','Proviste','Bonjour, J''ai vu un chien errant 6 rue du champ des loups, il etais noir avec des tache blanche de taille moyenne avec un petit museaux.','Animaux',1);
+VALUES('Chien errant','alain.proviste.@gmail.com','0688789531','Alain','Proviste','Bonjour, J''ai vu un chien errant 6 rue du champ des loups, il etais noir avec des tache blanche de taille moyenne avec un petit museaux.','Autre',1);
 
 INSERT INTO "reporting" ("title","email","phonenumber","first_name","last_name","user_text","reporting_category","town_hall_id")
 VALUES('Panneau stop endomagée','philippe.hine@gmail.com','0765963665','Philippe','Hine','Bonjour, je me permet de vous signalez que le panneau STOP au 7 rue Jean Castex à étais taguer avec un gros "49.3".','Autre',1);
@@ -19,7 +19,7 @@ INSERT INTO "reporting" ("title","email","phonenumber","first_name","last_name",
 VALUES('Porte-feuille perdu ','eric.gentilhomme@gmail.com','0706040201','Eric','Gentilhomme','Bonjour, J''ai trouver un porte-feuille abandonée a coter du la fontaine d''eau dois-je vous le ramener ?  ".','Objet trouvé/perdu',2);
 
 INSERT INTO "reporting" ("title","email","phonenumber","first_name","last_name","user_text","reporting_category","town_hall_id")
-VALUES('Un arbre et tomber sur la route','citoyensmodèle@gmail.com','0605020304','Maurice','Gerant','Bonjour, il y as un arbres qui est tomber en pleine rue au 78 rue de Maubuzan','animaux',2);
+VALUES('Un arbre et tomber sur la route','citoyensmodèle@gmail.com','0605020304','Maurice','Gerant','Bonjour, il y as un arbres qui est tomber en pleine rue au 78 rue de Maubuzan','Voirie',2);
 
 INSERT INTO "town_hall_staff"("last_name","first_name","role","photo","town_hall_id")
 VALUES('Atome','Aleks','Maire','https://ca.slack-edge.com/T02MBC4J9K5-U02M8CJUVJR-2df2ffa3c507-512','1');

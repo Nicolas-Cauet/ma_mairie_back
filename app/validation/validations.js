@@ -13,13 +13,13 @@ const validationModule = {
           next(err);
         } else if (error.message === `"email" must be a valid email`) {
           const err = new Error(
-            `L'adresse e-mail doit être conforme ex: test@gmail.fr`,
+            `L'adresse e-mail doit être conforme ex: test@gmail.fr.`,
           );
           err.status = 400;
           next(err);
         } else if (error.message === `"length must be less than or equal to 10 characters long"`) {
           const err = new Error(
-            `Le numéro de téléphone doit contenir au minimum 10 caractères est maximum 10 caractères !`,
+            `Le numéro de téléphone doit contenir au minimum 10 caractères est maximum 10 caractères .`,
           );
           err.status = 400;
           next(err);
@@ -46,13 +46,13 @@ const validationModule = {
         error.message === `"admin_text" length must be at least 10 characters long`
       ) {
         const err = new Error(
-          `Le texte de administrateur doit contenir une réponse d'au moins 10 caractères !`,
+          `Le texte de administrateur doit contenir une réponse d'au moins 10 caractères.`,
         );
         err.status = 400;
         next(err);
       } else if (error.message === `"length must be at least 5 characters long"`) {
         const err = new Error(
-          `Le titre doit contenir au moins 5 caractères !`,
+          `Le titre doit contenir au moins 5 caractères.`,
         );
         err.status = 400;
         next(err);

@@ -52,7 +52,7 @@ const adminControllerArticle = {
    */
   async deleteArticle(req, res, next) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(`Vous n'avez pas accès à cette page !`);
+      const err = new Error(`Vous n'avez pas accès à cette page.s`);
       err.status = 401;
       next(err);
     }
@@ -60,9 +60,9 @@ const adminControllerArticle = {
       req.params.article_id,
     );
     if (articles.rowCount) {
-      res.status(200).send(`L'article est bien supprimer !`);
+      res.status(200).send(`L'article est bien supprimer.`);
     } else {
-      const err = new Error(`La suppression de l'article n'est pas possible !`);
+      const err = new Error(`La suppression de l'article n'est pas possible.`);
       next(err);
     }
   },
@@ -76,7 +76,7 @@ const adminControllerArticle = {
    */
   async modifyArticle(req, res, next) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(`Vous n'avez pas accès à cette page !`);
+      const err = new Error(`Vous n'avez pas accès à cette page.`);
       err.status = 401;
       next(err);
     }
@@ -94,7 +94,7 @@ const adminControllerArticle = {
     if (report.rowCount) {
       res.status(200).send(`La mise à jour est bien passée.`);
     } else {
-      const err = new Error(`La mise à jour de l'article n'est pas possible !`);
+      const err = new Error(`La mise à jour de l'article n'est pas possible.`);
       next(err);
     }
   },
@@ -108,7 +108,7 @@ const adminControllerArticle = {
    */
   async postArticle(req, res, next) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(`Vous n'avez pas accès à cette page !`);
+      const err = new Error(`Vous n'avez pas accès à cette page.`);
       err.status = 401;
       next(err);
     }
@@ -124,9 +124,9 @@ const adminControllerArticle = {
     };
     const report = await dataMapperArticle.postArticle(values);
     if (report.rowCount) {
-      res.status(200).send(`L'article à été poster!`);
+      res.status(200).send(`L'article à été poster.`);
     } else {
-      const err = new Error(`Le post de l'article n'est pas possible !`);
+      const err = new Error(`Le post de l'article n'est pas possible.`);
       next(err);
     }
   },

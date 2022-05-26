@@ -39,20 +39,20 @@ const router = express.Router();
  *@apiSuccessExample Success-response:
  *            HTTP/1.1 200 OK
  *            {
- *              "L'utilisateur est bien enregistré en base !"
+ *              "Votre compte a bien été créé, vous pouvez vous connecter."
  *            }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
  *            {
  *             "error" : {
- *                "message": "L'utilisateur existe déja"
+ *                "message": "Le pseudo est déjà prit merci d'en saisir un autre."
  *              }
  *            }
  *@apiErrorExample {json} Error-Response:
  *            HTTP/1.1 400
  *            {
  *             "error" : {
- *                "message": "Le code Insee est invalide !"
+ *                "message": "Le code Insee est invalide."
  *              }
  *            }
  * @apiErrorExample {json} Error-Response:
@@ -82,8 +82,7 @@ const router = express.Router();
  *            HTTP/1.1 500
  *            {
  *              "error": {
- *               "message": "une valeur NULL viole la contrainte NOT NULL de la colonne
- *                « email » dans la relation « admin »"
+ *               "message": "Adresse email est déjà prise merci d'en saisir une autre."
  *              }
  *            }
  */
@@ -110,21 +109,21 @@ router.post(
  *            HTTP/1.1 500
  *            {
  *             "error" : {
- *                "message": "Impossible de récupérer Administrateur en base !"
+ *                "message": "Impossible de récupérer Administrateur en base."
  *              }
  *            }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
  *            {
  *              "error": {
- *               "message": "La connexion a échoué vérifier vos données !"
+ *               "message": "La connexion a échoué vérifier vos données."
  *              }
  *            }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 401
  *            {
  *              "error": {
- *               "message": "Vous n'avez pas accès à cette page !"
+ *               "message": "Vous n'avez pas accès à cette page."
  *              }
  *            }
  */
@@ -161,24 +160,17 @@ router.post(`/login`, routerWrapper(adminController.login));
  *                   "updated_at": null
  *               }
  * @apiErrorExample {json} Error-Response:
- *            HTTP/1.1 500
- *            {
- *             "error" : {
- *                "message": "Impossible de récupérer Administrateur en base !"
- *              }
- *            }
- * @apiErrorExample {json} Error-Response:
- *            HTTP/1.1 500
- *            {
- *              "error": {
- *               "message": "La connexion a échoué vérifier vos données !"
- *              }
- *            }
- * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 401
  *            {
+ *             "error": {
+ *               "message": "Vous n'avez pas accès à cette page."
+ *              }
+ *            }
+ * @apiErrorExample {json} Error-Response:
+ *            HTTP/1.1 500
+ *            {
  *              "error": {
- *               "message": "Vous n'avez pas accès à cette page !"
+ *               "message": "Impossible de récupérer tous les signalements."
  *              }
  *            }
  */
@@ -258,7 +250,7 @@ router.get(
  *@apiSuccessExample Success-response:
  *            HTTP/1.1 200 OK
  *              {
- *                  "Le signalement est bien supprimé !"
+ *                  "Le signalement "J'aime la pizza" est bien supprimé !"
  *               }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
@@ -302,7 +294,7 @@ router.delete(
  *            HTTP/1.1 500
  *            {
  *             "error" : {
- *                "message": "Impossible de modifier le signalement !"
+ *                "message": "Le signalement "j'aime la pizza" a bien été mis à jour."
  *              }
  *            }
  * @apiErrorExample {json} Error-Response:
@@ -591,7 +583,7 @@ router.delete(
  *            {
  *             "error" : {
  *                "message": "Le texte de administrateur doit contenir
- *                            une réponse d'au moins 10 caractères !"
+ *                            une réponse d'au moins 10 caractères."
  *              }
  *            }
  */
@@ -638,21 +630,7 @@ router.patch(
  *            HTTP/1.1 500
  *            {
  *             "error" : {
- *                "message": "Impossible de récupérer Administrateur en base !"
- *              }
- *            }
- * @apiErrorExample {json} Error-Response:
- *            HTTP/1.1 500
- *            {
- *              "error": {
- *               "message": "La connexion a échoué vérifier vos données !"
- *              }
- *            }
- * @apiErrorExample {json} Error-Response:
- *            HTTP/1.1 401
- *            {
- *              "error": {
- *               "message": "Vous n'avez pas accès à cette page !"
+ *                "message": "Impossible de récupérer tous les signalements."
  *              }
  *            }
  */
@@ -670,34 +648,34 @@ router.get(
  *@apiSuccessExample Success-response:
  *            HTTP/1.1 200 OK
  *               {
- *                 "Votre signalement est effectué !"
+ *                 "Votre signalement est effectué."
  *               }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
  *            {
  *             "error" : {
- *                "message": "Impossible de poster votre signalement !"
+ *                "message": "Impossible de poster votre signalement."
  *              }
  *            }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
  *            {
  *              "error": {
- *               "message": "Vous avez deja poster 3 fois aujourd'hui !"
+ *               "message": "Vous avez deja poster 3 fois aujourd'hui."
  *              }
  *            }
  * @apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
  *            {
  *              "error": {
- *               "message": "Les insultes ne sont pas accepter !"
+ *               "message": "Les insultes ne sont pas acceptées dans le texte du signalement."
  *              }
  *            }
  *@apiErrorExample {json} Error-Response:
  *            HTTP/1.1 500
  *            {
  *              "error": {
- *               "message": "Le contenu du signalement est très similaire a un autre signalement !"
+ *               "message": "Le contenu du signalement est très similaire a un autre signalement."
  *              }
  *            }
  */
@@ -735,13 +713,6 @@ router.post(
  *            {
  *             "error" : {
  *                "message": "Impossible de récupèrer les Conseillers !"
- *              }
- *            }
- * @apiErrorExample {json} Error-Response:
- *            HTTP/1.1 401
- *            {
- *              "error": {
- *               "message": "Vous n'avez pas accès à cette page !"
  *              }
  *            }
  */
