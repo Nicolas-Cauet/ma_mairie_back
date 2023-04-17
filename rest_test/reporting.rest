@@ -1,13 +1,11 @@
 ###
 # GET ALL REPORTINGS VISSITOR
-GET  http://localhost:3000/reporting/1 HTTP/1.1
+GET  http://localhost:4000/reporting/1 HTTP/1.1
 
 ###
 # GET ALL REPORTINGS ADMINISTRATOR
-GET  http://localhost:3000/admin/reporting/24 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
-
-###
+GET  http://localhost:4000/admin/reporting/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJaZWxkYSIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjgwNTM1NjU3LCJleHAiOjE2ODA1MzY1NTd9.24MrL4Nj8Njw2amVv92oyFTCfNxrXH4ge_JVnqYrzuE
 #SELECT ONE REPORT
 
 GET http://localhost:3000/admin/reporting/1/1 HTTP/1.1
@@ -15,34 +13,33 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pb
 
 ###
 # DELETE REPORTING
-DELETE http://localhost:3000/admin/reporting/1/17
+DELETE http://localhost:4000/admin/reporting/1/13
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 ###
 # UPDATE REPORTING
 
-PATCH  http://localhost:3000/admin/reporting/1/2
+PATCH  http://localhost:4000/admin/reporting/1/2
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJoZWxvc3p6eiIsInRvd25faGFsbF9pZCI6MSwiaWF0IjoxNjUyOTkyNjcwfQ.kkQwMRn7ItHYkb9CxaFTe7K1HqlvVCUBobwQilKAMdk
 
 {
+      ""
       "reporting_statut": "En cours",
-      "admin_text":"Hello tout est ok !",
       "reporting_id": "1"
 }
 
 ###
 # POST VISITEUR
 
-POST http://localhost:3000/reporting/1
+POST http://localhost:4000/reporting/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJhZG1pbk1haXJpZTIiLCJ0b3duX2hhbGxfaWQiOjEsImlhdCI6MTY1MjI2OTI5MH0.3jwjdh31RvQRYSvBp81TZ8eN1wlgk3zEP-PEJ4v5Kgg
 
 {
-      "title": "J'ai mal",
+      "title": "dddd",
       "email": "anthony@gmail.com",
-      "user_text": "Bonjour est il",
+      "user_text": "Hello le",
       "first_name": "anthony",
       "last_name": "legrain",
       "reporting_category": "animaux",

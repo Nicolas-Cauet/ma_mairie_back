@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest --watchAll --verbose --runInBand",
     "start": "node index.js",
-    "debug": "DEBUG=SERVER,ADMINREPORT,CONTROLLER nodemon .index.js",
+    "debug": "DEBUG=SERVER,ADMINREPORT,CONTROLLER,TOKEN,ADMINCONTROLLER,DELETEIP,COMPARESTRING,HANDLEERROR,VALIDATION nodemon index.js",
     "docs": "apidoc -i ./ -e node_modules -o ./docs"
   },
   "repository": {
@@ -35,8 +35,10 @@
     "french-badwords-list": "^1.0.5",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
+    "kill-port": "^2.0.1",
     "leo-profanity": "^1.5.0",
     "node-cron": "^3.0.0",
+    "nodemon": "^2.0.22",
     "pg": "^8.7.3",
     "string-similarity": "^4.0.4"
   },
@@ -46,7 +48,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "jest": "^28.1.0",
-    "nodemon": "^2.0.16",
     "supertest": "^6.2.3"
   }
 }

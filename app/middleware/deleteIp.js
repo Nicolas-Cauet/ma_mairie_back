@@ -1,7 +1,7 @@
 /* eslint-disable no-tabs */
 const cron = require(`node-cron`);
 const client = require(`../models/dbClient`);
-
+// const debug = require(`debug`)(`DELETEIP`);
 /**
 * object contains the method which allows
 * to delete the ip addresses after 30 days
@@ -15,6 +15,7 @@ const DeleteIp = {
    * @method deleteIp
    * @returns void
    */
+
   deleteIp() {
     cron.schedule(`59 23 * * *`, async () => {
       const query = {

@@ -1,4 +1,6 @@
 const dataMapperCouncil = require(`../models/dataMapper/dataMapperCouncil`);
+const HandleError = require(`../handlers/handleError`);
+
 /**
  * @type {Object}
  * @export adminControllerCouncil
@@ -12,17 +14,14 @@ const adminControllerCouncil = {
    * @param {Object} res
    * @returns {Array} Return all municipal councilors
    */
-  async allCouncil(req, res, next) {
+  async allCouncil(req, res) {
     const townHallStaff = await dataMapperCouncil.getAllCouncil(
       parseInt(req.params.town_hall_id, 10),
     );
     if (townHallStaff) {
       res.json(townHallStaff).status(200);
     } else {
-      const err = new Error(
-        `Impossible de récupèrer les Conseillers.`,
-      );
-      next(err);
+      throw new HandleError(`Impossible de récupèrer les Conseillers.`);
     }
   },
   /** this method posts a new advisor member as administrator
@@ -32,7 +31,7 @@ const adminControllerCouncil = {
    * @param {Object} res
    * @returns {void} post the new adviser
    */
-  async postOneMember(req, res, next) {
+  async postOneMember(req, res) {
     const member = {
       lastName: req.body.last_name,
       firstName: req.body.first_name,
@@ -42,12 +41,9 @@ const adminControllerCouncil = {
     };
     const result = await dataMapperCouncil.postMemberCouncil(member);
     if (result.rowCount) {
-      res.status(200).send(`Votre ajout à été effectué.`);
+      res.status(200).json(`Votre ajout à été effectué.`);
     } else {
-      const err = new Error(
-        `La mise à jour n'est pas possible.`,
-      );
-      next(err);
+      throw new HandleError(`La mise à jour n'est pas possible.`);
     }
   },
   /**
@@ -58,22 +54,15 @@ const adminControllerCouncil = {
   * @param {Object} res
   * @returns {array}delete the board member
   */
-  async deleteMemberCouncil(req, res, next) {
+  async deleteMemberCouncil(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(
-        `Vous n'avez pas accès à cette page.`,
-      );
-      err.status = 401;
-      next(err);
+      throw new HandleError(`Vous n'avez pas accès à cette page.`, 401);
     }
     const report = await dataMapperCouncil.deleteMember(req.params.town_hall_staff_id);
     if (report.rowCount) {
       res.status(200).send(`Le Membre à bien été supprimer.`);
     } else {
-      const err = new Error(
-        `La suppression du membre n'est pas possible.`,
-      );
-      next(err);
+      throw new HandleError(`La suppression du membre n'est pas possible.`);
     }
   },
   /**
@@ -85,13 +74,9 @@ const adminControllerCouncil = {
   * @returns {array}modify the board member
   */
 
-  async modifyMemberCouncil(req, res, next) {
+  async modifyMemberCouncil(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(
-        `Vous n'avez pas accès à cette page.`,
-      );
-      err.status = 401;
-      next(err);
+      throw new HandleError(`Vous n'avez pas accès à cette page.`, 401);
     }
     const values = {
       lastName: req.body.last_name,
@@ -102,12 +87,9 @@ const adminControllerCouncil = {
     };
     const report = await dataMapperCouncil.modifyCouncil(values);
     if (report.rowCount) {
-      res.status(200).send(`La mise à jour du membre du conseiller, c'est bien passé.`);
+      res.status(200).json(`La mise à jour du membre du conseiller, c'est bien passé.`);
     } else {
-      const err = new Error(
-        `La mise à jour n'est pas possible.`,
-      );
-      next(err);
+      throw new HandleError(`La mise à jour n'est pas possible.`);
     }
   },
 };

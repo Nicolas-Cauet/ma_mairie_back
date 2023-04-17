@@ -1,3 +1,4 @@
+const debug = require(`debug`)(`ROUTERWRAPPER`);
 /**
  * the object allows to encapsulate all
  * the api methods to capture errors
@@ -11,6 +12,7 @@ const routerWrapper = (method) => async (req, res, next) => {
   try {
     await method(req, res, next);
   } catch (err) {
+    debug(err);
     next(err);
   }
 };

@@ -1,4 +1,6 @@
 const { dataMapperReporting } = require(`../models/dataMapper/index`);
+const HandleError = require(`../handlers/handleError`);
+
 const debug = require(`debug`)(`ADMINREPORT`);
 /**
  * @type {object}
@@ -14,13 +16,9 @@ const adminReportingController = {
    * @param {Object} res
    * @returns Return all reports Administrator
    */
-  async allReporting(req, res, next) {
+  async allReporting(req, res) {
     if (parseInt(req.params.town_hall_id, 10) !== req.admin.town_hall_id) {
-      const err = new Error(
-        `Vous n'êtes pas autorisé à accéder à cette page.`,
-      );
-      err.status = 401;
-      next(err);
+      throw new HandleError(`Vous n'êtes pas autorisé à accéder à cette page.`, 401);
     }
     const Allreporting = await dataMapperReporting.getAllReport(
       req.params.town_hall_id,
@@ -28,8 +26,7 @@ const adminReportingController = {
     if (Allreporting) {
       res.json(Allreporting).status(200);
     } else {
-      const err = new Error(`Impossible de récupérer tous les signalements.`);
-      next(err);
+      throw new HandleError(`Impossible de récupérer tous les signalements.`);
     }
   },
   /**
@@ -40,7 +37,7 @@ const adminReportingController = {
    * @param {Object} res
    * @returns Return all reports visitor
    */
-  async allReportingVisitor(req, res, next) {
+  async allReportingVisitor(req, res) {
     // eslint-disable-next-line max-len
     const reportings = await dataMapperReporting.getAllReportVisitor(
       parseInt(req.params.town_hall_id, 10),
@@ -48,10 +45,7 @@ const adminReportingController = {
     if (reportings) {
       res.json(reportings).status(200);
     } else {
-      const err = new Error(
-        `Impossible de récupérer tous les signalements.`,
-      );
-      next(err);
+      throw new HandleError(`Impossible de récupérer tous les signalements.`);
     }
   },
   /**
@@ -62,13 +56,9 @@ const adminReportingController = {
    * @param {Object} res
    * @returns Return one reports visitor
    */
-  async oneReporting(req, res, next) {
+  async oneReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(
-        `Vous n'êtes pas autorisé à accéder à cette page.`,
-      );
-      err.status = 401;
-      next(err);
+      throw new HandleError(`Vous n'êtes pas autorisé à accéder à cette page.`, 401);
     }
     const report = await dataMapperReporting.getOneReport(
       req.params.reporting_id,
@@ -76,10 +66,7 @@ const adminReportingController = {
     if (report) {
       res.json(report).status(200);
     } else {
-      const err = new Error(
-        `Impossible de récupérer le signalement.`,
-      );
-      next(err);
+      throw new HandleError(`Impossible de récupérer le signalement.`);
     }
   },
   /**
@@ -90,25 +77,18 @@ const adminReportingController = {
    * @param {Object} res
    * @returns void
    */
-  async deleteReporting(req, res, next) {
+  async deleteReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(
-        `Vous n'êtes pas autorisé à accéder à cette page.`,
-      );
-      err.status = 401;
-      next(err);
+      throw new HandleError(`Vous n'êtes pas autorisé à accéder à cette page.`, 401);
     }
     const deleteReport = await dataMapperReporting.getOneReport(req.params.reporting_id);
     const report = await dataMapperReporting.deleteReport(
       req.params.reporting_id,
     );
     if (report.rowCount) {
-      res.status(200).send(`Le signalement "${deleteReport.title}" est bien supprimé !`);
+      res.status(200).json(`Le signalement "${deleteReport.title}" est bien supprimé !`);
     } else {
-      const err = new Error(
-        `Impossible de supprimer le signalement.`,
-      );
-      next(err);
+      throw new HandleError(`Impossible de supprimer le signalement.`);
     }
   },
   /**
@@ -119,14 +99,11 @@ const adminReportingController = {
    * @param {Object} res
    * @returns void
    */
-  async modifyReporting(req, res, next) {
+  async modifyReporting(req, res) {
     if (Number(req.params.town_hall_id) !== req.admin.town_hall_id) {
-      const err = new Error(
-        `Vous n'êtes pas autorisé à accéder à cette page.`,
-      );
-      err.status = 401;
-      next(err);
+      throw new HandleError(`Vous n'êtes pas autorisé à accéder à cette page.`, 401);
     }
+    debug(res.body);
     const getReport = await dataMapperReporting.getOneReport(req.params.reporting_id);
     const values = {
       admin_text: req.body.admin_text,
@@ -137,10 +114,7 @@ const adminReportingController = {
     if (report.rowCount) {
       res.status(200).send(`Le signalement "${getReport.title}" a bien été mis à jour.`);
     } else {
-      const err = new Error(
-        `Impossible de modifier le signalement.`,
-      );
-      next(err);
+      throw new HandleError(`Impossible de modifier le signalement.`);
     }
   },
   /**
@@ -151,7 +125,7 @@ const adminReportingController = {
    * @param {Object} res
    * @returns void
    */
-  async postReporting(req, res, next) {
+  async postReporting(req, res) {
     const values = {
       title: req.body.title,
       email: req.body.email,
@@ -169,10 +143,7 @@ const adminReportingController = {
     if (report.rowCount) {
       res.status(200).send(`Le signalement ${req.body.title} de ${req.body.first_name} est effectué.`);
     } else {
-      const err = new Error(
-        `Impossible de poster votre  signalement.`,
-      );
-      next(err);
+      throw new HandleError(`Impossible de poster votre  signalement.`);
     }
   },
 };

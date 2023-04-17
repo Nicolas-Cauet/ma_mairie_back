@@ -1,5 +1,5 @@
 const client = require(`../dbClient`);
-
+const HandleError = require(`../../handlers/handleError`);
 /**
  *@type {Object}
  *@export datamapper
@@ -25,7 +25,7 @@ const datamapper = {
     };
     const idTownHall = await client.query(query);
     if (!idTownHall.rowCount) {
-      throw new Error(`Le code Insee est invalide !`);
+      throw new HandleError(`Le code Insee est invalide !`);
     }
     return idTownHall.rows[0].town_hall_id;
   },

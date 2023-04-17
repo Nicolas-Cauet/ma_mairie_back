@@ -1,9 +1,11 @@
 require(`dotenv`).config();
+// const debug = require(`debug`)(`ADMINCONTROLLER`);
+
 const bcrypt = require(`bcrypt`);
 const jwt = require(`jsonwebtoken`);
 const secretKey = process.env.ACCES_TOKEN_SECRET;
 const { dataMapperAdmin } = require(`../models/dataMapper/index`);
-
+const HandleError = require(`../handlers/handleError`);
 /**
  * @type {Object}
  * @export adminController
@@ -17,28 +19,19 @@ const adminController = {
    * @param {Object} res
    * @returns void
    */
-  async signup(req, res, next) {
-    if (
-      req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``
-    ) {
-      const err = new Error(`Merci de saisir tous les champs.`);
-      err.status = 406;
-      next(err);
+  async signup(req, res) {
+    // eslint-disable-next-line max-len, eqeqeq
+    if (req.body.pseudo === `` || req.body.insee === `` || req.body.password === `` || req.body.email === ``) {
+      throw new HandleError(`Merci de saisir tous les champs.`);
     }
     const hashPassword = await bcrypt.hash(req.body.password, 10);
     const townHallId = await dataMapperAdmin.getTownHallId(req.body.insee);
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     if (existingUser) {
       if (existingUser.pseudo === req.body.pseudo) {
-        const err = new Error(
-          `Le pseudo est déjà prit merci d'en saisir un autre.`,
-        );
-        next(err);
+        throw new HandleError(`Le pseudo est déjà prit merci d'en saisir un autre.`);
       } else if (existingUser.email === req.body.email) {
-        const err = new Error(
-          `Adresse email est déjà prise merci d'en saisir une autre.`,
-        );
-        next(err);
+        throw new HandleError(`Adresse email est déjà prise merci d'en saisir une autre.`);
       }
     }
     if (!existingUser) {
@@ -49,12 +42,13 @@ const adminController = {
         req.body.email,
         townHallId,
       );
-      res
-        .status(200)
-        .send(`Votre compte a bien été créé, vous pouvez vous connecter.`);
+
       if (!userSignup.rowCount) {
-        const err = new Error(`La creation de votre compte a échoué vérifier vos données.`);
-        next(err);
+        throw new HandleError(`La creation de votre compte a échoué vérifier vos données.`);
+      } else {
+        res
+          .status(200)
+          .json(`Votre compte a bien été créé, vous pouvez vous connecter.`);
       }
     }
   },
@@ -66,11 +60,10 @@ const adminController = {
    * @param {Object} res
    * @returns {Object} Return token and town_hall_id
    */
-  async login(req, res, next) {
+  async login(req, res) {
     const existingUser = await dataMapperAdmin.getOneAdmin(req.body.email);
     if (!existingUser) {
-      const err = new Error(`Impossible de récupérer Administrateur en base.`);
-      next(err);
+      throw new HandleError(`Impossible de récupérer Administrateur en base.`);
     }
     const match = await bcrypt.compare(
       req.body.password,
@@ -86,8 +79,7 @@ const adminController = {
       const accessToken = jwt.sign(user, secretKey);
       res.json({ accessToken, townHallId });
     } else {
-      const err = new Error(`La connexion a échoué vérifier vos données.`);
-      next(err);
+      throw new HandleError(`La connexion a échoué vérifier vos données.`);
     }
   },
 };

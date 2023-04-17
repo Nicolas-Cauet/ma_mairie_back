@@ -2,6 +2,7 @@ const client = require(`../models/dbClient`);
 const stringSimilarity = require(`string-similarity`);
 const leoProfanity = require(`leo-profanity`);
 const frenchBadwordsList = require(`french-badwords-list`);
+const HandleError = require(`../handlers/handleError`);
 
 leoProfanity.clearList();
 leoProfanity.add(frenchBadwordsList.array);
@@ -22,7 +23,7 @@ const compareString = {
    */
   async getIp(req) {
     const ip = req.headers[`x-forwarded-for`]?.split(`,`).shift()
-  || req.socket?.remoteAddress;
+  || req.socket.remoteAddress;
     return ip;
   },
   /**
@@ -37,7 +38,7 @@ const compareString = {
   async verifyIp(ip, req) {
     const id = parseInt(req.params.town_hall_id, 10);
     const query = {
-      text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $2 AND created_at > CAST(NOW() AS DATE) - 1`,
+      text: `SELECT COUNT(*) FROM reporting WHERE user_ip = $1 AND town_hall_id = $2 AND CAST(created_at AS DATE) = CAST(NOW() AS DATE)`,
       values: [ip, id],
     };
     const result = await client.query(query);
@@ -63,18 +64,15 @@ const compareString = {
     const noBadTitle = leoProfanity.check(title);
     const ip = await compareString.getIp(req);
     const verifyIp = await compareString.verifyIp(ip, req);
-    if (verifyIp >= 2) {
-      const err = new Error(`Vous avez deja poster 3 fois aujourd'hui`);
-      next(err);
+    if (verifyIp >= 3) {
+      throw new HandleError(`Vous avez atteint la limite de 3 signalements par jour.`);
     } else if (noBadWords === true) {
-      const err = new Error(`Les insultes ne sont pas acceptées dans le texte du signalement.`);
-      next(err);
+      throw new HandleError(`Les insultes ne sont pas acceptées dans le texte du signalement.`);
     } else if (noBadTitle === true) {
-      const err = new Error(`Les insultes ne sont pas acceptées dans le titre du signalement.`);
-      next(err);
+      throw new HandleError(`Les insultes ne sont pas acceptées dans le titre du signalement.`);
     } else {
       const query = {
-        text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND created_at > CAST(NOW() AS DATE) - 1`,
+        text: `SELECT user_text FROM reporting WHERE town_hall_id = $1 AND CAST(created_at AS DATE) = CAST(NOW() AS DATE)`,
         values: [id],
       };
       const allUserText = await client.query(query);
@@ -86,8 +84,7 @@ const compareString = {
       }
       const matches = stringSimilarity.findBestMatch(stringUser, AllUserTextString);
       if (matches.bestMatch.rating > 0.8) {
-        const err = new Error(`Le contenu du signalement est très similaire a un autre signalement`);
-        next(err);
+        throw new HandleError(`Le contenu du signalement est très similaire a un autre signalement`);
       } else {
         next();
       }
