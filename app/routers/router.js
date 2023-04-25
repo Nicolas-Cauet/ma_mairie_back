@@ -18,13 +18,7 @@ const {
 } = require(`../validation/schema`);
 
 const {
-  validateCreateAdmin,
-  validateCreateReportingUser,
-  validateReportingUser,
-  validateCreateArticle,
-  validateUpdateArticle,
-  validateCreateCouncilMember,
-  validateUpdateCouncilMember,
+  validateSchema,
 } = require(`../validation/validations`);
 
 const router = express.Router();
@@ -88,7 +82,7 @@ const router = express.Router();
  */
 router.post(
   `/signup`,
-  validateCreateAdmin(schemaCreationAdmin),
+  validateSchema(schemaCreationAdmin),
   routerWrapper(adminController.signup),
 );
 /**
@@ -308,7 +302,7 @@ router.delete(
 router.patch(
   `/admin/reporting/:town_hall_id/:reporting_id`,
   authenticateToken,
-  validateReportingUser(schemaValidateReportingUser),
+  validateSchema(schemaValidateReportingUser),
   routerWrapper(adminReportingController.modifyReporting),
 );
 /** ******** ARTICLE *********** */
@@ -482,7 +476,7 @@ router.get(
 router.post(
   `/admin/new-article/:town_hall_id`,
   authenticateToken,
-  validateCreateArticle(schemaCreateArticle),
+  validateSchema(schemaCreateArticle),
   routerWrapper(adminControllerArticle.postArticle),
 );
 
@@ -590,7 +584,7 @@ router.delete(
 router.patch(
   `/admin/article/:town_hall_id/:article_id`,
   authenticateToken,
-  validateUpdateArticle(schemaUpdateArticle),
+  validateSchema(schemaUpdateArticle),
   routerWrapper(adminControllerArticle.modifyArticle),
 );
 
@@ -682,7 +676,7 @@ router.get(
 router.post(
   `/reporting/:town_hall_id`,
   routerWrapper(compareString.verifyString),
-  validateCreateReportingUser(schemaCreateReportingUser),
+  validateSchema(schemaCreateReportingUser),
   routerWrapper(adminReportingController.postReporting),
 );
 
@@ -771,7 +765,7 @@ router.get(
 router.post(
   `/admin/council/:town_hall_id`,
   authenticateToken,
-  validateCreateCouncilMember(schemaCreateCouncilMember),
+  validateSchema(schemaCreateCouncilMember),
   routerWrapper(adminControllerCouncil.postOneMember),
 );
 /**
@@ -853,7 +847,7 @@ router.delete(
 router.patch(
   `/admin/council/:town_hall_id/:town_hall_staff_id`,
   authenticateToken,
-  validateUpdateCouncilMember(schemaUpdateCouncilMember),
+  validateSchema(schemaUpdateCouncilMember),
   routerWrapper(adminControllerCouncil.modifyMemberCouncil),
 );
 
